@@ -1,0 +1,37 @@
+security:
+    encoders:
+        Test\Bundle\TestBundle\Entity\User: bcrypt
+
+#    role_hierarchy:
+#        ROLE_ADMIN:       ROLE_USER
+#        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+#    providers:
+#        in_memory:
+#            memory:
+#                users:
+#                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+#                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+#    providers:
+#        end_user:
+#            id: user_provider
+
+    providers:
+        end_user:
+            entity: { class:TestBundle:User }
+
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            form_login:
+                check_path: login
+                login_path: loginForm
+            logout:
+                path:   logout
+                target: home
+            anonymous: true
+
+    access_control:
+#        - { path: ^/admin, roles: ROLE_ADMIN }
+#        - { path: ^/user, roles: ROLE_USER }
