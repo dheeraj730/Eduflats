@@ -5,6 +5,7 @@ namespace Test\Bundle\TestBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Test\Bundle\TestBundle\Util;
 
 class NavigationController extends Controller
 {
@@ -15,7 +16,7 @@ class NavigationController extends Controller
     public function userAction()
     {
         $this->accessControl('ROLE_STUDENT');
-        return array();    
+        return array('baseLayout'=>  "::".Util::$currentId."base.html.twig");    
     }
 
     /**
@@ -25,7 +26,7 @@ class NavigationController extends Controller
     public function adminAction()
     {
         $this->accessControl('ROLE_ADMIN');
-        return array();    
+        return array('baseLayout'=>  "::".Util::$currentId."base.html.twig");    
     }
 
     /**
@@ -34,7 +35,7 @@ class NavigationController extends Controller
      */
     public function homeAction()
     {
-        return array();
+        return array('baseLayout'=>  "::".Util::$currentId."base.html.twig");
     }
     
     public function accessControl($role){

@@ -7,14 +7,16 @@ use Test\Bundle\TestBundle\Util;
 
 class RequestListener
 {   
-    
     public function onKernelRequest(GetResponseEvent $event)
     {
         $subdomainList = Util::$subdomainList;
         $UrlSubdomain = str_replace('.tracestay.co.in', '' , $event->getRequest()->getHost());
+        
         if(!array_search($UrlSubdomain, $subdomainList)){
-            echo "subdomain does not exists";
+            echo "susbdomain does not exists.";
             exit;
+        }else{
+            Util::$currentId = array_search($UrlSubdomain, $subdomainList);
         }
     }
 }

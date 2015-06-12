@@ -3,15 +3,16 @@
 namespace Test\Bundle\TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
- * User
+ * Student
  *
- * @ORM\Table(name="enduser")
- * @ORM\Entity(repositoryClass="Test\Bundle\TestBundle\Entity\UserRepository")
+ * @ORM\Table(name="student")
+ * @ORM\Entity(repositoryClass="Test\Bundle\TestBundle\Entity\StudentRepository")
  */
-class User implements AdvancedUserInterface, \Serializable
+class Student implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var integer
@@ -23,7 +24,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="University", inversedBy="user")
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="student")
      * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
      */
     private $university;
@@ -34,19 +35,38 @@ class User implements AdvancedUserInterface, \Serializable
     private $roles;
     
     /**
-     * @ORM\Column(name="username", type="string")
+     * @var string
+     * @ORM\Column(name="username", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *                 min = 3,
+     *                 max = 15,
+     *                 minMessage = "User Name field must contain atleast 3 characters",
+     *                 maxMessage = "User Name field cannot contain more than 15 characters"
+     *              )
+     * @Assert\Type(type="alnum", message="User Name can contain only alphabets and numbers")
      */
-    private $username;
+    protected $username;
+
+    /**
+     * @var string
+     * @ORM\Column(name="password", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *                 min = 3,
+     *                 minMessage = "Password must contain atleast 3 characters"
+     *              )
+     */
+    protected $password;
     
     /**
-     * @ORM\Column(name="password")
+     * @var string
+     * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Email
      */
-    private $password;
-    
-    /**
-     * @ORM\Column(name="email", type="string")
-     */
-    private $email;
+    //@Assert\Regex(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/)
+    protected $email;
     
     /**
      * @ORM\Column(name="enabled", type="boolean")
@@ -148,7 +168,7 @@ class User implements AdvancedUserInterface, \Serializable
      * Set enabled
      *
      * @param boolean $enabled
-     * @return User
+     * @return Student
      */
     public function setEnabled($enabled)
     {
@@ -171,7 +191,7 @@ class User implements AdvancedUserInterface, \Serializable
      * Set email
      *
      * @param string $email
-     * @return User
+     * @return Student
      */
     public function setEmail($email)
     {
@@ -213,7 +233,7 @@ class User implements AdvancedUserInterface, \Serializable
      * Set university
      *
      * @param \Test\Bundle\TestBundle\Entity\University $university
-     * @return User
+     * @return Student
      */
     public function setUniversity(\Test\Bundle\TestBundle\Entity\University $university = null)
     {
@@ -232,4 +252,73 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->university;
     }
     
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     * @return student
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     * @return Student
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set country
+     *
+     * @param integer $country
+     * @return Student
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return integer 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
 }

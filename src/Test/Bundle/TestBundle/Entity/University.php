@@ -3,6 +3,7 @@
 namespace Test\Bundle\TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -24,18 +25,32 @@ class University
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="university")
+     * @ORM\OneToMany(targetEntity="Student", mappedBy="university")
      */
-    private $user;
+    private $student;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PropertyProvider", mappedBy="propertyProvider")
+     */
+    private $propertyProvider;
     
     public function __construct() {
-        $this->user = new ArrayCollection();
+        $this->student = new ArrayCollection();
+        $this->propertyProvider = new ArrayCollection();
     }
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *                  min=3,
+     *                  max=35,
+     *                  minMessage= "Name Field should contains at least 3 characters",
+     *                  maxMessage = "Name Field Cannot contain more than 35 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
      */
     private $name;
 
@@ -43,6 +58,14 @@ class University
      * @var string
      *
      * @ORM\Column(name="subdomain", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *                  min=3,
+     *                  max=15,
+     *                  minMessage= "Subdomains should contains at least 3 characters",
+     *                  maxMessage = "Subdomains Cannot contain more than 15 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="subdomains can only contain letters")
      */
     private $subdomain;
 
@@ -146,35 +169,68 @@ class University
     }
 
     /**
-     * Add user
+     * Add student
      *
-     * @param \Test\Bundle\TestBundle\Entity\User $user
+     * @param \Test\Bundle\TestBundle\Entity\Student $student
      * @return University
      */
-    public function addUser(\Test\Bundle\TestBundle\Entity\User $user)
+    public function addStudent(\Test\Bundle\TestBundle\Entity\Student $student)
     {
-        $this->user[] = $user;
+        $this->student[] = $student;
 
         return $this;
     }
 
     /**
-     * Remove user
+     * Remove Student
      *
-     * @param \Test\Bundle\TestBundle\Entity\User $user
+     * @param \Test\Bundle\TestBundle\Entity\Student $student
      */
-    public function removeUser(\Test\Bundle\TestBundle\Entity\User $user)
+    public function removeStudent(\Test\Bundle\TestBundle\Entity\Student $student)
     {
-        $this->user->removeElement($user);
+        $this->student->removeElement($student);
     }
 
     /**
-     * Get user
+     * Get student
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getUser()
+    public function getStudent()
     {
-        return $this->user;
+        return $this->student;
+    }
+
+    /**
+     * Add propertyProvider
+     *
+     * @param \Test\Bundle\TestBundle\Entity\PropertyProvider $propertyProvider
+     * @return University
+     */
+    public function addPropertyProvider(\Test\Bundle\TestBundle\Entity\PropertyProvider $propertyProvider)
+    {
+        $this->propertyProvider[] = $propertyProvider;
+
+        return $this;
+    }
+
+    /**
+     * Remove propertyProvider
+     *
+     * @param \Test\Bundle\TestBundle\Entity\PropertyProvider $propertyProvider
+     */
+    public function removePropertyProvider(\Test\Bundle\TestBundle\Entity\PropertyProvider $propertyProvider)
+    {
+        $this->propertyProvider->removeElement($propertyProvider);
+    }
+
+    /**
+     * Get propertyProvider
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPropertyProvider()
+    {
+        return $this->propertyProvider;
     }
 }

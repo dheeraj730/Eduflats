@@ -1,6 +1,7 @@
 security:
     encoders:
-        Test\Bundle\TestBundle\Entity\User: bcrypt
+        Test\Bundle\TestBundle\Entity\Student: bcrypt
+        Test\Bundle\TestBundle\Entity\PropertyProvider: bcrypt
 
 #    role_hierarchy:
 #        ROLE_ADMIN:       ROLE_USER
@@ -19,7 +20,7 @@ security:
 
     providers:
         end_user:
-            entity: { class:TestBundle:User }
+            entity: { class:TestBundle:Student }
 
     firewalls:
         secured_area:

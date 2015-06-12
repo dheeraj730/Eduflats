@@ -5,14 +5,13 @@ namespace Test\Bundle\TestBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
-
 /**
- * User
+ * PropertyProvider
  *
- * @ORM\Table(name="enduser")
- * @ORM\Entity(repositoryClass="Test\Bundle\TestBundle\Entity\UserRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Test\Bundle\TestBundle\Entity\PropertyProviderRepository")
  */
-class User implements AdvancedUserInterface, \Serializable
+class PropertyProvider implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var integer
@@ -24,8 +23,8 @@ class User implements AdvancedUserInterface, \Serializable
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="University", inversedBy="user")
-     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="university")
+     * @ORM\JoinColumn(name="university_id", referencedColumnName="id" )
      */
     private $university;
     
@@ -33,39 +32,10 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Column(name="roles", type="array")
      */
     private $roles;
-    
+
     /**
      * @var string
-     *
-     * @ORM\Column(name="firstName", type="string", length=255)
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *                  min=3,
-     *                  max=15,
-     *                  minMessage= "First Name Field should contains at least 3 characters",
-     *                  maxMessage = "First Name Field Cannot contain more than 15 characters"
-     *               )
-     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="First name can only contain letters")
-     */
-    private $firstName;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="lastName", type="string", length=255)
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *                  min = 3,
-     *                  max = 15,
-     *                  minMessage = "Last Name field must contain atleast 3 characters",
-     *                  maxMessage = "Last Name Field Cannot contain more than 15 characters"
-     *              )
-     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false, message = "Last Name field can only contain letters")
-     */
-    private $lastName;
-    
-    /**
-     * @var string
+     * @ORM\Column(name="username", type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(
      *                 min = 3,
@@ -79,29 +49,54 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @var string
+     * @ORM\Column(name="password", type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Length(
      *                 min = 3,
      *                 minMessage = "Password must contain atleast 3 characters"
      *              )
      */
-    protected $plainPassword;
+    protected $password;
     
     /**
      * @var string
-     *
+     * @ORM\Column(name="email", type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Email
      */
     //@Assert\Regex(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/)
     protected $email;
-    
+
     /**
-     * @var integer
-     * @ORM\Column(name="Country", type="integer")
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *                  min=3,
+     *                  max=15,
+     *                  minMessage= "First Name Field should contains at least 3 characters",
+     *                  maxMessage = "First Name Field Cannot contain more than 15 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="First name can only contain letters")
      */
-    private $country;
-    
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *                  min = 3,
+     *                  max = 15,
+     *                  minMessage = "Last Name field must contain atleast 3 characters",
+     *                  maxMessage = "Last Name Field Cannot contain more than 15 characters"
+     *              )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false, message = "Last Name field can only contain letters")
+     */
+    private $lastname;
+
     /**
      * @ORM\Column(name="enabled", type="boolean")
      */
@@ -121,12 +116,11 @@ class User implements AdvancedUserInterface, \Serializable
      * Set username
      *
      * @param string $username
-     * @return User
+     * @return PropertyProvider
      */
     public function setUsername($username)
     {
         $this->username = $username;
-
         return $this;
     }
 
@@ -144,12 +138,11 @@ class User implements AdvancedUserInterface, \Serializable
      * Set password
      *
      * @param string $password
-     * @return User
+     * @return PropertyProvider
      */
     public function setPassword($password)
     {
         $this->password = $password;
-
         return $this;
     }
 
@@ -162,11 +155,77 @@ class User implements AdvancedUserInterface, \Serializable
     {
         return $this->password;
     }
-    
-    public function getSalt() {
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return PropertyProvider
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     * @return PropertyProvider
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string 
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     * @return PropertyProvider
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string 
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    public function eraseCredentials() {
         return;
     }
-    
+
     public function setRoles(array $roles) {
         $this->roles = $roles;
         return $this;
@@ -177,8 +236,8 @@ class User implements AdvancedUserInterface, \Serializable
         $roles[] = 'ROLE_GUEST';
         return array_unique($roles);
     }
-    
-    public function eraseCredentials() {
+
+    public function getSalt() {
         return;
     }
 
@@ -198,11 +257,24 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->enabled;
     }
 
+    public function serialize() {
+        return serialize(array(
+            $this->id
+        ));
+    }
+
+    public function unserialize($serialized) {
+        list(
+            $this->id
+        ) = unserialize($serialized);
+    }
+
+
     /**
      * Set enabled
      *
      * @param boolean $enabled
-     * @return User
+     * @return PropertyProvider
      */
     public function setEnabled($enabled)
     {
@@ -222,52 +294,10 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function serialize() {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->email,
-            $this->password
-        ));
-    }
-
-    public function unserialize($serialized) {
-        list(
-            $this->id,
-            $this->username,
-            $this->email,
-            $this->password
-        ) = unserialize($serialized);
-    }
-
-
-    /**
      * Set university
      *
      * @param \Test\Bundle\TestBundle\Entity\University $university
-     * @return User
+     * @return PropertyProvider
      */
     public function setUniversity(\Test\Bundle\TestBundle\Entity\University $university = null)
     {
@@ -285,5 +315,4 @@ class User implements AdvancedUserInterface, \Serializable
     {
         return $this->university;
     }
-    
 }

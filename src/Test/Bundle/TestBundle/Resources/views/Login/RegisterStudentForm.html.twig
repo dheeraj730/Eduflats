@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}TestBundle:Login:loginForm{% endblock %}
+
+{% block form %}
+<h1>Student Registration Form</h1><br>
+{{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
+<table>
+   
+     <tr>
+        <td align="left">{{form_label(form.username)}}</td>
+        <td>{{form_widget(form.username)}}</td>
+        <td>{{form_errors(form.username)}}</td>
+    </tr>
+    <tr>
+        <td align="left">{{form_label(form.password)}}</td>
+        <td>{{form_widget(form.password)}}</td>
+        <td>{{form_errors(form.password)}}</td>
+    </tr>
+    <tr>
+        <td align="left">{{form_label(form.email)}}</td>
+        <td>{{form_widget(form.email)}}</td>
+        <td>{{form_errors(form.email)}}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td align="center">{{form_widget(form.submit)}}</td>
+    </tr>
+</table>
+{{form_end(form)}}
+{% endblock %}
