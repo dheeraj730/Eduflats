@@ -74,7 +74,6 @@ a:hover {
 	margin: 0;
 	padding: 0;
 	color: #B55100;
-	background: url(images/img02.jpg) no-repeat left 15px;
 }
 
 #logo h1, #logo p {
@@ -193,12 +192,10 @@ a:hover {
 	width: 990px;
 	margin: 0 auto;
 	padding: 0px 0px 0px 0px;
-	background: url(images/img03.jpg) repeat-y left top;
 }
 
 #page-bgtop {
 	padding: 40px 0px 20px 0px;
-	background: url(images/img02.jpg) no-repeat left top;
 }
 /* Content */
 

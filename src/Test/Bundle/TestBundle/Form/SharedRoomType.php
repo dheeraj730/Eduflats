@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class StudentType extends AbstractType
+class SharedRoomType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,15 @@ class StudentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('password', 'password')
-            ->add('email', 'email')
+            ->add('address')
+            ->add('postalCode')
+            ->add('propertyType')
+            ->add('rent')
+            ->add('leasePeriod')
+            ->add('utilities')
+            ->add('bedrooms')
+            ->add('bathrooms')
+            ->add('additionalDetails')
         ;
     }
     
@@ -27,7 +33,7 @@ class StudentType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Test\Bundle\TestBundle\Entity\Student'
+            'data_class' => 'Test\Bundle\TestBundle\Entity\SharedRoom'
         ));
     }
 
@@ -36,6 +42,6 @@ class StudentType extends AbstractType
      */
     public function getName()
     {
-        return 'test_bundle_testbundle_student';
+        return 'test_bundle_testbundle_sharedroom';
     }
 }

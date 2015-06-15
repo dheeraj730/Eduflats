@@ -3,8 +3,8 @@ namespace Test\Bundle\TestBundle;
 
 class Util{
     public static $subdomainList = array(
-      1=>'epita',
-      2=>'blore',
+      1=>'blore',
+      2=>'epita',
       //update array here without changing other stuff
     );
     

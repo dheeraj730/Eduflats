@@ -18,9 +18,16 @@ security:
 #        end_user:
 #            id: user_provider
 
+
     providers:
-        end_user:
+        chain_providers:
+            chain:
+                providers: [student, property_provider]
+        student:
             entity: { class:TestBundle:Student }
+        property_provider:
+            entity: { class:TestBundle:PropertyProvider }
+
 
     firewalls:
         secured_area:

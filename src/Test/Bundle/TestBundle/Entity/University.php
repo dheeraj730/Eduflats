@@ -30,7 +30,7 @@ class University
     private $student;
     
     /**
-     * @ORM\OneToMany(targetEntity="PropertyProvider", mappedBy="propertyProvider")
+     * @ORM\OneToMany(targetEntity="PropertyProvider", mappedBy="university")
      */
     private $propertyProvider;
     

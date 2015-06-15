@@ -23,7 +23,7 @@ class PropertyProvider implements AdvancedUserInterface, \Serializable
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="University", inversedBy="university")
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="propertyProvider")
      * @ORM\JoinColumn(name="university_id", referencedColumnName="id" )
      */
     private $university;

@@ -3,6 +3,7 @@
 namespace Test\Bundle\TestBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Test\Bundle\TestBundle\Util;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 /**
  *
@@ -11,12 +12,13 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
  */
 class StudentRepository extends EntityRepository implements UserProviderInterface{
     
-    private $university = 12;
+    public $university = 2;
+    public $userType = "student";
     
-    public function FindUserNameOrEmailInUniversity($username, $university){
-        return $this->createQueryBuilder('enduser')
-            ->where('enduser.university = :university')
-            ->andWhere('enduser.username = :username OR enduser.email = :email')
+    public function FindUserNameOrEmailInUniversity($username,$university, $userType){
+        return $this->createQueryBuilder($userType)
+            ->where($userType.'.university = :university')
+            ->andWhere($userType.'.username = :username OR '.$userType.'.email = :email')
             ->setParameter('university', $university)
             ->setParameter('username', $username)
             ->setParameter('email', $username)
@@ -26,7 +28,7 @@ class StudentRepository extends EntityRepository implements UserProviderInterfac
     }
 
     public function loadUserByUsername($username) {
-        $user = $this->FindUserNameOrEmailInUniversity($username, $this->university);
+        $user = $this->FindUserNameOrEmailInUniversity($username,$this->university, $this->userType); //check order of parameters use type hinting
         if(!$user){
             throw new \Symfony\Component\Security\Core\Exception\UsernameNotFoundException('user name '.$username.' not found');
         }

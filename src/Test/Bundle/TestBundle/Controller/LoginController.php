@@ -66,7 +66,7 @@ class LoginController extends Controller
                 }
                 return $this->render('TestBundle:Login:RegisterPropertyProviderForm.html.twig', ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"]);
             
-            default:
+            case 'student':
                 $form = $this->createForm(new StudentType(), $student);
                 $form->add('submit', 'submit', ['label'=>'Create Account']);
                 $form->handleRequest($request);
@@ -79,6 +79,9 @@ class LoginController extends Controller
                     $em->flush();
                 }
                 return $this->render('TestBundle:Login:RegisterStudentForm.html.twig', ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"]);
+                
+            default:
+                return $this->render('TestBundle:Login:RegisterStudentForm.html.twig', ['form'=>null, 'baseLayout'=>  "::".Util::$currentId."base.html.twig"]); 
         }
     }
     
