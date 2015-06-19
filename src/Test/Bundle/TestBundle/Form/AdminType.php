@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SharedRoomType extends AbstractType
+class AdminType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,15 +15,9 @@ class SharedRoomType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('address')
-            ->add('postalCode')
-            ->add('propertyType')
-            ->add('rent')
-            ->add('leasePeriod')
-            ->add('utilities')
-            ->add('bedrooms')
-            ->add('bathrooms')
-            ->add('additionalDetails')
+            ->add('username')
+            ->add('password', 'password')
+            ->add('email')
         ;
     }
     
@@ -33,7 +27,7 @@ class SharedRoomType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Test\Bundle\TestBundle\Entity\SharedRoom'
+            'data_class' => 'Test\Bundle\TestBundle\Entity\Admin'
         ));
     }
 
@@ -42,6 +36,6 @@ class SharedRoomType extends AbstractType
      */
     public function getName()
     {
-        return 'test_bundle_testbundle_sharedroom';
+        return 'test_bundle_testbundle_admin';
     }
 }

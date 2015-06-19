@@ -25,11 +25,6 @@ class University
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Admin", mappedBy="university")
-     */
-    private $admin;
-    
-    /**
      * @ORM\OneToMany(targetEntity="Student", mappedBy="university")
      */
     private $student;
@@ -55,7 +50,6 @@ class University
         $this->propertyProvider = new ArrayCollection();
         $this->campus = new ArrayCollection();
         $this->property = new ArrayCollection();
-        $this->admin = new ArrayCollection();
     }
 
     /**
@@ -317,38 +311,5 @@ class University
     public function getProperty()
     {
         return $this->property;
-    }
-
-    /**
-     * Add admin
-     *
-     * @param \Test\Bundle\TestBundle\Entity\Admin $admin
-     * @return University
-     */
-    public function addAdmin(\Test\Bundle\TestBundle\Entity\Admin $admin)
-    {
-        $this->admin[] = $admin;
-
-        return $this;
-    }
-
-    /**
-     * Remove admin
-     *
-     * @param \Test\Bundle\TestBundle\Entity\Admin $admin
-     */
-    public function removeAdmin(\Test\Bundle\TestBundle\Entity\Admin $admin)
-    {
-        $this->admin->removeElement($admin);
-    }
-
-    /**
-     * Get admin
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAdmin()
-    {
-        return $this->admin;
     }
 }

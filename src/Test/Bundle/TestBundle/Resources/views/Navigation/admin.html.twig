@@ -1,15 +1,18 @@
-{% extends "::base.html.twig" %}
+{% extends baseLayout %}
 
 {% block title %}Admin{% endblock %}
 
 {% block body %}
     {{ parent() }}
+    
+    
+{% endblock %}
+
     {% block form %}
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <a href="{{ path('logout')}}">logout</a>
         {% else %}
             <a href="{{ path('loginForm')}}">login</a>
         {% endif %}    
+        {{ form(form) }}
     {% endblock %}
-    
-{% endblock %}

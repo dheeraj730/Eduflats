@@ -4,67 +4,71 @@
 
 {% block body %}
     {{ parent() }}
-    {% block form %}
-        
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            <a href="{{ path('logout')}}">logout</a>
-        {% else %}
-            <a href="{{ path('loginForm')}}">login</a>
-        {% endif %}    
-        
-        {% if form != null%}
-            {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
-            <table>
-                 <tr>
-                    <td align="left">{{form_label(form.address)}}</td>
-                    <td>{{form_widget(form.address)}}</td>
-                    <td>{{form_errors(form.address)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.postalCode)}}</td>
-                    <td>{{form_widget(form.postalCode)}}</td>
-                    <td>{{form_errors(form.postalCode)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.propertyType)}}</td>
-                    <td>{{form_widget(form.propertyType)}}</td>
-                    <td>{{form_errors(form.propertyType)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.rent)}}</td>
-                    <td>{{form_widget(form.rent)}}</td>
-                    <td>{{form_errors(form.rent)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.leasePeriod)}}</td>
-                    <td>{{form_widget(form.leasePeriod)}}</td>
-                    <td>{{form_errors(form.leasePeriod)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.bedrooms)}}</td>
-                    <td>{{form_widget(form.bedrooms)}}</td>
-                    <td>{{form_errors(form.bedrooms)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.bathrooms)}}</td>
-                    <td>{{form_widget(form.bathrooms)}}</td>
-                    <td>{{form_errors(form.bathrooms)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.additionalDetails)}}</td>
-                    <td>{{form_widget(form.additionalDetails)}}</td>
-                    <td>{{form_errors(form.additionalDetails)}}</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td align="center">{{form_widget(form.submit)}}</td>
-                </tr>
-            </table>
-            {{form_end(form)}}
+{% endblock %}
+
+{% block form %}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <a href="{{ path('logout')}}">logout</a>
+    {% else %}
+        <a href="{{ path('loginForm')}}">login</a>
+    {% endif %}    
+
+    {% if form != null%}
+        {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
+        <table>
+            <tr>
+                <td align="left">{{form_label(form.propertytype)}}</td>
+                <td>{{form_widget(form.propertytype)}}</td>
+                <td>{{form_errors(form.propertytype)}}</td>
+            </tr>
+            <tr>
+                <td align="left">{{form_label(form.rent)}}</td>
+                <td>{{form_widget(form.rent)}}</td>
+                <td>{{form_errors(form.rent)}}</td>
+            </tr>
+            <tr>
+                <td align="left">{{form_label(form.leaseperiod)}}</td>
+                <td>{{form_widget(form.leaseperiod)}}</td>
+                <td>{{form_errors(form.leaseperiod)}}</td>
+            </tr>
+            <tr>
+                <td align="left">{{form_label(form.bedrooms)}}</td>
+                <td>{{form_widget(form.bedrooms)}}</td>
+                <td>{{form_errors(form.bedrooms)}}</td>
+            </tr>
+            <tr>
+                <td align="left">{{form_label(form.bathrooms)}}</td>
+                <td>{{form_widget(form.bathrooms)}}</td>
+                <td>{{form_errors(form.bathrooms)}}</td>
+            </tr>
             
-            
-        {% endif %}
-        
-    {% endblock %}
-    
+            <tr>
+                <td align="left">{{form_label(form.address)}}</td>
+                <td>{{form_widget(form.address)}}</td>
+                <td>{{form_errors(form.address)}}</td>
+            </tr>
+            <tr>
+                <td align="left">{{form_label(form.postalcode)}}</td>
+                <td>{{form_widget(form.postalcode)}}</td>
+                <td>{{form_errors(form.postalcode)}}</td>
+            </tr>
+            <tr>
+                <td align="left">{{form_label(form.additionaldetails)}}</td>
+                <td>{{form_widget(form.additionaldetails)}}</td>
+                <td>{{form_errors(form.additionaldetails)}}</td>
+            </tr>
+            {% if propertyType == 'sharedRoom' %}
+                <tr>
+                    <td align="left">{{form_label(form.utilities)}}</td>
+                    <td>{{form_widget(form.utilities)}}</td>
+                    <td>{{form_errors(form.utilities)}}</td>
+                </tr>
+            {% endif %}
+                <td></td>
+                <td></td>
+                <td align="center">{{form_widget(form.submit)}}</td>
+            </tr>
+        </table>
+        {{form_end(form)}}
+    {% endif %}
 {% endblock %}

@@ -1,17 +1,17 @@
 <?php
+
 namespace Test\Bundle\TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
-
 /**
- * Student
+ * Admin
  *
- * @ORM\Table(name="student")
- * @ORM\Entity(repositoryClass="Test\Bundle\TestBundle\Entity\StudentRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Test\Bundle\TestBundle\Entity\AdminRepository")
  */
-class Student implements AdvancedUserInterface, \Serializable
+class Admin implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var integer
@@ -23,16 +23,11 @@ class Student implements AdvancedUserInterface, \Serializable
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="University", inversedBy="student")
-     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="admin")
+     * @ORM\JoinColumn(name="University_id", referencedColumnName="id")
      */
     private $university;
-    
-    /**
-     * @ORM\Column(name="roles", type="array")
-     */
-    private $roles;
-    
+
     /**
      * @var string
      * @ORM\Column(name="username", type="string", length=255)
@@ -45,7 +40,7 @@ class Student implements AdvancedUserInterface, \Serializable
      *              )
      * @Assert\Type(type="alnum", message="User Name can contain only alphabets and numbers")
      */
-    protected $username;
+    private $username;
 
     /**
      * @var string
@@ -56,21 +51,22 @@ class Student implements AdvancedUserInterface, \Serializable
      *                 minMessage = "Password must contain atleast 3 characters"
      *              )
      */
-    protected $password;
-    
+    private $password;
+
     /**
      * @var string
+     *
      * @ORM\Column(name="email", type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Email
      */
     //@Assert\Regex(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/)
-    protected $email;
-    
+    private $email;
+
     /**
-     * @ORM\Column(name="enabled", type="boolean")
+     * @ORM\Column(name="roles", type="array")
      */
-    private $enabled = true;
+    private $roles;
 
     /**
      * Get id
@@ -86,7 +82,7 @@ class Student implements AdvancedUserInterface, \Serializable
      * Set username
      *
      * @param string $username
-     * @return User
+     * @return Admin
      */
     public function setUsername($username)
     {
@@ -109,7 +105,7 @@ class Student implements AdvancedUserInterface, \Serializable
      * Set password
      *
      * @param string $password
-     * @return User
+     * @return Admin
      */
     public function setPassword($password)
     {
@@ -127,70 +123,12 @@ class Student implements AdvancedUserInterface, \Serializable
     {
         return $this->password;
     }
-    
-    public function getSalt() {
-        return;
-    }
-    
-    public function setRoles(array $roles) {
-        $this->roles = $roles;
-        return $this;
-    }
-    
-    public function getRoles() {
-        $roles = $this->roles;
-        $roles[] = 'ROLE_GUEST';
-        return array_unique($roles);
-    }
-    
-    public function eraseCredentials() {
-        return;
-    }
-
-    public function isAccountNonExpired() {
-        return true;
-    }
-
-    public function isAccountNonLocked() {
-        return true;
-    }
-
-    public function isCredentialsNonExpired() {
-        return true;
-    }
-
-    public function isEnabled() {
-        return $this->enabled;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return Student
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
 
     /**
      * Set email
      *
      * @param string $email
-     * @return Student
+     * @return Admin
      */
     public function setEmail($email)
     {
@@ -209,30 +147,11 @@ class Student implements AdvancedUserInterface, \Serializable
         return $this->email;
     }
 
-    public function serialize() {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->email,
-            $this->password
-        ));
-    }
-
-    public function unserialize($serialized) {
-        list(
-            $this->id,
-            $this->username,
-            $this->email,
-            $this->password
-        ) = unserialize($serialized);
-    }
-
-
     /**
      * Set university
      *
      * @param \Test\Bundle\TestBundle\Entity\University $university
-     * @return Student
+     * @return Admin
      */
     public function setUniversity(\Test\Bundle\TestBundle\Entity\University $university = null)
     {
@@ -250,5 +169,58 @@ class Student implements AdvancedUserInterface, \Serializable
     {
         return $this->university;
     }
+
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     * @return Admin
+     */
+   public function setRoles(array $roles) {
+        $this->roles = $roles;
+        return $this;
+    }
     
+    public function getRoles() {
+        $roles = $this->roles;
+        $roles[] = 'ROLE_GUEST';
+        return array_unique($roles);
+    }
+
+    public function eraseCredentials() {
+        return;
+    }
+
+    public function getSalt() {
+        return;
+    }
+
+    public function isAccountNonExpired() {
+        return true;
+    }
+
+    public function isAccountNonLocked() {
+        return true;
+    }
+
+    public function isCredentialsNonExpired() {
+        return true;
+    }
+
+    public function isEnabled() {
+        return true;
+    }
+
+    public function serialize() {
+        return serialize([
+            $this->id,
+        ]);
+    }
+
+    public function unserialize($serialized) {
+        list(
+            $this->id
+        )=unserialize($serialized);
+    }
+
 }
