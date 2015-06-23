@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Test\Bundle\TestBundle\Util;
+use Test\Bundle\TestBundle\Form\AddBadgesType;
 use Test\Bundle\TestBundle\Entity\Property;
 use Test\Bundle\TestBundle\Form\PropertyType;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,31 +26,21 @@ class NavigationController extends Controller
      * @Route("/admin", name="admin")
      * @Template()
      */
-    public function adminAction()
+    public function adminAction(Request $request)
     {
         $this->accessControl('ROLE_ADMIN');
         $em = $this->getDoctrine()->getManager();
-        $property = $this->getPropertyObj(5);
-        $property->setBadges($this->giveBadges());
         
-        //dorop down list of properties available
-        //checkboxs for badges available
-        //add badge to property
+        $form = $this->createForm(new AddBadgesType())
+        ->add('submit','submit');
+        $form->handleRequest($request);
         
-        $campuses=$em->getRepository('TestBundle:Campus')->findAll();
-        $choices=array();
-        foreach ($campuses as $campus) {
-            $choices[$campus->getId()] = $campus->getName();
+        if($form->isSubmitted()){
+            $property = $this->getDoctrine()->getRepository('TestBundle:Property')->findOneById($form->getData()['property']);
+            $property->setBadges($form->getData()['badges']);
+            $em->persist($property);
+            $em->flush();
         }
-        $form = $this->createFormBuilder()
-        ->add('property', 'choice', [
-               'choices'  => $choices,
-               'required' => false,
-              ])
-        ->getForm()
-        ;
-        $em->persist($property);
-        $em->flush();
         return array('baseLayout'=>  "::".Util::$currentId."base.html.twig", "form"=>$form->createView());    
     }
     
@@ -71,33 +62,24 @@ class NavigationController extends Controller
             case 'rental':
                 $form->remove('utilities');
                 $property->setUtilities(0);
+                $property->setPropertytype(1);
                 $form->handleRequest($request);
                 if($form->isValid()){
                     $property->setUniversity($this->getUniversityObj());
                     foreach($this->getCampusObjs() as $campus){
                         $property->addCampus($campus);
                     }
-                    foreach($this->getTags() as $tag){
-                        $property->addTag($tag);
-                    }
-                    
-                    //checkboxs for tags
-                    //add tags to properties
-                    
                     $em->persist($property);
                     $em->flush();
                 }
                 return ['propertyType'=>null ,'baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>$form->createView()];
             case 'sharedRoom':
+                $property->setPropertytype(2);
                 $form->handleRequest($request);
                 if($form->isValid()){
                     $property->setUniversity($this->getUniversityObj());
-                    $property->addCampus($this->getCampusObj());
                     foreach($this->getCampusObjs() as $campus){
                         $property->addCampus($campus);
-                    }
-                    foreach($this->getTags() as $tag){
-                        $property->addTag($tag);
                     }
                     $em->persist($property);
                     $em->flush();
@@ -114,8 +96,7 @@ class NavigationController extends Controller
      * @Route("/", name="home")
      * @Template()
      */
-    public function homeAction()
-    {
+    public function homeAction(){
         return array('baseLayout'=>  "::".Util::$currentId."base.html.twig");
     }
     
@@ -133,20 +114,8 @@ class NavigationController extends Controller
         return $this->getDoctrine()->getRepository('TestBundle:Property')->findOneById($id);
     }
     
-    public function giveBadges(){
-        //add badge id based on admin selection
-        return $this->getDoctrine()->getRepository('TestBundle:Badge')->findAll();
-    }
-    
     public function getCampusObjs(){
         //to decide campuses based on distance from property, use campus id
         return $this->getDoctrine()->getRepository('TestBundle:Campus')->findByUniversity(Util::$currentId);
     }
-    
-    
-    public function getTags(){
-        //to decide tags based on user choice, use tag id
-        return $this->getDoctrine()->getRepository('TestBundle:Tag')->findAll();
-    }
-
 }

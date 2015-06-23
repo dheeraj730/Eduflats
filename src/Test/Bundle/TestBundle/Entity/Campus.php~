@@ -4,7 +4,6 @@ namespace Test\Bundle\TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Campus
@@ -14,9 +13,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Campus
 {
-    public function __construct() {
-    }
-    
     /**
      * @var integer
      *

@@ -15,16 +15,21 @@ class PropertyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title')
             ->add('address','textarea', ['label'=>'Address'])
             ->add('postalcode','integer', ['label'=>'Postal Code'])
-            ->add('propertytype', 'choice', ['label'=>'Property Type','choices'=>[1=>'Rental Room', 2=>'Shared Room']])
             ->add('rent','integer', ['label'=>'Rent per month'])
             ->add('leaseperiod','integer', ['label'=>'Lease Period'])
             ->add('utilities', 'choice', ['choices'=>[1=>'Internet Connection', 2=>'Serves Food']])
             ->add('bedrooms','integer', ['label'=>'Bedrooms available'])
             ->add('bathrooms','integer', ['label'=>'Bathrooms available'])
             ->add('additionaldetails', 'textarea', ['label'=>'Some additional Details'])
-        ;
+            ->add('tag', 'entity', array(
+                    'class' => 'TestBundle:Tag',
+                    'property' => 'name',
+                    'multiple' => true,
+                    'expanded' => true,
+                    ));
     }
     
     /**

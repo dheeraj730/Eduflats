@@ -18,6 +18,8 @@ use Test\Bundle\TestBundle\Entity\Campus;
 use Test\Bundle\TestBundle\Form\CampusType;
 use Test\Bundle\TestBundle\Entity\Tag;
 use Test\Bundle\TestBundle\Form\TagType;
+use Test\Bundle\TestBundle\Entity\Badge;
+use Test\Bundle\TestBundle\Form\BadgeType;
 use Test\Bundle\TestBundle\Util;
 
 class LoginController extends Controller
@@ -153,11 +155,13 @@ class LoginController extends Controller
         }
         return ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"];
     }
+    
     /**
      * @Route("/registerTag", name="registerTag")
      * @Template()
      */
     public function registerTagAction(Request $request){
+        $this->accessControl('ROLE_ADMIN');
         $em = $this->getDoctrine()->getManager();
         $tag = new Tag();
         $form = $this->createForm(new TagType(), $tag);
@@ -165,6 +169,24 @@ class LoginController extends Controller
         $form->handleRequest($request);
         if($form->isValid()){
             $em->persist($tag);
+            $em->flush();
+        }
+        return ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"];
+    }
+    
+    /**
+     * @Route("/registerBadge", name="registerBadge")
+     * @Template()
+     */
+    public function registerBadgeAction(Request $request){
+        $this->accessControl('ROLE_ADMIN');
+        $em = $this->getDoctrine()->getManager();
+        $badge = new Badge();
+        $form = $this->createForm(new BadgeType(), $badge);
+        $form->add('submit', 'submit', ['label'=>'Create Badge']);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $em->persist($badge);
             $em->flush();
         }
         return ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"];
@@ -198,5 +220,11 @@ class LoginController extends Controller
         exec("sudo chmod 644 /etc/hosts");
         chdir($currentDir);
         return $this->redirect($link);
+    }
+    
+    public function accessControl($role){
+        if(!$this->container->get('security.context')->isGranted($role)){
+            throw $this->createAccessDeniedException('Needs '.$role." to access page");
+        }
     }
 }

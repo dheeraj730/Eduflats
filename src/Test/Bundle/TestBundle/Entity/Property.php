@@ -27,7 +27,17 @@ class Property
      */
     private $id;
     
-    
+    /**
+     * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *                 min = 3,
+     *                 max = 150,
+     *                 minMessage = "Title Must Be more descriptive",  
+     *                 maxMessage = "150 Charactes Limit exceed"     
+     *              )
+     */
+    private $title;
     
     /**
      * @ORM\ManyToOne(targetEntity="University", inversedBy="property")
@@ -69,7 +79,7 @@ class Property
      * @Assert\NotBlank()
      * @Assert\Length(
      *                 min = 3,
-     *                 minMessage = "Password must contain atleast 3 digits"
+     *                 minMessage = "Postal code must contain atleast 3 digits"
      *              )
      */
     private $postalcode;
@@ -454,5 +464,28 @@ class Property
     public function getBadges()
     {
         return $this->badges;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Property
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

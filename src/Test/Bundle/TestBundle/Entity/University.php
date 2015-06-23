@@ -49,6 +49,15 @@ class University
      */
     private $property;
     
+    /**
+     * 
+     */
+    private $badge;
+    
+    /**
+     * 
+     */
+    private $tag;
     
     public function __construct() {
         $this->student = new ArrayCollection();

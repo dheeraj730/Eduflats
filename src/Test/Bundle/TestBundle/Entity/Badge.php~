@@ -5,15 +5,13 @@ namespace Test\Bundle\TestBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Tag
+ * Badge
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Test\Bundle\TestBundle\Entity\TagRepository")
+ * @ORM\Entity(repositoryClass="Test\Bundle\TestBundle\Entity\BadgeRepository")
  */
-class Tag
+class Badge
 {
-    public function __construct() {
-    }
     /**
      * @var integer
      *
@@ -24,16 +22,12 @@ class Tag
     private $id;
 
     /**
-     * 
-     */
-    private $university;
-    
-    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
 
     /**
      * Get id
@@ -49,7 +43,7 @@ class Tag
      * Set name
      *
      * @param string $name
-     * @return Tag
+     * @return Badge
      */
     public function setName($name)
     {

@@ -17,9 +17,9 @@
         {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
         <table>
             <tr>
-                <td align="left">{{form_label(form.propertytype)}}</td>
-                <td>{{form_widget(form.propertytype)}}</td>
-                <td>{{form_errors(form.propertytype)}}</td>
+                <td align="left">{{form_label(form.title)}}</td>
+                <td>{{form_widget(form.title)}}</td>
+                <td>{{form_errors(form.title)}}</td>
             </tr>
             <tr>
                 <td align="left">{{form_label(form.rent)}}</td>
@@ -64,6 +64,12 @@
                     <td>{{form_errors(form.utilities)}}</td>
                 </tr>
             {% endif %}
+            <tr>
+                <td align="left">{{form_label(form.tag)}}</td>
+                <td>{{form_widget(form.tag)}}</td>
+                <td>{{form_errors(form.tag)}}</td>
+            </tr>
+            <tr>
                 <td></td>
                 <td></td>
                 <td align="center">{{form_widget(form.submit)}}</td>
