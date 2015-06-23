@@ -50,12 +50,12 @@ class University
     private $property;
     
     /**
-     * 
+     * @ORM\OneToMany(targetEntity="Badge", mappedBy="university")
      */
     private $badge;
     
     /**
-     * 
+     * @ORM\OneToMany(targetEntity="Tag", mappedBy="university")
      */
     private $tag;
     
@@ -359,5 +359,71 @@ class University
     public function getAdmin()
     {
         return $this->admin;
+    }
+
+    /**
+     * Add badge
+     *
+     * @param \Test\Bundle\TestBundle\Entity\Badge $badge
+     * @return University
+     */
+    public function addBadge(\Test\Bundle\TestBundle\Entity\Badge $badge)
+    {
+        $this->badge[] = $badge;
+
+        return $this;
+    }
+
+    /**
+     * Remove badge
+     *
+     * @param \Test\Bundle\TestBundle\Entity\Badge $badge
+     */
+    public function removeBadge(\Test\Bundle\TestBundle\Entity\Badge $badge)
+    {
+        $this->badge->removeElement($badge);
+    }
+
+    /**
+     * Get badge
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBadge()
+    {
+        return $this->badge;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \Test\Bundle\TestBundle\Entity\Tag $tag
+     * @return University
+     */
+    public function addTag(\Test\Bundle\TestBundle\Entity\Tag $tag)
+    {
+        $this->tag[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \Test\Bundle\TestBundle\Entity\Tag $tag
+     */
+    public function removeTag(\Test\Bundle\TestBundle\Entity\Tag $tag)
+    {
+        $this->tag->removeElement($tag);
+    }
+
+    /**
+     * Get tag
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTag()
+    {
+        return $this->tag;
     }
 }

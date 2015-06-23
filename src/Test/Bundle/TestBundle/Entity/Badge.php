@@ -22,7 +22,8 @@ class Badge
     private $id;
 
     /**
-     * 
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="badge")
+     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
      */
     private $university;
     
@@ -65,5 +66,28 @@ class Badge
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set university
+     *
+     * @param \Test\Bundle\TestBundle\Entity\University $university
+     * @return Badge
+     */
+    public function setUniversity(\Test\Bundle\TestBundle\Entity\University $university = null)
+    {
+        $this->university = $university;
+
+        return $this;
+    }
+
+    /**
+     * Get university
+     *
+     * @return \Test\Bundle\TestBundle\Entity\University 
+     */
+    public function getUniversity()
+    {
+        return $this->university;
     }
 }

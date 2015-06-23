@@ -168,6 +168,7 @@ class LoginController extends Controller
         $form->add('submit', 'submit', ['label'=>'Create Tag']);
         $form->handleRequest($request);
         if($form->isValid()){
+            $tag->setUniversity($this->getUniversityObj());
             $em->persist($tag);
             $em->flush();
         }
@@ -186,6 +187,7 @@ class LoginController extends Controller
         $form->add('submit', 'submit', ['label'=>'Create Badge']);
         $form->handleRequest($request);
         if($form->isValid()){
+            $badge->setUniversity($this->getUniversityObj());
             $em->persist($badge);
             $em->flush();
         }

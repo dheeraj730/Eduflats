@@ -24,7 +24,8 @@ class Tag
     private $id;
 
     /**
-     * 
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="tag")
+     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
      */
     private $university;
     
@@ -66,5 +67,28 @@ class Tag
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set university
+     *
+     * @param \Test\Bundle\TestBundle\Entity\University $university
+     * @return Tag
+     */
+    public function setUniversity(\Test\Bundle\TestBundle\Entity\University $university = null)
+    {
+        $this->university = $university;
+
+        return $this;
+    }
+
+    /**
+     * Get university
+     *
+     * @return \Test\Bundle\TestBundle\Entity\University 
+     */
+    public function getUniversity()
+    {
+        return $this->university;
     }
 }
