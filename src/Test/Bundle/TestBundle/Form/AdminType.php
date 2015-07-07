@@ -27,7 +27,7 @@ class AdminType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Test\Bundle\TestBundle\Entity\Admin'
+            'data_class' => 'Test\Bundle\TestBundle\Entity\Client'
         ));
     }
 

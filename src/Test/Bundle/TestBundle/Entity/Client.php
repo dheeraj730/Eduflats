@@ -27,7 +27,7 @@ class Client implements AdvancedUserInterface, \Serializable
      * @ORM\ManyToOne(targetEntity="University", inversedBy="propertyProvider")
      * @ORM\JoinColumn(name="university_id", referencedColumnName="id" )
      */
-    private $universtity;
+    private $university;
 
     /**
      * @var array
@@ -53,7 +53,7 @@ class Client implements AdvancedUserInterface, \Serializable
     /**
      * @var string
      * @ORM\Column(name="password", type="string", length=255)
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Length(
      *                 min = 3,
      *                 minMessage = "Password must contain atleast 3 characters"
@@ -64,7 +64,7 @@ class Client implements AdvancedUserInterface, \Serializable
     /**
      * @var string
      * @ORM\Column(name="email", type="string", length=255)
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Email
      */
     //@Assert\Regex(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/)
@@ -74,7 +74,7 @@ class Client implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"propertyProvider"})
      * @Assert\Length(
      *                  min=3,
      *                  max=15,
@@ -89,7 +89,7 @@ class Client implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"propertyProvider"})
      * @Assert\Length(
      *                  min = 3,
      *                  max = 15,
@@ -104,7 +104,7 @@ class Client implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"propertyProvider"})
      * @Assert\Length(
      *                  min = 20,
      *                  max = 200,
@@ -138,7 +138,7 @@ class Client implements AdvancedUserInterface, \Serializable
      * @param string $universtity
      * @return Client
      */
-    public function setUniverstity($universtity)
+    public function setUniversity($universtity)
     {
         $this->universtity = $universtity;
 
@@ -150,7 +150,7 @@ class Client implements AdvancedUserInterface, \Serializable
      *
      * @return string 
      */
-    public function getUniverstity()
+    public function getUniversity()
     {
         return $this->universtity;
     }

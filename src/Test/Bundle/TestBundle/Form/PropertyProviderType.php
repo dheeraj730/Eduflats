@@ -29,7 +29,8 @@ class PropertyProviderType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Test\Bundle\TestBundle\Entity\PropertyProvider'
+            'data_class' => 'Test\Bundle\TestBundle\Entity\Client',
+            'validation_groups'=>['propertyProvider']
         ));
     }
 

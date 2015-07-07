@@ -11,6 +11,8 @@ use Test\Bundle\TestBundle\Form\AdminType;
 use Test\Bundle\TestBundle\Entity\Student;
 use Test\Bundle\TestBundle\Entity\PropertyProvider;
 use Test\Bundle\TestBundle\Form\StudentType;
+use Test\Bundle\TestBundle\Entity\Client;
+use Test\Bundle\TestBundle\Form\ClientType;
 use Test\Bundle\TestBundle\Form\PropertyProviderType;
 use Test\Bundle\TestBundle\Entity\University;
 use Test\Bundle\TestBundle\Form\UniversityType;
@@ -52,16 +54,37 @@ class LoginController extends Controller
     }
 
     /**
+     * @Route("/registerClient", name="registerClient")
+     */
+    public function registerClientAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $provider = new Client();
+        
+        $form = $this->createForm(new ClientType(), $provider);
+        $form->add('submit', 'submit', ['label'=>'Create Account']);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $provider->setUniversity($this->getUniversityObj());
+            $provider->setRoles(['ROLE_PROVIDER']); //security flaw?
+            $provider->setPassword($this->encodePassword($provider, $form["password"]->getData()));
+            $em->persist($this->getUniversityObj());
+            $em->persist($provider);
+            $em->flush();
+        }
+        return $this->render('TestBundle:Login:RegisterPropertyProviderForm.html.twig', ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"]);           
+    }
+    
+    
+    /**
      * @Route("/registerForm/{userType}",name="registerForm", defaults={"userType" = 1})
-     * @Template()
      */
     public function registerFormAction($userType, Request $request){  
         //create util functions for form creation
         //alternatives- collections/entity form types
         $em = $this->getDoctrine()->getManager();
-        $student= new Student();
-        $propertyProvider = new PropertyProvider();
-        $admin = new Admin();
+        $student= new Client();
+        $propertyProvider = new Client();
+        $admin = new Client();
         switch ($userType) {
             case 'provider':
                 $form = $this->createForm(new PropertyProviderType(), $propertyProvider);
@@ -83,6 +106,9 @@ class LoginController extends Controller
                 $form->handleRequest($request);
                 if($form->isValid()){
                     $student->setUniversity($this->getUniversityObj());
+                    $admin->setFirstname('na');
+                    $admin->setLastname('na');
+                    $admin->setAddress('na');
                     $student->setRoles(['ROLE_STUDENT']);
                     $student->setPassword($this->encodePassword($student, $form["password"]->getData()));
                     $em->persist($this->getUniversityObj());
@@ -97,6 +123,9 @@ class LoginController extends Controller
                 $form->handleRequest($request);
                 if($form->isValid()){
                     $admin->setUniversity($this->getUniversityObj());
+                    $admin->setFirstname('na');
+                    $admin->setLastname('na');
+                    $admin->setAddress('na');
                     $admin->setRoles(['ROLE_ADMIN']);
                     $admin->setPassword($this->encodePassword($admin, $form["password"]->getData()));
                     $em->persist($this->getUniversityObj());
