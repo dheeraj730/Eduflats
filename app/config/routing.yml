@@ -1,4 +1,4 @@
-test:
-    resource: "@TestBundle/Controller/"
+Eduflats:
+    resource: "@EduflatsBundle/Controller/"
     type:     annotation
     prefix:   /

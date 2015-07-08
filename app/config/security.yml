@@ -1,9 +1,9 @@
 security:
     encoders:
-        Test\Bundle\TestBundle\Entity\Student: bcrypt
-        Test\Bundle\TestBundle\Entity\PropertyProvider: bcrypt
-        Test\Bundle\TestBundle\Entity\Admin: bcrypt
-        Test\Bundle\TestBundle\Entity\Client: bcrypt
+        Eduflats\Bundle\EduflatsBundle\Entity\Student: bcrypt
+        Eduflats\Bundle\EduflatsBundle\Entity\PropertyProvider: bcrypt
+        Eduflats\Bundle\EduflatsBundle\Entity\Admin: bcrypt
+        Eduflats\Bundle\EduflatsBundle\Entity\Client: bcrypt
 
         #each entity needs its own encoder as specified here
 
@@ -26,15 +26,15 @@ security:
     providers:
         chain_providers:
             chain:
-                providers: [student, property_provider, Admin]
+                providers: [student, property_provider, Admin, Client]
         student:
-            entity: { class:TestBundle:Student }
+            entity: { class:EduflatsBundle:Student }
         property_provider:
-            entity: { class:TestBundle:PropertyProvider }
+            entity: { class:EduflatsBundle:PropertyProvider }
         admin:
-            entity: { class:TestBundle:Admin }
+            entity: { class:EduflatsBundle:Admin }
         client:
-            entity: { class:TestBundle:Client }
+            entity: { class:EduflatsBundle:Client }
 
 
     firewalls:

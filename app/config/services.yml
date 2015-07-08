@@ -5,7 +5,7 @@ parameters:
 
 services:
     kernel.listener.request:
-        class: Test\Bundle\TestBundle\EventListener\RequestListener
+        class: Eduflats\Bundle\EduflatsBundle\EventListener\RequestListener
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest}
         arguments: [ @router, @service_container ]
