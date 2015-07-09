@@ -1,0 +1,14 @@
+{% extends baseLayout %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    {% block form %}
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <a href="{{ path('logout')}}">logout</a>
+        {% else %}
+            <a href="{{ path('loginForm')}}">login</a>
+        {% endif %}   
+    {% endblock %} 
+{% endblock %}
