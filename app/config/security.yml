@@ -1,8 +1,5 @@
 security:
     encoders:
-        Eduflats\Bundle\EduflatsBundle\Entity\Student: bcrypt
-        Eduflats\Bundle\EduflatsBundle\Entity\PropertyProvider: bcrypt
-        Eduflats\Bundle\EduflatsBundle\Entity\Admin: bcrypt
         Eduflats\Bundle\EduflatsBundle\Entity\Client: bcrypt
 
         #each entity needs its own encoder as specified here
@@ -26,13 +23,13 @@ security:
     providers:
         chain_providers:
             chain:
-                providers: [student, property_provider, Admin, Client]
-        student:
-            entity: { class:EduflatsBundle:Student }
-        property_provider:
-            entity: { class:EduflatsBundle:PropertyProvider }
-        admin:
-            entity: { class:EduflatsBundle:Admin }
+                providers: [Client]
+#        student:
+#            entity: { class:EduflatsBundle:Student }
+#        property_provider:
+#            entity: { class:EduflatsBundle:PropertyProvider }
+#        admin:
+#            entity: { class:EduflatsBundle:Admin }
         client:
             entity: { class:EduflatsBundle:Client }
 
