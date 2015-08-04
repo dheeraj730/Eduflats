@@ -61,6 +61,20 @@ class Property
     protected $campus;
     
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="notify", type="boolean")
+     */
+    protected $notify = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="displaycontact", type="boolean")
+     */
+    protected $displaycontact = true;
+    
+    /**
      * @var string
      * @ORM\Column(name="address", type="string", length=255)
      * @Assert\NotBlank()

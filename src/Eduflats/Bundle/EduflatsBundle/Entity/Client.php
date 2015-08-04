@@ -99,21 +99,7 @@ class Client extends BaseUser {
      *              )
      */
     protected $organization;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="notify", type="boolean")
-     */
-    protected $notify = false;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="displaycontact", type="boolean")
-     */
-    protected $displaycontact = true;
-
+    
     /**
      * @var date
      * 
