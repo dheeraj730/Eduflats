@@ -4,16 +4,18 @@ namespace Eduflats\Bundle\EduflatsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Client
  *
- * @ORM\Table()
+ * @ORM\Table(name="client") 
+ * @UniqueEntity(fields="email",message ="client.email.not_unique")
  * @ORM\Entity(repositoryClass="Eduflats\Bundle\EduflatsBundle\Entity\ClientRepository")
  */
-class Client implements AdvancedUserInterface, \Serializable
-{
+class Client extends BaseUser {
+
     /**
      * @var integer
      *
@@ -21,24 +23,16 @@ class Client implements AdvancedUserInterface, \Serializable
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="University", inversedBy="client")
      * @ORM\JoinColumn(name="university_id", referencedColumnName="id" )
      */
-    private $university;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="roles", type="array")
-     */
-    private $roles;
+    protected $university;
 
     /**
      * @var string
-     * @ORM\Column(name="username", type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(
      *                 min = 3,
@@ -48,27 +42,21 @@ class Client implements AdvancedUserInterface, \Serializable
      *              )
      * @Assert\Type(type="alnum", message="User Name can contain only alphabets and numbers")
      */
-    private $username;
+    protected $username;
 
     /**
-     * @var string
-     * @ORM\Column(name="password", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Length(
-     *                 min = 3,
-     *                 minMessage = "Password must contain atleast 3 characters"
-     *              )
+     * @Assert\NotBlank( message = "client.password.not_blank")
+     * @Assert\Length(min=4,minMessage="client.password.min_length")
      */
-    private $password;
+    protected $plainPassword;
 
     /**
      * @var string
-     * @ORM\Column(name="email", type="string", length=255)
+     * 
      * @Assert\NotBlank()
      * @Assert\Email
      */
-    //@Assert\Regex(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/)
-    private $email;
+    protected $email;
 
     /**
      * @var string
@@ -83,7 +71,7 @@ class Client implements AdvancedUserInterface, \Serializable
      *               )
      * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="First name can only contain letters")
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string
@@ -98,37 +86,136 @@ class Client implements AdvancedUserInterface, \Serializable
      *              )
      * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false, message = "Last Name field can only contain letters")
      */
-    private $lastname;
+    protected $lastname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
-     * @Assert\NotBlank()
+     * @ORM\Column(name="organization", type="string", length=255, nullable=true)
      * @Assert\Length(
-     *                  min = 20,
-     *                  max = 200,
-     *                  minMessage = "Address must be more descriptive",
-     *                  maxMessage = "Address field is limited to 200 characters"
+     *                  min = 0,
+     *                  max = 255,
+     *                  maxMessage = "Organization name can be maximum 255 characters"
      *              )
      */
-    private $address;
+    protected $organization;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="enabled", type="boolean")
+     * @ORM\Column(name="notify", type="boolean")
      */
-    private $enabled = true;
+    protected $notify = false;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="displaycontact", type="boolean")
+     */
+    protected $displaycontact = true;
+
+    /**
+     * @var date
+     * 
+     * @ORM\Column(name="joiningdate", type="date", nullable=true)
+     * @Assert\Date()
+     */
+    protected $joiningdate;
+
+    /**
+     * @var date
+     * 
+     * @ORM\Column(name="exitdate", type="date", nullable=true)
+     * @Assert\Date()
+     */
+    protected $exitdate;
+
+    /**
+     * @var text
+     * 
+     * @ORM\Column(name="mobile", type="string", length=18, nullable=true)
+     *  
+     */
+    protected $mobile;
+
+    /**
+     * @var text
+     * 
+     * @ORM\Column(name="landline", type="string", length=18, nullable=true)
+     *  
+     */
+    protected $landline;
+
+    /**
+     * @ORM\Column(type="string", name="addressname", length=100,nullable=true)
+     * @Assert\NotBlank(message="field.not_blank")
+     * @Assert\Length(max=60,maxMessage="client.addressname.max_length")
+     */
+    protected $addressname;
+
+    /**
+     * @ORM\Column(type="string", name="addressline1", length=250,nullable=true)
+     * @Assert\NotBlank(message="field.not_blank")
+     * @Assert\Length(max=240,maxMessage="client.addressline.max_length")
+     */
+    protected $addressline1;
+
+    /**
+     * @ORM\Column(type="string", name="addressline2", length=250,nullable=true)
+     * @Assert\Length(max=240,maxMessage="client.addressline.max_length")
+     * 
+     */
+    protected $addressline2;
+
+    /**
+     * @ORM\Column(type="string", name="addresscity", length=100,nullable=true)
+     * @Assert\NotBlank(message="field.not_blank")
+     * @Assert\Length(max=100,maxMessage="client.addresscity.max_length")
+     */
+    protected $addresscity;
+
+    /**
+     * @ORM\Column(type="string", name="addressprovince", length=80,nullable=true)
+     * @Assert\Length(max=78,maxMessage="client.addressprovince.max_length")
+     */
+    protected $addressprovince;
+
+    /**
+     * @ORM\Column(type="string", name="addresszipcode", length=20,nullable=true)
+     * @Assert\NotBlank(message="field.not_blank")
+     * @Assert\Length(max=20,maxMessage="client.addresszip.max_length")
+     */
+    protected $addresszipcode;
+
+    /**
+     * @ORM\Column(type="integer", name="addresscountry" , length=9, nullable=true)
+     * @Assert\NotBlank(message="field.not_blank")
+     */
+    protected $addresscountry;
+
+    /**
+     * @ORM\Column(type="datetime", name="createdon",nullable=true)
+     */
+    protected $createdon;
+
+    /**
+     * @ORM\Column(type="datetime", name="modifiedon",nullable=true)
+     */
+    protected $modifiedon;
+
+    /**
+     * Constructor method
+     */
+    public function __construct() {
+        parent::__construct();
+    }
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -138,8 +225,7 @@ class Client implements AdvancedUserInterface, \Serializable
      * @param string $university
      * @return Client
      */
-    public function setUniversity(\Eduflats\Bundle\EduflatsBundle\Entity\University $university)
-    {
+    public function setUniversity(\Eduflats\Bundle\EduflatsBundle\Entity\University $university) {
         $this->university = $university;
 
         return $this;
@@ -150,32 +236,8 @@ class Client implements AdvancedUserInterface, \Serializable
      *
      * @return string 
      */
-    public function getUniversity()
-    {
+    public function getUniversity() {
         return $this->university;
-    }
-
-    /**
-     * Set roles
-     *
-     * @param array $roles
-     * @return Client
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    /**
-     * Get roles
-     *
-     * @return array 
-     */
-    public function getRoles()
-    {
-        return $this->roles;
     }
 
     /**
@@ -184,8 +246,7 @@ class Client implements AdvancedUserInterface, \Serializable
      * @param string $username
      * @return Client
      */
-    public function setUsername($username)
-    {
+    public function setUsername($username) {
         $this->username = $username;
 
         return $this;
@@ -196,32 +257,8 @@ class Client implements AdvancedUserInterface, \Serializable
      *
      * @return string 
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->username;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return Client
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**
@@ -230,8 +267,7 @@ class Client implements AdvancedUserInterface, \Serializable
      * @param string $email
      * @return Client
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -242,8 +278,7 @@ class Client implements AdvancedUserInterface, \Serializable
      *
      * @return string 
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -253,8 +288,7 @@ class Client implements AdvancedUserInterface, \Serializable
      * @param string $firstname
      * @return Client
      */
-    public function setFirstname($firstname)
-    {
+    public function setFirstname($firstname) {
         $this->firstname = $firstname;
 
         return $this;
@@ -265,8 +299,7 @@ class Client implements AdvancedUserInterface, \Serializable
      *
      * @return string 
      */
-    public function getFirstname()
-    {
+    public function getFirstname() {
         return $this->firstname;
     }
 
@@ -276,8 +309,7 @@ class Client implements AdvancedUserInterface, \Serializable
      * @param string $lastname
      * @return Client
      */
-    public function setLastname($lastname)
-    {
+    public function setLastname($lastname) {
         $this->lastname = $lastname;
 
         return $this;
@@ -288,32 +320,8 @@ class Client implements AdvancedUserInterface, \Serializable
      *
      * @return string 
      */
-    public function getLastname()
-    {
+    public function getLastname() {
         return $this->lastname;
-    }
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     * @return Client
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string 
-     */
-    public function getAddress()
-    {
-        return $this->address;
     }
 
     /**
@@ -322,57 +330,146 @@ class Client implements AdvancedUserInterface, \Serializable
      * @param boolean $enabled
      * @return Client
      */
-    public function setEnabled($enabled)
-    {
+    public function setEnabled($enabled) {
         $this->enabled = $enabled;
 
         return $this;
     }
 
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
+    public function getOrganization() {
+        return $this->organization;
     }
 
-    public function eraseCredentials() {
-        return;
+    public function setOrganization($organization) {
+        $this->organization = $organization;
     }
 
-    public function getSalt() {
-        return;
+    public function getNotify() {
+        return $this->notify;
     }
 
-    public function isAccountNonExpired() {
-        return true;
+    public function getDisplaycontact() {
+        return $this->displaycontact;
     }
 
-    public function isAccountNonLocked() {
-        return true;
+    public function getJoiningdate() {
+        return $this->joiningdate;
     }
 
-    public function isCredentialsNonExpired() {
-        return true;
+    public function getExitdate() {
+        return $this->exitdate;
     }
 
-    public function isEnabled() {
-        return $this->enabled;
+    public function getMobile() {
+        return $this->mobile;
     }
 
-    public function serialize() {
-        return serialize(array(
-            $this->id
-        ));
+    public function getLandline() {
+        return $this->landline;
     }
 
-    public function unserialize($serialized) {
-        list(
-            $this->id
-        ) = unserialize($serialized);
+    public function getAddressname() {
+        return $this->addressname;
+    }
+
+    public function getAddressline1() {
+        return $this->addressline1;
+    }
+
+    public function getAddressline2() {
+        return $this->addressline2;
+    }
+
+    public function getAddresscity() {
+        return $this->addresscity;
+    }
+
+    public function getAddressprovince() {
+        return $this->addressprovince;
+    }
+
+    public function getAddresszipcode() {
+        return $this->addresszipcode;
+    }
+
+    public function getAddresscountry() {
+        return $this->addresscountry;
+    }
+
+    public function setNotify($notify) {
+        $this->notify = $notify;
+    }
+
+    public function setDisplaycontact($displaycontact) {
+        $this->displaycontact = $displaycontact;
+    }
+
+    public function setJoiningdate(date $joiningdate) {
+        $this->joiningdate = $joiningdate;
+    }
+
+    public function setExitdate(date $exitdate) {
+        $this->exitdate = $exitdate;
+    }
+
+    public function setMobile(text $mobile) {
+        $this->mobile = $mobile;
+    }
+
+    public function setLandline(text $landline) {
+        $this->landline = $landline;
+    }
+
+    public function setAddressname($addressname) {
+        $this->addressname = $addressname;
+    }
+
+    public function setAddressline1($addressline1) {
+        $this->addressline1 = $addressline1;
+    }
+
+    public function setAddressline2($addressline2) {
+        $this->addressline2 = $addressline2;
+    }
+
+    public function setAddresscity($addresscity) {
+        $this->addresscity = $addresscity;
+    }
+
+    public function setAddressprovince($addressprovince) {
+        $this->addressprovince = $addressprovince;
+    }
+
+    public function setAddresszipcode($addresszipcode) {
+        $this->addresszipcode = $addresszipcode;
+    }
+
+    public function setAddresscountry($addresscountry) {
+        $this->addresscountry = $addresscountry;
+    }
+
+    public function getPlainPassword() {
+        return $this->plainPassword;
+    }
+
+    public function getCreatedon() {
+        return $this->createdon;
+    }
+
+    public function getModifiedon() {
+        return $this->modifiedon;
+    }
+
+    public function setPlainPassword($plainPassword) {
+        $this->plainPassword = $plainPassword;
+    }
+
+    public function setCreatedon($createdon) {
+        $this->createdon = $createdon;
+    }
+
+    public function setModifiedon($modifiedon) {
+        $this->modifiedon = $modifiedon;
     }
 
 }

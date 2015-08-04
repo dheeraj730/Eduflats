@@ -27,14 +27,14 @@ class Tag
      * @ORM\ManyToOne(targetEntity="University", inversedBy="tag")
      * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
      */
-    private $university;
+    protected $university;
     
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * Get id

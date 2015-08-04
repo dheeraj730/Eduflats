@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Eduflats\Bundle\EduflatsBundle\Util;
 
-class AuthenticationController extends Controller{
+class AuthenticationController extends Controller {
     
      /**
      * @Route("/login", name="login")
@@ -43,5 +43,4 @@ class AuthenticationController extends Controller{
     public function resetPasswordAction(){
         return [];
     }
-    
 }

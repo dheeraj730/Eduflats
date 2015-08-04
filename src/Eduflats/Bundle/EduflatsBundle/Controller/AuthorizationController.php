@@ -63,7 +63,8 @@ class AuthorizationController extends Controller{
         $form->add('submit', 'submit', ['label'=>'Create Account']);
         $form->handleRequest($request);
         if($form->isValid()){
-            $campus->setUniversity($this->getUniversityObj());
+            $campus->setUniversity($this->container->get('Helper_Functions')->getUniversityObj());
+            exit;
             $em->persist($campus);
             $em->flush();
         }

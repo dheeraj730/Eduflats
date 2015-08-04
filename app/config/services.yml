@@ -9,3 +9,7 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest}
         arguments: [ @router, @service_container ]
+        
+    Helper_Functions:
+        class: Eduflats\Bundle\EduflatsBundle\Services\HelperFunctions
+        arguments: [ "@doctrine.orm.entity_manager", "@security.context", "@security.encoder_factory" ]

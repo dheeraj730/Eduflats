@@ -4,9 +4,9 @@ security:
 
         #each entity needs its own encoder as specified here
 
-#    role_hierarchy:
-#        ROLE_ADMIN:       ROLE_USER
-#        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
 #    providers:
 #        in_memory:

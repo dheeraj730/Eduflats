@@ -37,28 +37,28 @@ class Property
      *                 maxMessage = "150 Charactes Limit exceed"     
      *              )
      */
-    private $title;
+    protected $title;
     
     /**
      * @ORM\ManyToOne(targetEntity="University", inversedBy="property")
      * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
      */
-    private $university;
+    protected $university;
 
     /**
      * @ORM\ManyToMany(targetEntity="Tag")
      */
-    private $tag;
+    protected $tag;
     
     /**
      * @ORM\Column(name="badges", type="array")
      */
-    private $badges;
+    protected $badges;
     
     /**
      * @ORM\ManyToMany(targetEntity="Campus")
      */
-    private $campus;
+    protected $campus;
     
     /**
      * @var string
@@ -71,7 +71,7 @@ class Property
      *                 maxMessage = "80 characters limit exceeded"
      *              )
      */
-    private $address;
+    protected $address;
 
     /**
      * @var integer
@@ -82,49 +82,49 @@ class Property
      *                 minMessage = "Postal code must contain atleast 3 digits"
      *              )
      */
-    private $postalcode;
+    protected $postalcode;
 
     /**
      * @var integer
      * @Assert\NotBlank()
      * @ORM\Column(name="propertytype", type="integer")
      */
-    private $propertytype;
+    protected $propertytype;
 
     /**
      * @var integer
      * @Assert\NotBlank()
      * @ORM\Column(name="rent", type="integer")
      */
-    private $rent;
+    protected $rent;
 
     /**
      * @var integer
      * @Assert\NotBlank()
      * @ORM\Column(name="leaseperiod", type="integer")
      */
-    private $leaseperiod;
+    protected $leaseperiod;
 
     /**
      * @var integer
      * @Assert\NotBlank()
      * @ORM\Column(name="utilities", type="integer")
      */
-    private $utilities;
+    protected $utilities;
 
     /**
      * @var integer
      * @Assert\NotBlank()
      * @ORM\Column(name="bedrooms", type="integer")
      */
-    private $bedrooms;
+    protected $bedrooms;
 
     /**
      * @var integer
      * @Assert\NotBlank()
      * @ORM\Column(name="bathrooms", type="integer")
      */
-    private $bathrooms;
+    protected $bathrooms;
 
     /**
      * @var string
@@ -136,7 +136,7 @@ class Property
      *                 maxMessage = "200 characters limit exceeded"
      *              )
      */
-    private $additionaldetails;
+    protected $additionaldetails;
 
 
     /**
