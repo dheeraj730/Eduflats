@@ -3,21 +3,15 @@
 namespace Eduflats\Bundle\EduflatsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Property
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Eduflats\Bundle\EduflatsBundle\Entity\PropertyRepository")
+ * @ORM\Entity
  */
 class Property
 {
-    public function __construct() {
-        $this->campus = new ArrayCollection();
-        $this->tag = new ArrayCollection();
-    }
-    
     /**
      * @var integer
      *
@@ -27,479 +21,859 @@ class Property
      */
     private $id;
     
-    /**
-     * @ORM\Column(name="title", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Length(
-     *                 min = 3,
-     *                 max = 150,
-     *                 minMessage = "Title Must Be more descriptive",  
-     *                 maxMessage = "150 Charactes Limit exceed"     
-     *              )
+     /**
+     * @var type string
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */
-    protected $title;
+    protected $tPropertyDescription;
     
     /**
-     * @ORM\ManyToOne(targetEntity="University", inversedBy="property")
-     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
+     * @var type integer
+     * @ORM\Column(name="propertytype", type="integer", nullable=false)
      */
-    protected $university;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Tag")
-     */
-    protected $tag;
+    protected $nPropertyType;
     
     /**
-     * @ORM\Column(name="badges", type="array")
+     * hodlds index value of availability status
+     * 
+     * @var type integer
+     * @ORM\Column(name="availabilitystatus", type="integer", nullable=false)
      */
-    protected $badges;
+    protected $nAvailabilityStatus;
+    
+     /**
+     * @var type date
+     * @ORM\Column(name="availablefrom", type="datetime", nullable=false)
+     */
+    protected $dAvailableFrom;
+    
+     /**
+     * @var type integer
+     * @ORM\Column(name="monthsofoccupancy", type="integer", nullable=false)
+     */
+    protected $nMonthsOfOccupancy;
+    
+     /**
+     * @var type integer
+     * @ORM\Column(name="bedroom", type="integer", nullable=false)
+     */
+    protected $nBedroom;
+    
+     /**
+     * @var type integer
+     * @ORM\Column(name="bathroom", type="integer", nullable=false)
+     */
+    protected $nBathroom;
+    
+     /**
+     * @var type integer
+     * @ORM\Column(name="beds", type="integer", nullable=false)
+     */
+    protected $nBeds;
+    
+     /**
+     * @var type integer
+     * @ORM\Column(name="maximumoccupants", type="integer", nullable=false)
+     */
+    protected $nMaximumOccupants;
+    
+     /**
+     * @var type integer
+     * @ORM\Column(name="rentalamount", type="integer", nullable=false)
+     */
+    protected $nRentalAmount;
+    
+     /**
+     * @var type integer
+     * @ORM\Column(name="views", type="integer", nullable=false)
+     */
+    protected $nViews;
+    
+     /**
+     * @var type integer
+     * @ORM\Column(name="latitude", type="integer", nullable=false)
+     */
+    protected $nLatitude;
+    
+     /**
+     * @var type integer
+     * @ORM\Column(name="longitude", type="integer", nullable=false)
+     */
+    protected $nLongitude;
+    
+     /**
+     * @var type boolean
+     * @ORM\Column(name="displaycontactdetails", type="boolean", nullable=false)
+     */
+    protected $bDisplayContactDetails;
+    
+     /**
+     * @var type string
+     * @ORM\Column(name="addresstitle", type="string", length=255, nullable=false)
+     */
+    protected $tAddressTitle;
+    
+     /**
+     * @var type string
+     * @ORM\Column(name="addressline1", type="string", length=255, nullable=false)
+     */
+    protected $tAddressLine1;
+    
+     /**
+     * @var type string
+     * @ORM\Column(name="addressline2", type="string", length=255, nullable=false)
+     */
+    protected $tAddressLine2;
+    
+    
+     /**
+     * @var type string
+     * @ORM\Column(name="city", type="string", length=255, nullable=false)
+     */
+    protected $tCity;
+    
+     /**
+     * @var type string
+     * @ORM\Column(name="province", type="string", length=255, nullable=false)
+     */
+    protected $tProvince;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Campus")
+     * @var type string
+     * @ORM\Column(name="zip", type="string", length=255, nullable=false)
      */
-    protected $campus;
+    protected $tZipCode;
     
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="notify", type="boolean")
+     * @var type integer
+     * @ORM\Column(name="country", type="integer", length=9, nullable=false)
      */
-    protected $notify = false;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="displaycontact", type="boolean")
-     */
-    protected $displaycontact = true;
+    protected $nCountry;
     
-    /**
-     * @var string
-     * @ORM\Column(name="address", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Length(
-     *                 min = 10,
-     *                 max = 80,
-     *                 minMessage = "Address must be more specific",
-     *                 maxMessage = "80 characters limit exceeded"
-     *              )
+     /**
+     * @var type boolean
+     * @ORM\Column(name="isapproved", type="boolean", nullable=false)
      */
-    protected $address;
-
-    /**
-     * @var integer
-     * @ORM\Column(name="postalcode", type="integer")
-     * @Assert\NotBlank()
-     * @Assert\Length(
-     *                 min = 3,
-     *                 minMessage = "Postal code must contain atleast 3 digits"
-     *              )
+    protected $isApproved;
+    
+     /**
+     * @var type string
+     * @ORM\Column(name="nonapprovalreason", type="string", length=255, nullable=false)
      */
-    protected $postalcode;
-
-    /**
-     * @var integer
-     * @Assert\NotBlank()
-     * @ORM\Column(name="propertytype", type="integer")
+    protected $tNonApprovalReason;
+    
+     /**
+     * @var type \Datetime
+     * @ORM\Column(name="approvalrequestedon", type="datetime", nullable=false)
      */
-    protected $propertytype;
-
-    /**
-     * @var integer
-     * @Assert\NotBlank()
-     * @ORM\Column(name="rent", type="integer")
+    protected $dApprovalRequestedOn;
+    
+     /**
+     * @var type \Datetime
+     * @ORM\Column(name="approvedon", type="datetime", nullable=false)
      */
-    protected $rent;
-
-    /**
-     * @var integer
-     * @Assert\NotBlank()
-     * @ORM\Column(name="leaseperiod", type="integer")
+    protected $dApprovedOn;
+    
+     /**
+     * @var type boolean
+     * @ORM\Column(name="isblacklisted", type="boolean", nullable=false)
      */
-    protected $leaseperiod;
-
-    /**
-     * @var integer
-     * @Assert\NotBlank()
-     * @ORM\Column(name="utilities", type="integer")
+    protected $isBlacklisted;
+    
+     /**
+     * @var type \DateTime
+     * @ORM\Column(name="closuredate", type="datetime", nullable=false)
      */
-    protected $utilities;
-
-    /**
-     * @var integer
-     * @Assert\NotBlank()
-     * @ORM\Column(name="bedrooms", type="integer")
+    protected $dClosureDate;
+    
+     /**
+     * @var type \DateTime
+     * @ORM\Column(name="createdat", type="datetime", nullable=false)
      */
-    protected $bedrooms;
-
-    /**
-     * @var integer
-     * @Assert\NotBlank()
-     * @ORM\Column(name="bathrooms", type="integer")
+    protected $dCreatedAt;
+    
+     /**
+     * @var type \DateTime
+     * @ORM\Column(name="updatedat", type="datetime", nullable=false)
      */
-    protected $bathrooms;
-
-    /**
-     * @var string
-     * @ORM\Column(name="additionaldetails", type="string", length=255)
-     * @Assert\Length(
-     *                 min = 10,
-     *                 max = 200,
-     *                 minMessage = "Details must be more specific",
-     *                 maxMessage = "200 characters limit exceeded"
-     *              )
-     */
-    protected $additionaldetails;
+    protected $dUpdatedAt;
 
 
     /**
      * Get id
+     *
      * @return integer 
      */
     public function getId()
     {
         return $this->id;
     }
+    
 
     /**
-     * Set address
+     * Set tPropertyDescription
      *
-     * @param string $address
+     * @param string $tPropertyDescription
      * @return Property
      */
-    public function setAddress($address)
+    public function setTPropertyDescription($tPropertyDescription)
     {
-        $this->address = $address;
+        $this->tPropertyDescription = $tPropertyDescription;
 
         return $this;
     }
 
     /**
-     * Get address
+     * Get tPropertyDescription
      *
      * @return string 
      */
-    public function getAddress()
+    public function getTPropertyDescription()
     {
-        return $this->address;
+        return $this->tPropertyDescription;
+    }
+    
+     /**
+     * Set nPropertyType
+     *
+     * @param integer $nPropertyType
+     * @return Property
+     */
+    public function setNPropertyType($nPropertyType)
+    {
+        $this->nPropertyType = $nPropertyType;
+        return $this;
     }
 
     /**
-     * Set postalcode
+     * Get nPropertyType
      *
-     * @param string $postalcode
+     * @return integer 
+     */
+    public function getNPropertyType()
+    {
+        return $this->nPropertyType;
+    }
+    
+    /**
+     * Set nAvailabilityStatus
+     *
+     * @param integer $nAvailabilityStatus
      * @return Property
      */
-    public function setPostalcode($postalcode)
+    public function setNAvailabilityStatus($nAvailabilityStatus)
     {
-        $this->postalcode = $postalcode;
+        $this->nAvailabilityStatus = $nAvailabilityStatus;
 
         return $this;
     }
 
     /**
-     * Get postalcode
+     * Get nAvailabilityStatus
+     *
+     * @return integer 
+     */
+    public function getNAvailabilityStatus()
+    {
+        return $this->nAvailabilityStatus;
+    }
+    
+    /**
+     * Set dAvailableFrom
+     *
+     * @param \DateTime $dAvailableFrom
+     * @return Property
+     */
+    public function setDAvailableFrom($dAvailableFrom)
+    {
+        $this->dAvailableFrom = $dAvailableFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get dAvailableFrom
+     *
+     * @return \DateTime 
+     */
+    public function getDAvailableFrom()
+    {
+        return $this->dAvailableFrom;
+    }
+
+    /**
+     * Set nMonthsOfOccupancy
+     *
+     * @param integer $nMonthsOfOccupancy
+     * @return Property
+     */
+    public function setNMonthsOfOccupancy($nMonthsOfOccupancy)
+    {
+        $this->nMonthsOfOccupancy = $nMonthsOfOccupancy;
+
+        return $this;
+    }
+
+    /**
+     * Get nMonthsOfOccupancy
+     *
+     * @return integer 
+     */
+    public function getNMonthsOfOccupancy()
+    {
+        return $this->nMonthsOfOccupancy;
+    }
+
+    /**
+     * Set nBedroom
+     *
+     * @param integer $nBedroom
+     * @return Property
+     */
+    public function setNBedroom($nBedroom)
+    {
+        $this->nBedroom = $nBedroom;
+
+        return $this;
+    }
+
+    /**
+     * Get nBedroom
+     *
+     * @return integer 
+     */
+    public function getNBedroom()
+    {
+        return $this->nBedroom;
+    }
+
+    /**
+     * Set nBathroom
+     *
+     * @param integer $nBathroom
+     * @return Property
+     */
+    public function setNBathroom($nBathroom)
+    {
+        $this->nBathroom = $nBathroom;
+
+        return $this;
+    }
+
+    /**
+     * Get nBathroom
+     *
+     * @return integer 
+     */
+    public function getNBathroom()
+    {
+        return $this->nBathroom;
+    }
+
+    /**
+     * Set nBeds
+     *
+     * @param integer $nBeds
+     * @return Property
+     */
+    public function setNBeds($nBeds)
+    {
+        $this->nBeds = $nBeds;
+
+        return $this;
+    }
+
+    /**
+     * Get nBeds
+     *
+     * @return integer 
+     */
+    public function getNBeds()
+    {
+        return $this->nBeds;
+    }
+
+    /**
+     * Set nMaximumOccupants
+     *
+     * @param integer $nMaximumOccupants
+     * @return Property
+     */
+    public function setNMaximumOccupants($nMaximumOccupants)
+    {
+        $this->nMaximumOccupants = $nMaximumOccupants;
+
+        return $this;
+    }
+
+    /**
+     * Get nMaximumOccupants
+     *
+     * @return integer 
+     */
+    public function getNMaximumOccupants()
+    {
+        return $this->nMaximumOccupants;
+    }
+
+    /**
+     * Set nRentalAmount
+     *
+     * @param integer $nRentalAmount
+     * @return Property
+     */
+    public function setNRentalAmount($nRentalAmount)
+    {
+        $this->nRentalAmount = $nRentalAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get nRentalAmount
+     *
+     * @return integer 
+     */
+    public function getNRentalAmount()
+    {
+        return $this->nRentalAmount;
+    }
+
+    /**
+     * Set nViews
+     *
+     * @param integer $nViews
+     * @return Property
+     */
+    public function setNViews($nViews)
+    {
+        $this->nViews = $nViews;
+
+        return $this;
+    }
+
+    /**
+     * Get nViews
+     *
+     * @return integer 
+     */
+    public function getNViews()
+    {
+        return $this->nViews;
+    }
+
+    /**
+     * Set nLatitude
+     *
+     * @param integer $nLatitude
+     * @return Property
+     */
+    public function setNLatitude($nLatitude)
+    {
+        $this->nLatitude = $nLatitude;
+
+        return $this;
+    }
+
+    /**
+     * Get nLatitude
+     *
+     * @return integer 
+     */
+    public function getNLatitude()
+    {
+        return $this->nLatitude;
+    }
+
+    /**
+     * Set nLongitude
+     *
+     * @param integer $nLongitude
+     * @return Property
+     */
+    public function setNLongitude($nLongitude)
+    {
+        $this->nLongitude = $nLongitude;
+
+        return $this;
+    }
+
+    /**
+     * Get nLongitude
+     *
+     * @return integer 
+     */
+    public function getNLongitude()
+    {
+        return $this->nLongitude;
+    }
+
+    /**
+     * Set bDisplayContactDetails
+     *
+     * @param boolean $bDisplayContactDetails
+     * @return Property
+     */
+    public function setBDisplayContactDetails($bDisplayContactDetails)
+    {
+        $this->bDisplayContactDetails = $bDisplayContactDetails;
+
+        return $this;
+    }
+
+    /**
+     * Get bDisplayContactDetails
+     *
+     * @return boolean 
+     */
+    public function getBDisplayContactDetails()
+    {
+        return $this->bDisplayContactDetails;
+    }
+
+    /**
+     * Set tAddressTitle
+     *
+     * @param string $tAddressTitle
+     * @return Property
+     */
+    public function setTAddressTitle($tAddressTitle)
+    {
+        $this->tAddressTitle = $tAddressTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get tAddressTitle
      *
      * @return string 
      */
-    public function getPostalcode()
+    public function getTAddressTitle()
     {
-        return $this->postalcode;
+        return $this->tAddressTitle;
     }
 
     /**
-     * Set propertytype
+     * Set tAddressLine1
      *
-     * @param integer $propertytype
+     * @param string $tAddressLine1
      * @return Property
      */
-    public function setPropertytype($propertytype)
+    public function setTAddressLine1($tAddressLine1)
     {
-        $this->propertytype = $propertytype;
+        $this->tAddressLine1 = $tAddressLine1;
 
         return $this;
     }
 
     /**
-     * Get propertytype
-     *
-     * @return integer 
-     */
-    public function getPropertytype()
-    {
-        return $this->propertytype;
-    }
-
-    /**
-     * Set rent
-     *
-     * @param string $rent
-     * @return Property
-     */
-    public function setRent($rent)
-    {
-        $this->rent = $rent;
-
-        return $this;
-    }
-
-    /**
-     * Get rent
+     * Get tAddressLine1
      *
      * @return string 
      */
-    public function getRent()
+    public function getTAddressLine1()
     {
-        return $this->rent;
+        return $this->tAddressLine1;
     }
 
     /**
-     * Set leaseperiod
+     * Set tAddressLine2
      *
-     * @param integer $leaseperiod
+     * @param string $tAddressLine2
      * @return Property
      */
-    public function setLeaseperiod($leaseperiod)
+    public function setTAddressLine2($tAddressLine2)
     {
-        $this->leaseperiod = $leaseperiod;
+        $this->tAddressLine2 = $tAddressLine2;
 
         return $this;
     }
 
     /**
-     * Get leaseperiod
-     *
-     * @return integer 
-     */
-    public function getLeaseperiod()
-    {
-        return $this->leaseperiod;
-    }
-
-    /**
-     * Set utilities
-     *
-     * @param integer $utilities
-     * @return Property
-     */
-    public function setUtilities($utilities)
-    {
-        $this->utilities = $utilities;
-
-        return $this;
-    }
-
-    /**
-     * Get utilities
-     *
-     * @return integer 
-     */
-    public function getUtilities()
-    {
-        return $this->utilities;
-    }
-
-    /**
-     * Set bedrooms
-     *
-     * @param integer $bedrooms
-     * @return Property
-     */
-    public function setBedrooms($bedrooms)
-    {
-        $this->bedrooms = $bedrooms;
-
-        return $this;
-    }
-
-    /**
-     * Get bedrooms
-     *
-     * @return integer 
-     */
-    public function getBedrooms()
-    {
-        return $this->bedrooms;
-    }
-
-    /**
-     * Set bathrooms
-     *
-     * @param integer $bathrooms
-     * @return Property
-     */
-    public function setBathrooms($bathrooms)
-    {
-        $this->bathrooms = $bathrooms;
-
-        return $this;
-    }
-
-    /**
-     * Get bathrooms
-     *
-     * @return integer 
-     */
-    public function getBathrooms()
-    {
-        return $this->bathrooms;
-    }
-
-    /**
-     * Set additionaldetails
-     *
-     * @param string $additionaldetails
-     * @return Property
-     */
-    public function setAdditionaldetails($additionaldetails)
-    {
-        $this->additionaldetails = $additionaldetails;
-
-        return $this;
-    }
-
-    /**
-     * Get additionaldetails
+     * Get tAddressLine2
      *
      * @return string 
      */
-    public function getAdditionaldetails()
+    public function getTAddressLine2()
     {
-        return $this->additionaldetails;
+        return $this->tAddressLine2;
     }
 
     /**
-     * Set university
+     * Set tCity
      *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Univerisity $university
+     * @param string $tCity
      * @return Property
      */
-    public function setUniversity(\Eduflats\Bundle\EduflatsBundle\Entity\University $university = null)
+    public function setTCity($tCity)
     {
-        $this->university = $university;
+        $this->tCity = $tCity;
 
         return $this;
     }
 
     /**
-     * Get university
-     *
-     * @return \Eduflats\Bundle\EduflatsBundle\Entity\Univerisity 
-     */
-    public function getUniversity()
-    {
-        return $this->university;
-    }
-
-    /**
-     * Add campus
-     *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus
-     * @return Property
-     */
-    public function addCampus(\Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus)
-    {
-        $this->campus[] = $campus;
-
-        return $this;
-    }
-
-    /**
-     * Remove campus
-     *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus
-     */
-    public function removeCampus(\Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus)
-    {
-        $this->campus->removeElement($campus);
-    }
-
-    /**
-     * Get campus
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCampus()
-    {
-        return $this->campus;
-    }
-
-    /**
-     * Add tag
-     *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Tag $tag
-     * @return Property
-     */
-    public function addTag(\Eduflats\Bundle\EduflatsBundle\Entity\Tag $tag)
-    {
-        $this->tag[] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Remove tag
-     *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Tag $tag
-     */
-    public function removeTag(\Eduflats\Bundle\EduflatsBundle\Entity\Tag $tag)
-    {
-        $this->tag->removeElement($tag);
-    }
-
-    /**
-     * Get tag
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTag()
-    {
-        return $this->tag;
-    }
-
-    /**
-     * Set badges
-     *
-     * @param array $badges
-     * @return Property
-     */
-    public function setBadges($badges)
-    {
-        $this->badges = $badges;
-        return $this;
-    }
-
-    /**
-     * Get badges
-     *
-     * @return array 
-     */
-    public function getBadges()
-    {
-        return $this->badges;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return Property
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
+     * Get tCity
      *
      * @return string 
      */
-    public function getTitle()
+    public function getTCity()
     {
-        return $this->title;
+        return $this->tCity;
     }
+
+    /**
+     * Set tProvince
+     *
+     * @param string $tProvince
+     * @return Property
+     */
+    public function setTProvince($tProvince)
+    {
+        $this->tProvince = $tProvince;
+
+        return $this;
+    }
+
+    /**
+     * Get tProvince
+     *
+     * @return string 
+     */
+    public function getTProvince()
+    {
+        return $this->tProvince;
+    }
+
+    /**
+     * Set tZipCode
+     *
+     * @param string $tZipCode
+     * @return Property
+     */
+    public function setTZipCode($tZipCode)
+    {
+        $this->tZipCode = $tZipCode;
+
+        return $this;
+    }
+
+    /**
+     * Get tZipCode
+     *
+     * @return string 
+     */
+    public function getTZipCode()
+    {
+        return $this->tZipCode;
+    }
+
+    /**
+     * Set nCountry
+     *
+     * @param integer $nCountry
+     * @return Property
+     */
+    public function setNCountry($nCountry)
+    {
+        $this->nCountry = $nCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get nCountry
+     *
+     * @return integer 
+     */
+    public function getNCountry()
+    {
+        return $this->nCountry;
+    }
+
+    /**
+     * Set isApproved
+     *
+     * @param boolean $isApproved
+     * @return Property
+     */
+    public function setIsApproved($isApproved)
+    {
+        $this->isApproved = $isApproved;
+
+        return $this;
+    }
+
+    /**
+     * Get isApproved
+     *
+     * @return boolean 
+     */
+    public function getIsApproved()
+    {
+        return $this->isApproved;
+    }
+
+    /**
+     * Set tNonApprovalReason
+     *
+     * @param string $tNonApprovalReason
+     * @return Property
+     */
+    public function setTNonApprovalReason($tNonApprovalReason)
+    {
+        $this->tNonApprovalReason = $tNonApprovalReason;
+
+        return $this;
+    }
+
+    /**
+     * Get tNonApprovalReason
+     *
+     * @return string 
+     */
+    public function getTNonApprovalReason()
+    {
+        return $this->tNonApprovalReason;
+    }
+
+    /**
+     * Set dApprovalRequestedOn
+     *
+     * @param \DateTime $dApprovalRequestedOn
+     * @return Property
+     */
+    public function setDApprovalRequestedOn($dApprovalRequestedOn)
+    {
+        $this->dApprovalRequestedOn = $dApprovalRequestedOn;
+
+        return $this;
+    }
+
+    /**
+     * Get dApprovalRequestedOn
+     *
+     * @return \DateTime 
+     */
+    public function getDApprovalRequestedOn()
+    {
+        return $this->dApprovalRequestedOn;
+    }
+
+    /**
+     * Set dApprovedOn
+     *
+     * @param \DateTime $dApprovedOn
+     * @return Property
+     */
+    public function setDApprovedOn($dApprovedOn)
+    {
+        $this->dApprovedOn = $dApprovedOn;
+
+        return $this;
+    }
+
+    /**
+     * Get dApprovedOn
+     *
+     * @return \DateTime 
+     */
+    public function getDApprovedOn()
+    {
+        return $this->dApprovedOn;
+    }
+
+    /**
+     * Set isBlacklisted
+     *
+     * @param boolean $isBlacklisted
+     * @return Property
+     */
+    public function setIsBlacklisted($isBlacklisted)
+    {
+        $this->isBlacklisted = $isBlacklisted;
+
+        return $this;
+    }
+
+    /**
+     * Get isBlacklisted
+     *
+     * @return boolean 
+     */
+    public function getIsBlacklisted()
+    {
+        return $this->isBlacklisted;
+    }
+
+    /**
+     * Set dClosureDate
+     *
+     * @param \DateTime $dClosureDate
+     * @return Property
+     */
+    public function setDClosureDate($dClosureDate)
+    {
+        $this->dClosureDate = $dClosureDate;
+
+        return $this;
+    }
+
+    /**
+     * Get dClosureDate
+     *
+     * @return \DateTime 
+     */
+    public function getDClosureDate()
+    {
+        return $this->dClosureDate;
+    }
+
+    /**
+     * Set dCreatedAt
+     *
+     * @param \DateTime $dCreatedAt
+     * @return Property
+     */
+    public function setDCreatedAt($dCreatedAt)
+    {
+        $this->dCreatedAt = $dCreatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get dCreatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDCreatedAt()
+    {
+        return $this->dCreatedAt;
+    }
+
+    /**
+     * Set dUpdatedAt
+     *
+     * @param \DateTime $dUpdatedAt
+     * @return Property
+     */
+    public function setDUpdatedAt($dUpdatedAt)
+    {
+        $this->dUpdatedAt = $dUpdatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get dUpdatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDUpdatedAt()
+    {
+        return $this->dUpdatedAt;
+    }
+
 }
