@@ -60,7 +60,7 @@ class WebsiteSetting
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $tEmail_reply-to;
+    protected $tEmail_replyto;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -302,9 +302,9 @@ class WebsiteSetting
      * @param string $tEmail_reply-to
      * @return \Entity\WebsiteSetting
      */
-    public function setTEmailReply-to($tEmail_reply-to)
+    public function setTEmailReplyto($tEmail_replyto)
     {
-        $this->tEmail_reply-to = $tEmail_reply-to;
+        $this->tEmail_replyto = $tEmail_replyto;
 
         return $this;
     }
@@ -314,9 +314,9 @@ class WebsiteSetting
      *
      * @return string
      */
-    public function getTEmailReply-to()
+    public function getTEmailReplyto()
     {
-        return $this->tEmail_reply-to;
+        return $this->tEmail_replyto;
     }
 
     /**
