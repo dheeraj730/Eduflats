@@ -19,7 +19,18 @@ class Campus
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="campus") 
+     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
+     */
+    protected $university;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Property", mappedBy="campus")
+     */
+    protected $property;
+    
     /**
      * @var string
      *
@@ -117,8 +128,12 @@ class Campus
      * @ORM\Column(name="updatedat", type="datetime", nullable=false)
      */
     protected $dUpdatedAt;
+    
 
-
+    public function __construct() {
+        $this->property = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -129,6 +144,63 @@ class Campus
         return $this->id;
     }
 
+    /**
+     * Set university
+     *
+     * @param University $university
+     * @return Campus
+     */
+    public function setUniversity(University $university = null)
+    {
+        $this->university = $university;
+
+        return $this;
+    }
+
+    /**
+     * Get university
+     *
+     * @return University 
+     */
+    public function getUniversity()
+    {
+        return $this->university;
+    }
+    
+    
+    /**
+     * Add property
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Property $property
+     * @return Campus
+     */
+    public function addProperty(\Eduflats\Bundle\EduflatsBundle\Entity\Property $property)
+    {
+        $this->property[] = $property;
+
+        return $this;
+    }
+
+    /**
+     * Remove property
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Property $property
+     */
+    public function removeProperty(\Eduflats\Bundle\EduflatsBundle\Entity\Property $property)
+    {
+        $this->property->removeElement($property);
+    }
+
+    /**
+     * Get property
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProperty()
+    {
+        return $this->property;
+    }
+    
     /**
      * Set tName
      *

@@ -1,5 +1,4 @@
 <?php
-
 namespace Eduflats\Bundle\EduflatsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -21,7 +20,25 @@ class Property
      */
     private $id;
     
-     /**
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="property")
+     * @ORM\JoinColumn(name="eduflats_user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="property")
+     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
+     */
+    protected $university;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Campus", inversedBy="property")
+     * @ORM\JoinTable(name="campus_property")
+     */
+    protected $Campus;
+
+    /**
      * @var type string
      * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */
@@ -41,92 +58,136 @@ class Property
      */
     protected $nAvailabilityStatus;
     
-     /**
+    /**
      * @var type date
      * @ORM\Column(name="availablefrom", type="datetime", nullable=false)
      */
     protected $dAvailableFrom;
     
-     /**
+    /**
      * @var type integer
      * @ORM\Column(name="monthsofoccupancy", type="integer", nullable=false)
      */
     protected $nMonthsOfOccupancy;
     
-     /**
+    /**
      * @var type integer
      * @ORM\Column(name="bedroom", type="integer", nullable=false)
      */
     protected $nBedroom;
     
-     /**
+    /**
      * @var type integer
      * @ORM\Column(name="bathroom", type="integer", nullable=false)
      */
     protected $nBathroom;
     
-     /**
+    /**
+     * @var type integer
+     * @ORM\Column(name="totalfloors", type="integer", nullable=false)
+     */
+    protected $nTotalFloors;
+    
+    /**
+     * @var type integer
+     * @ORM\Column(name="floornumber", type="integer", nullable=false)
+     */
+    protected $nFloorNumber;
+    
+    /**
+     * holds furnished status index from fixture
+     *  
+     * @var type integer
+     * @ORM\Column(name="furnishedstatus", type="integer", nullable=false)
+     */
+    protected $nFurnishedStatus;
+    
+    /**
      * @var type integer
      * @ORM\Column(name="beds", type="integer", nullable=false)
      */
     protected $nBeds;
     
-     /**
+    /**
      * @var type integer
      * @ORM\Column(name="maximumoccupants", type="integer", nullable=false)
      */
     protected $nMaximumOccupants;
     
-     /**
+    /**
      * @var type integer
-     * @ORM\Column(name="rentalamount", type="integer", nullable=false)
+     * @ORM\Column(name="price", type="integer", nullable=false)
      */
-    protected $nRentalAmount;
+    protected $nPrice;
     
-     /**
+    /**
+     * @var type integer
+     * @ORM\Column(name="maintainancecharge", type="integer", nullable=false)
+     */
+    protected $nMaintainanceCharge;
+    
+    /**
+     * @var type boolean
+     * @ORM\Column(name="borkerresponse", type="boolean", nullable=false)
+     */
+    protected $bBrokersResponse;
+
+    /**
+     * @var type integer
+     * @ORM\Column(name="sqftcovered", type="integer", nullable=false)
+     */
+    protected $nSQFTcovered;
+
+    /**
      * @var type integer
      * @ORM\Column(name="views", type="integer", nullable=false)
      */
     protected $nViews;
     
-     /**
+    /**
+     * @var type integer
+     * @ORM\Column(name="starrating", type="integer", nullable=false)
+     */
+    protected $nStarRating;
+    
+    /**
      * @var type integer
      * @ORM\Column(name="latitude", type="integer", nullable=false)
      */
     protected $nLatitude;
     
-     /**
+    /**
      * @var type integer
      * @ORM\Column(name="longitude", type="integer", nullable=false)
      */
     protected $nLongitude;
     
-     /**
+    /**
      * @var type boolean
      * @ORM\Column(name="displaycontactdetails", type="boolean", nullable=false)
      */
     protected $bDisplayContactDetails;
     
-     /**
+    /**
      * @var type string
      * @ORM\Column(name="addresstitle", type="string", length=255, nullable=false)
      */
     protected $tAddressTitle;
     
-     /**
+    /**
      * @var type string
      * @ORM\Column(name="addressline1", type="string", length=255, nullable=false)
      */
     protected $tAddressLine1;
     
-     /**
+    /**
      * @var type string
      * @ORM\Column(name="addressline2", type="string", length=255, nullable=false)
      */
     protected $tAddressLine2;
     
     
-     /**
+    /**
      * @var type string
      * @ORM\Column(name="city", type="string", length=255, nullable=false)
      */
@@ -152,9 +213,15 @@ class Property
     
      /**
      * @var type boolean
-     * @ORM\Column(name="isapproved", type="boolean", nullable=false)
+     * @ORM\Column(name="isapprovednotrejected", type="boolean", nullable=false)
      */
-    protected $isApproved;
+    protected $isApprovedNotRejected;
+    
+     /**
+     * @var type boolean
+     * @ORM\Column(name="isactivenotexpired", type="boolean", nullable=false)
+     */
+    protected $isActiveNotExpired;
     
      /**
      * @var type string
@@ -198,6 +265,9 @@ class Property
      */
     protected $dUpdatedAt;
 
+    public function __construct() {
+        $this->Campus = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -209,7 +279,86 @@ class Property
         return $this->id;
     }
     
+    
+    /**
+     * Set user
+     *
+     * @param User $user
+     * @return Property
+     */
+    public function setUser(User $user = null)
+    {
+        $this->user = $user;
 
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+    
+    /**
+     * Add Campus
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus
+     * @return Property
+     */
+    public function addCampus(\Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus)
+    {
+        $this->Campus[] = $campus;
+
+        return $this;
+    }
+
+    /**
+     * Remove Campus
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus
+     */
+    public function removeCampus(\Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus)
+    {
+        $this->Campus->removeElement($campus);
+    }
+
+    /**
+     * Get Campus
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCampus()
+    {
+        return $this->Campus;
+    }
+    
+    /**
+     * Set university
+     *
+     * @param University $university
+     * @return Property
+     */
+    public function setUniversity(University $university = null)
+    {
+        $this->university = $university;
+
+        return $this;
+    }
+
+    /**
+     * Get university
+     *
+     * @return University 
+     */
+    public function getUniversity()
+    {
+        return $this->university;
+    }
+    
     /**
      * Set tPropertyDescription
      *
@@ -692,29 +841,236 @@ class Property
         return $this->nCountry;
     }
 
+    
     /**
-     * Set isApproved
+     * Set nTotalFloors
      *
-     * @param boolean $isApproved
+     * @param integer $nTotalFloors
      * @return Property
      */
-    public function setIsApproved($isApproved)
+    public function setNTotalFloors($nTotalFloors)
     {
-        $this->isApproved = $isApproved;
+        $this->nTotalFloors = $nTotalFloors;
 
         return $this;
     }
 
     /**
-     * Get isApproved
+     * Get nTotalFloors
+     *
+     * @return integer 
+     */
+    public function getNTotalFloors()
+    {
+        return $this->nTotalFloors;
+    }
+
+    /**
+     * Set nFloorNumber
+     *
+     * @param integer $nFloorNumber
+     * @return Property
+     */
+    public function setNFloorNumber($nFloorNumber)
+    {
+        $this->nFloorNumber = $nFloorNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get nFloorNumber
+     *
+     * @return integer 
+     */
+    public function getNFloorNumber()
+    {
+        return $this->nFloorNumber;
+    }
+
+    /**
+     * Set nFurnishedStatus
+     *
+     * @param integer $nFurnishedStatus
+     * @return Property
+     */
+    public function setNFurnishedStatus($nFurnishedStatus)
+    {
+        $this->nFurnishedStatus = $nFurnishedStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get nFurnishedStatus
+     *
+     * @return integer 
+     */
+    public function getNFurnishedStatus()
+    {
+        return $this->nFurnishedStatus;
+    }
+
+    /**
+     * Set nPrice
+     *
+     * @param integer $nPrice
+     * @return Property
+     */
+    public function setNPrice($nPrice)
+    {
+        $this->nPrice = $nPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get nPrice
+     *
+     * @return integer 
+     */
+    public function getNPrice()
+    {
+        return $this->nPrice;
+    }
+
+    /**
+     * Set nMaintainanceCharge
+     *
+     * @param integer $nMaintainanceCharge
+     * @return Property
+     */
+    public function setNMaintainanceCharge($nMaintainanceCharge)
+    {
+        $this->nMaintainanceCharge = $nMaintainanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * Get nMaintainanceCharge
+     *
+     * @return integer 
+     */
+    public function getNMaintainanceCharge()
+    {
+        return $this->nMaintainanceCharge;
+    }
+
+    /**
+     * Set bBrokersResponse
+     *
+     * @param boolean $bBrokersResponse
+     * @return Property
+     */
+    public function setBBrokersResponse($bBrokersResponse)
+    {
+        $this->bBrokersResponse = $bBrokersResponse;
+
+        return $this;
+    }
+
+    /**
+     * Get bBrokersResponse
      *
      * @return boolean 
      */
-    public function getIsApproved()
+    public function getBBrokersResponse()
     {
-        return $this->isApproved;
+        return $this->bBrokersResponse;
     }
 
+    /**
+     * Set nSQFTcovered
+     *
+     * @param integer $nSQFTcovered
+     * @return Property
+     */
+    public function setNSQFTcovered($nSQFTcovered)
+    {
+        $this->nSQFTcovered = $nSQFTcovered;
+
+        return $this;
+    }
+
+    /**
+     * Get nSQFTcovered
+     *
+     * @return integer 
+     */
+    public function getNSQFTcovered()
+    {
+        return $this->nSQFTcovered;
+    }
+
+    /**
+     * Set nStarRating
+     *
+     * @param integer $nStarRating
+     * @return Property
+     */
+    public function setNStarRating($nStarRating)
+    {
+        $this->nStarRating = $nStarRating;
+
+        return $this;
+    }
+
+    /**
+     * Get nStarRating
+     *
+     * @return integer 
+     */
+    public function getNStarRating()
+    {
+        return $this->nStarRating;
+    }
+
+    /**
+     * Set isApprovedNotRejected
+     *
+     * @param boolean $isApprovedNotRejected
+     * @return Property
+     */
+    public function setIsApprovedNotRejected($isApprovedNotRejected)
+    {
+        $this->isApprovedNotRejected = $isApprovedNotRejected;
+
+        return $this;
+    }
+
+    /**
+     * Get isApprovedNotRejected
+     *
+     * @return boolean 
+     */
+    public function getIsApprovedNotRejected()
+    {
+        return $this->isApprovedNotRejected;
+    }
+
+    /**
+     * Set isActiveNotExpired
+     *
+     * @param boolean $isActiveNotExpired
+     * @return Property
+     */
+    public function setIsActiveNotExpired($isActiveNotExpired)
+    {
+        $this->isActiveNotExpired = $isActiveNotExpired;
+
+        return $this;
+    }
+
+    /**
+     * Get isActiveNotExpired
+     *
+     * @return boolean 
+     */
+    public function getIsActiveNotExpired()
+    {
+        return $this->isActiveNotExpired;
+    }
     /**
      * Set tNonApprovalReason
      *
@@ -875,5 +1231,5 @@ class Property
     {
         return $this->dUpdatedAt;
     }
-
+    
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace Eduflats\Bundle\EduflatsBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
@@ -11,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="eduflats_user")
  * @ORM\Entity
  */
-class User extends BaseUser
-{
+class User extends BaseUser {
+
     /**
      * @var integer
      *
@@ -23,93 +22,109 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Property", mappedBy="user")
+     */
+    protected $porperty;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="user")
+     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
+     */
+    protected $university;
+
+    /**
+     * @var type integer
+     * @ORM\Column(name="shortlist", type="string", length=255, nullable=false)
+     */
+    protected $nShortlist;
+
+    /**
      * @var type string
      * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
      */
     protected $tFirstName;
-    
+
     /**
      * @var type string
      * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
      */
     protected $tLastName;
-    
+
     /**
      * @var type string
      * @ORM\Column(name="phonenumber", type="string", length=255, nullable=true)
      */
     protected $tPhoneNumber;
-    
+
     /**
      * @var type string
      * @ORM\Column(name="landline", type="string", length=255, nullable=true)
      */
     protected $tLandline;
-    
+
     /**
      * @var type string
      * @ORM\Column(name="addresstitle", type="string", length=255, nullable=false)
      */
     protected $tAddressTitle;
-    
+
     /**
      * @var type string
      * @ORM\Column(name="addressline1", type="string", length=255, nullable=false)
      */
     protected $tAddressLine1;
-    
+
     /**
      * @var type string
      * @ORM\Column(name="addressline2", type="string", length=255, nullable=false)
      */
     protected $tAddressLine2;
-    
+
     /**
      * @var type string
      * @ORM\Column(name="city", type="string", length=255, nullable=false)
      */
     protected $tCity;
-    
+
     /**
      * @var type string
      * @ORM\Column(name="province", type="string", length=255, nullable=false)
      */
     protected $tProvince;
-    
+
     /**
      * @var type string
      * @ORM\Column(name="zip", type="string", length=255, nullable=false)
      */
     protected $tZipCode;
-    
+
     /**
      * @var type integer
      * @ORM\Column(name="country", type="integer", length=9, nullable=false)
      */
     protected $nCountry;
-    
+
     /**
      * @var type date
      * @ORM\Column(name="createdat", type="datetime", nullable=false)
      */
     protected $dCreatedAt;
-    
+
     /**
      * @var type date
      * @ORM\Column(name="updatedat", type="datetime", nullable=false)
      */
     protected $dUpdatedAt;
-    
+
     /**
      * @var type date
      * @ORM\Column(name="exitdate", type="datetime", nullable=false)
      */
     protected $dExitDate;
 
-    
-    
     public function __construct() {
         parent::__construct();
+        $this->porperty = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -117,20 +132,92 @@ class User extends BaseUser
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
-    
 
+    /**
+     * Add porperty
+     *
+     * @param Property $porperty
+     * @return User
+     */
+    public function addPorperty(Property $porperty) {
+        $this->porperty[] = $porperty;
+
+        return $this;
+    }
+
+    /**
+     * Remove porperty
+     *
+     * @param Property $porperty
+     */
+    public function removePorperty(Property $porperty) {
+        $this->porperty->removeElement($porperty);
+    }
+
+    /**
+     * Get porperty
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPorperty() {
+        return $this->porperty;
+    }
+
+    /**
+     * Set university
+     *
+     * @param University $university
+     * @return User
+     */
+    public function setUniversity(University $university = null) {
+        $this->university = $university;
+
+        return $this;
+    }
+
+    /**
+     * Get university
+     *
+     * @return University 
+     */
+    public function getUniversity() {
+        return $this->university;
+    }
+
+    
+    /**
+     * Set nShortlist
+     *
+     * @param string $nShortlist
+     * @return User
+     */
+    public function setNShortlist($nShortlist)
+    {
+        $this->nShortlist = $nShortlist;
+
+        return $this;
+    }
+
+    /**
+     * Get nShortlist
+     *
+     * @return string 
+     */
+    public function getNShortlist()
+    {
+        return $this->nShortlist;
+    }
+    
     /**
      * Set tFirstName
      *
      * @param string $tFirstName
      * @return User
      */
-    public function setTFirstName($tFirstName)
-    {
+    public function setTFirstName($tFirstName) {
         $this->tFirstName = $tFirstName;
 
         return $this;
@@ -141,8 +228,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getTFirstName()
-    {
+    public function getTFirstName() {
         return $this->tFirstName;
     }
 
@@ -152,8 +238,7 @@ class User extends BaseUser
      * @param string $tLastName
      * @return User
      */
-    public function setTLastName($tLastName)
-    {
+    public function setTLastName($tLastName) {
         $this->tLastName = $tLastName;
 
         return $this;
@@ -164,8 +249,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getTLastName()
-    {
+    public function getTLastName() {
         return $this->tLastName;
     }
 
@@ -175,8 +259,7 @@ class User extends BaseUser
      * @param string $tPhoneNumber
      * @return User
      */
-    public function setTPhoneNumber($tPhoneNumber)
-    {
+    public function setTPhoneNumber($tPhoneNumber) {
         $this->tPhoneNumber = $tPhoneNumber;
 
         return $this;
@@ -187,8 +270,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getTPhoneNumber()
-    {
+    public function getTPhoneNumber() {
         return $this->tPhoneNumber;
     }
 
@@ -198,8 +280,7 @@ class User extends BaseUser
      * @param string $tLandline
      * @return User
      */
-    public function setTLandline($tLandline)
-    {
+    public function setTLandline($tLandline) {
         $this->tLandline = $tLandline;
 
         return $this;
@@ -210,8 +291,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getTLandline()
-    {
+    public function getTLandline() {
         return $this->tLandline;
     }
 
@@ -221,8 +301,7 @@ class User extends BaseUser
      * @param string $tAddressTitle
      * @return User
      */
-    public function setTAddressTitle($tAddressTitle)
-    {
+    public function setTAddressTitle($tAddressTitle) {
         $this->tAddressTitle = $tAddressTitle;
 
         return $this;
@@ -233,8 +312,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getTAddressTitle()
-    {
+    public function getTAddressTitle() {
         return $this->tAddressTitle;
     }
 
@@ -244,8 +322,7 @@ class User extends BaseUser
      * @param string $tAddressLine1
      * @return User
      */
-    public function setTAddressLine1($tAddressLine1)
-    {
+    public function setTAddressLine1($tAddressLine1) {
         $this->tAddressLine1 = $tAddressLine1;
 
         return $this;
@@ -256,8 +333,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getTAddressLine1()
-    {
+    public function getTAddressLine1() {
         return $this->tAddressLine1;
     }
 
@@ -267,8 +343,7 @@ class User extends BaseUser
      * @param string $tAddressLine2
      * @return User
      */
-    public function setTAddressLine2($tAddressLine2)
-    {
+    public function setTAddressLine2($tAddressLine2) {
         $this->tAddressLine2 = $tAddressLine2;
 
         return $this;
@@ -279,8 +354,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getTAddressLine2()
-    {
+    public function getTAddressLine2() {
         return $this->tAddressLine2;
     }
 
@@ -290,8 +364,7 @@ class User extends BaseUser
      * @param string $tCity
      * @return User
      */
-    public function setTCity($tCity)
-    {
+    public function setTCity($tCity) {
         $this->tCity = $tCity;
 
         return $this;
@@ -302,8 +375,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getTCity()
-    {
+    public function getTCity() {
         return $this->tCity;
     }
 
@@ -313,8 +385,7 @@ class User extends BaseUser
      * @param string $tProvince
      * @return User
      */
-    public function setTProvince($tProvince)
-    {
+    public function setTProvince($tProvince) {
         $this->tProvince = $tProvince;
 
         return $this;
@@ -325,8 +396,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getTProvince()
-    {
+    public function getTProvince() {
         return $this->tProvince;
     }
 
@@ -336,8 +406,7 @@ class User extends BaseUser
      * @param string $tZipCode
      * @return User
      */
-    public function setTZipCode($tZipCode)
-    {
+    public function setTZipCode($tZipCode) {
         $this->tZipCode = $tZipCode;
 
         return $this;
@@ -348,8 +417,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getTZipCode()
-    {
+    public function getTZipCode() {
         return $this->tZipCode;
     }
 
@@ -359,8 +427,7 @@ class User extends BaseUser
      * @param integer $nCountry
      * @return User
      */
-    public function setNCountry($nCountry)
-    {
+    public function setNCountry($nCountry) {
         $this->nCountry = $nCountry;
 
         return $this;
@@ -371,8 +438,7 @@ class User extends BaseUser
      *
      * @return integer 
      */
-    public function getNCountry()
-    {
+    public function getNCountry() {
         return $this->nCountry;
     }
 
@@ -382,8 +448,7 @@ class User extends BaseUser
      * @param \DateTime $dCreatedAt
      * @return User
      */
-    public function setDCreatedAt($dCreatedAt)
-    {
+    public function setDCreatedAt($dCreatedAt) {
         $this->dCreatedAt = $dCreatedAt;
 
         return $this;
@@ -394,8 +459,7 @@ class User extends BaseUser
      *
      * @return \DateTime 
      */
-    public function getDCreatedAt()
-    {
+    public function getDCreatedAt() {
         return $this->dCreatedAt;
     }
 
@@ -405,8 +469,7 @@ class User extends BaseUser
      * @param \DateTime $dUpdatedAt
      * @return User
      */
-    public function setDUpdatedAt($dUpdatedAt)
-    {
+    public function setDUpdatedAt($dUpdatedAt) {
         $this->dUpdatedAt = $dUpdatedAt;
 
         return $this;
@@ -417,8 +480,7 @@ class User extends BaseUser
      *
      * @return \DateTime 
      */
-    public function getDUpdatedAt()
-    {
+    public function getDUpdatedAt() {
         return $this->dUpdatedAt;
     }
 
@@ -428,8 +490,7 @@ class User extends BaseUser
      * @param \DateTime $dExitDate
      * @return User
      */
-    public function setDExitDate($dExitDate)
-    {
+    public function setDExitDate($dExitDate) {
         $this->dExitDate = $dExitDate;
 
         return $this;
@@ -440,8 +501,8 @@ class User extends BaseUser
      *
      * @return \DateTime 
      */
-    public function getDExitDate()
-    {
+    public function getDExitDate() {
         return $this->dExitDate;
     }
+
 }
