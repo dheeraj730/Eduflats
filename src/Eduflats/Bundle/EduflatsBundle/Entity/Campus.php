@@ -108,7 +108,7 @@ class Campus
     protected $dUpdatedAt;
 
     /**
-     * @ORM\Id
+     * 
      * @ORM\Column(type="integer")
      */
     protected $university_id;
