@@ -297,9 +297,9 @@ class WebsiteSetting
     }
 
     /**
-     * Set the value of tEmail_reply-to.
+     * Set the value of tEmail_replyto.
      *
-     * @param string $tEmail_reply-to
+     * @param string $tEmail_replyto
      * @return \Entity\WebsiteSetting
      */
     public function setTEmailReplyto($tEmail_replyto)
@@ -310,7 +310,7 @@ class WebsiteSetting
     }
 
     /**
-     * Get the value of tEmail_reply-to.
+     * Get the value of tEmail_replyto.
      *
      * @return string
      */
