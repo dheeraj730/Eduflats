@@ -18,7 +18,7 @@ class ClientController extends Controller{
      */
     public function userAction()
     {
-        Util::accessControl('ROLE_STUDENT');
+        $this->accessControl('ROLE_STUDENT');
         return array('baseLayout'=>  "::".Util::$currentId."base.html.twig");    
     }
 
@@ -28,7 +28,7 @@ class ClientController extends Controller{
      */
     public function adminAction(Request $request)
     {
-        Util::accessControl('ROLE_ADMIN');
+        $this->accessControl('ROLE_ADMIN');
         $em = $this->getDoctrine()->getManager();
         
         $form = $this->createForm(new AddBadgesType())
@@ -51,7 +51,7 @@ class ClientController extends Controller{
     public function providerAction($propertyType, Request $request) {
         
         //create util functions for form creation
-        Util::accessControl('ROLE_PROVIDER');
+        $this->accessControl('ROLE_PROVIDER');
         $em = $this->getDoctrine()->getManager();
         $property = new Property();
         $form = $this->createForm(new PropertyType(), $property);
@@ -64,7 +64,7 @@ class ClientController extends Controller{
                 $property->setPropertytype(1);
                 $form->handleRequest($request);
                 if($form->isValid()){
-                    $property->setUniversity(Util::getUniversityObj());
+                    $property->setUniversity($this->getUniversityObj());
                     foreach($this->getCampusObjs() as $campus){
                         $property->addCampus($campus);
                     }
@@ -78,7 +78,7 @@ class ClientController extends Controller{
                 $property->setPropertytype(2);
                 $form->handleRequest($request);
                 if($form->isValid()){
-                    $property->setUniversity(Util::getUniversityObj());
+                    $property->setUniversity($this->getUniversityObj());
                     foreach($this->getCampusObjs() as $campus){
                         $property->addCampus($campus);
                     }
@@ -95,5 +95,30 @@ class ClientController extends Controller{
             
             return $template;
     }
+    
+    public function accessControl($role){
+        if(!$this->get('security.context')->isGranted($role)){
+            throw $this->createAccessDeniedException('Needs '.$role." to access page");
+        }
+    }
+    
+     public function getPropertyObj($id){
+        return $this->getDoctrine()->getRepository('EduflatsBundle:Property')->findOneById($id);
+    }
+    
+    public function getCampusObjs(){
+        //to decide campuses based on distance from property, use campus id
+        return $this->getDoctrine()->getRepository('EduflatsBundle:Campus')->findByUniversity(Util::$currentId);
+    }
+    
+    public function getUniversityObj(){
+        return $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(Util::$currentId);
+    }
+    
+    private function encodePassword($user, $plainPassword){
+        $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+        return $encoder->encodePassword($plainPassword, $user->getSalt());
+    }
+    
     
 }

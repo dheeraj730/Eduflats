@@ -180,4 +180,24 @@ class AuthorizationController extends Controller{
         return ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"];
     }
     
+    
+     public function getPropertyObj($id){
+        return $this->getDoctrine()->getRepository('EduflatsBundle:Property')->findOneById($id);
+    }
+    
+    public function getCampusObjs(){
+        //to decide campuses based on distance from property, use campus id
+        return $this->getDoctrine()->getRepository('EduflatsBundle:Campus')->findByUniversity(Util::$currentId);
+    }
+    
+    public function getUniversityObj(){
+        return $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(Util::$currentId);
+    }
+    
+    private function encodePassword($user, $plainPassword){
+        $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+        return $encoder->encodePassword($plainPassword, $user->getSalt());
+    }
+    
+    
 }
