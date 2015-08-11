@@ -13,7 +13,7 @@ class NavigationController extends Controller
      * @Template()
      */
     public function homeAction(){
-        return array('baseLayout'=>  "::".Util::$currentId."base.html.twig" );
+        return array('baseLayout'=>  "::".Util::$currentId."base.html.twig");
     }
     
 }
