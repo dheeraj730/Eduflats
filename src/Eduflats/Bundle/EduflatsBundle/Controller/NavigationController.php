@@ -15,7 +15,7 @@ class NavigationController extends Controller {
      */
     public function homeAction(){
         
-        return [];   
+        return array();   
     }
     
     /**
@@ -24,7 +24,7 @@ class NavigationController extends Controller {
      */
     public function userAction(){
         
-        return [];
+        return array();
     }
 
 }

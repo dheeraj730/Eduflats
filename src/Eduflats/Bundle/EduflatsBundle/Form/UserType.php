@@ -19,23 +19,23 @@ class UserType extends BaseType
            
             if($options['vitalInfo']){
                 $builder
-                ->add('tFirstName', 'text', ['label'=>'First Name'])
-                ->add('tLastName', 'text', ['label'=>'Last Name'])
-                ->add('tPhoneNumber', 'text', ['label'=>'Phone Number'])
-                ->add('tLandline', 'text', ['label'=>'Landline']);
+                ->add('tFirstName', 'text', array('label'=>'First Name'))
+                ->add('tLastName', 'text', array('label'=>'Last Name'))
+                ->add('tPhoneNumber', 'text', array('label'=>'Phone Number'))
+                ->add('tLandline', 'text', array('label'=>'Landline'));
                 if($options['location']){ 
                     $builder
-                    ->add('tAddressTitle', 'text', ['label'=>'Address Title'])
-                    ->add('tAddressLine1', 'textarea', ['label'=>'Address Line 1'])
-                    ->add('tAddressLine2', 'textarea', ['label'=>'Address Line 2'])
-                    ->add('tCity', 'text', ['label'=>'City'])
-                    ->add('tProvince', 'text', ['label'=>'Province'])
-                    ->add('tZipCode', 'text', ['label'=>'Zip Code'])
-                    ->add('nCountry', 'choice', ['choices'=>[],'label'=>'Country']);
+                    ->add('tAddressTitle', 'text', array('label'=>'Address Title'))
+                    ->add('tAddressLine1', 'textarea', array('label'=>'Address Line 1'))
+                    ->add('tAddressLine2', 'textarea', array('label'=>'Address Line 2'))
+                    ->add('tCity', 'text', array('label'=>'City'))
+                    ->add('tProvince', 'text', array('label'=>'Province'))
+                    ->add('tZipCode', 'text', array('label'=>'Zip Code'))
+                    ->add('nCountry', 'choice', array('choices'=>array(),'label'=>'Country'));
                 }
             }
             $builder
-            ->add('submit','submit',['label'=>'Create Account']);
+            ->add('submit','submit',array('label'=>'Create Account'));
     }
     
     /**

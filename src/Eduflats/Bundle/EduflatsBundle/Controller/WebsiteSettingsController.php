@@ -39,7 +39,7 @@ class WebsiteSettingsController extends Controller {
             $this->get('session')->getFlashBag()->set('success', 'Your Website Settings have been saved Successfully ');
             return $this->redirect($this->generateUrl('success'));
         }
-        return ['form'=>$form->createView()];
+        return array('form'=>$form->createView());
     }
     
 }

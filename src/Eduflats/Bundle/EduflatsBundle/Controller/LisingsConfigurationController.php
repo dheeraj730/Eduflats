@@ -40,7 +40,7 @@ class LisingsConfigurationController extends Controller {
             $this->get('session')->getFlashBag()->set('success', 'Your Listings Configurations have been save Successfully');
             return $this->redirect($this->generateUrl('success'));
         }
-        return ['form'=>$form->createView()];
+        return array('form'=>$form->createView());
     }
     
 }

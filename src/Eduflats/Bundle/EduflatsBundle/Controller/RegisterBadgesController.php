@@ -28,7 +28,7 @@ class RegisterBadgesController extends Controller
             $em->flush();
         }
         
-        return ['form'=>$form->createView()];
+        return array('form'=>$form->createView());
     }
 
 }

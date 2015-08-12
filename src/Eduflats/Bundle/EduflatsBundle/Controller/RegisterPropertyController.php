@@ -47,7 +47,7 @@ class RegisterPropertyController extends Controller {
             $em->persist($property);
             $em->flush();
         }
-        return['form'=>$form->createView()];
+        return array('form'=>$form->createView());
     }
     
 }

@@ -45,7 +45,7 @@ class RegisterUniversityController extends Controller{
             $this->get('session')->getFlashBag()->set('success', 'Your University account has been successully created At '.$link);
             return $this->redirect($this->generateUrl('success'));
         }
-        return ['form'=>$form->createView()];
+        return array('form'=>$form->createView());
     }
     
 }

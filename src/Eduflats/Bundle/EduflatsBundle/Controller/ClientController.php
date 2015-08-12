@@ -36,8 +36,9 @@ class ClientController extends Controller{
         $form->handleRequest($request);
         
         if($form->isSubmitted()){
-            $property = $this->getDoctrine()->getRepository('EduflatsBundle:Property')->findOneById($form->getData()['property']);
-            $property->setBadges($form->getData()['badges']);
+            $data = $form->getData();
+            $property = $this->getDoctrine()->getRepository('EduflatsBundle:Property')->findOneById($data['property']);
+            $property->setBadges($data['badges']);
             $em->persist($property);
             $em->flush();
         }
@@ -55,7 +56,7 @@ class ClientController extends Controller{
         $em = $this->getDoctrine()->getManager();
         $property = new Property();
         $form = $this->createForm(new PropertyType(), $property);
-        $form->add("submit","submit",['label'=>'Post Listing']);
+        $form->add("submit","submit",array('label'=>'Post Listing'));
         //replace switch with functions
         switch ($propertyType) {
             case 'rental':
@@ -71,7 +72,7 @@ class ClientController extends Controller{
                     $em->persist($property);
                     $em->flush();
                 }
-                $template =  ['propertyType'=>null ,'baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>$form->createView()];
+                $template =  array('propertyType'=>null ,'baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>$form->createView());
                 break;
                 
             case 'sharedRoom':
@@ -85,11 +86,11 @@ class ClientController extends Controller{
                     $em->persist($property);
                     $em->flush();
                 }
-                $template = ['propertyType'=>'sharedRoom', 'baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>$form->createView()];
+                $template = array('propertyType'=>'sharedRoom', 'baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>$form->createView());
                 break;
                 
             default:
-                $template = ['propertyType'=>null, 'baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>null];
+                $template = array('propertyType'=>null, 'baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>null);
                 break;
             }
             

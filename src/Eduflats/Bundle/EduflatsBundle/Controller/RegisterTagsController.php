@@ -29,7 +29,7 @@ class RegisterTagsController extends Controller {
             $em->flush();
         }
         
-        return ['form'=>$form->createView()];
+        return array('form'=>$form->createView());
     }
 
 }

@@ -30,7 +30,7 @@ class PropertyProviderType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Eduflats\Bundle\EduflatsBundle\Entity\Client',
-            'validation_groups'=>['propertyProvider']   
+            'validation_groups'=>array('propertyProvider')
         ));
     }
 

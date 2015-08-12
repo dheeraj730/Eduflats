@@ -15,10 +15,10 @@ class ListingsConfigurationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nAdvertisePeriod','text', ['label'=>'Advertise Period '])
-            ->add('bEnableBadges','radio',  ['label'=>'Enable Badges'])
-            ->add('bEnableStarRatings','radio', ['label'=>'Enable Star Ratings'])
-            ->add('submit', 'submit', ['label'=>'Next'])
+            ->add('nAdvertisePeriod','text', array('label'=>'Advertise Period '))
+            ->add('bEnableBadges','radio',  array('label'=>'Enable Badges'))
+            ->add('bEnableStarRatings','radio', array('label'=>'Enable Star Ratings'))
+            ->add('submit', 'submit', array('label'=>'Next'))
         ;
     }
     

@@ -28,7 +28,7 @@ class StudentType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Eduflats\Bundle\EduflatsBundle\Entity\Client',
-            'validation_groups'=>['student']   
+            'validation_groups'=>array('student')
         ));
     }
 

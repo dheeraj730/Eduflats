@@ -14,7 +14,7 @@ class AuthenticationController extends Controller {
      * @Template()
      */
     public function loginAction(){
-        return ['baseLayout'=>  "::".Util::$currentId."base.html.twig"];
+        return array('baseLayout'=>  "::".Util::$currentId."base.html.twig");
     }
 
     /**
@@ -22,7 +22,7 @@ class AuthenticationController extends Controller {
      * @Template()
      */
     public function logoutAction(){
-        return ['baseLayout'=>  "::".Util::$currentId."base.html.twig"];
+        return array('baseLayout'=>  "::".Util::$currentId."base.html.twig");
     }
 
     /**
@@ -33,7 +33,7 @@ class AuthenticationController extends Controller {
         $session = $request->getSession();
         $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
         $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
-        return ['baseLayout'=>  "::".Util::$currentId."base.html.twig",  'last_username' => $session->get(SecurityContextInterface::LAST_USERNAME),'error'=> $error];
+        return array('baseLayout'=>  "::".Util::$currentId."base.html.twig",  'last_username' => $session->get(SecurityContextInterface::LAST_USERNAME),'error'=> $error);
     }
     
     /**
@@ -41,6 +41,6 @@ class AuthenticationController extends Controller {
      * @Template()
      */
     public function resetPasswordAction(){
-        return [];
+        return array();
     }
 }

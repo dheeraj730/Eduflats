@@ -17,9 +17,9 @@ class UniversityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tUniversityName', 'text', ['label'=>'University Name'])
-            ->add('tSubdomainName', 'text', ['label'=>'Subdomain Name'])
-            ->add('submit', 'submit', ['label'=>'Next']);
+            ->add('tUniversityName', 'text', array('label'=>'University Name'))
+            ->add('tSubdomainName', 'text', array('label'=>'Subdomain Name'))
+            ->add('submit', 'submit', array('label'=>'Next'));
         ;
     }
     

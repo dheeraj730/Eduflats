@@ -26,13 +26,13 @@ class AuthorizationController extends Controller{
         $em = $this->getDoctrine()->getManager();
         $university = new University();
         $form = $this->createForm(new UniversityType(), $university);
-        $form->add('submit', 'submit', ['label'=>'Create Account']);
+        $form->add('submit', 'submit', array('label'=>'Create Account'));
         $form->handleRequest($request);
         if($form->isValid()){
             $university->setEnabled(true);
             $em->persist($university);
             $em->flush();
-            $subdomain = $em->getRepository('EduflatsBundle:University')->findOneBy(['subdomain'=>$form->getData()->getSubdomain()])->getSubdomain();
+            $subdomain = $em->getRepository('EduflatsBundle:University')->findOneBy(array('subdomain'=>$form->getData()->getSubdomain()))->getSubdomain();
             
             $currentDir = getcwd();
             chdir('/etc/');
@@ -49,7 +49,7 @@ class AuthorizationController extends Controller{
             chdir($currentDir);
             return $this->redirect($link);
         }
-        return ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"];
+        return array('form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig");
     }
     
     /**
@@ -60,7 +60,7 @@ class AuthorizationController extends Controller{
         $em = $this->getDoctrine()->getManager();
         $campus = new Campus();
         $form = $this->createForm(new CampusType(), $campus);
-        $form->add('submit', 'submit', ['label'=>'Create Account']);
+        $form->add('submit', 'submit', array('label'=>'Create Account'));
         $form->handleRequest($request);
         if($form->isValid()){
             $campus->setUniversity($this->container->get('Helper_Functions')->getUniversityObj());
@@ -68,7 +68,7 @@ class AuthorizationController extends Controller{
             $em->persist($campus);
             $em->flush();
         }
-        return ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"];
+        return array('form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig");
     }
     
     /**
@@ -85,27 +85,27 @@ class AuthorizationController extends Controller{
         switch ($userType) {
             case 'provider':
                 $form = $this->createForm(new PropertyProviderType(), $propertyProvider);
-                $form->add('submit', 'submit', ['label'=>'Create Account']);
+                $form->add('submit', 'submit', array('label'=>'Create Account'));
                 $form->handleRequest($request);
                 if($form->isValid()){
                     $propertyProvider->setUniversity($this->getUniversityObj());
-                    $propertyProvider->setRoles(['ROLE_PROVIDER']); //security flaw?
+                    $propertyProvider->setRoles(array('ROLE_PROVIDER')); //security flaw?
                     $propertyProvider->setAddress('');
                     $propertyProvider->setPassword($this->encodePassword($propertyProvider, $form["password"]->getData()));
                     $em->persist($this->getUniversityObj());
                     $em->persist($propertyProvider);
                     $em->flush();
                 }
-                $template =  $this->render('EduflatsBundle:Login:RegisterPropertyProviderForm.html.twig', ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"]);
+                $template =  $this->render('EduflatsBundle:Login:RegisterPropertyProviderForm.html.twig', array('form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"));
                 break;
                 
             case 'student':
                 $form = $this->createForm(new StudentType(), $student);
-                $form->add('submit', 'submit', ['label'=>'Create Account']);
+                $form->add('submit', 'submit', array('label'=>'Create Account'));
                 $form->handleRequest($request);
                 if($form->isValid()){
                     $student->setUniversity($this->getUniversityObj());
-                    $student->setRoles(['ROLE_STUDENT']);
+                    $student->setRoles(array('ROLE_STUDENT'));
                     $student->setAddress('');
                     $student->setFirstname('');
                     $student->setLastname('');
@@ -114,16 +114,16 @@ class AuthorizationController extends Controller{
                     $em->persist($student);
                     $em->flush();
                 }
-                $template = $this->render('EduflatsBundle:Login:RegisterStudentForm.html.twig', ['baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>$form->createView()]);
+                $template = $this->render('EduflatsBundle:Login:RegisterStudentForm.html.twig', array('baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>$form->createView()));
                 break;
                 
             case 'admin':
                 $form = $this->createForm(new AdminType(), $admin);
-                $form->add('submit', 'submit', ['label'=>'Create Account']);
+                $form->add('submit', 'submit', array('label'=>'Create Account'));
                 $form->handleRequest($request);
                 if($form->isValid()){
                     $admin->setUniversity($this->getUniversityObj());
-                    $admin->setRoles(['ROLE_ADMIN']);
+                    $admin->setRoles(array('ROLE_ADMIN'));
                     $admin->setAddress('');
                     $admin->setFirstname('');
                     $admin->setLastname('');
@@ -132,11 +132,11 @@ class AuthorizationController extends Controller{
                     $em->persist($admin);
                     $em->flush();
                 }
-                $template = $this->render('EduflatsBundle:Login:RegisterAdminForm.html.twig', ['baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>$form->createView()]);
+                $template = $this->render('EduflatsBundle:Login:RegisterAdminForm.html.twig', array('baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>$form->createView()));
                 break;
                 
             default:
-                $template = $this->render('EduflatsBundle:Login:RegisterStudentForm.html.twig', ['baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>null]); 
+                $template = $this->render('EduflatsBundle:Login:RegisterStudentForm.html.twig', array('baseLayout'=>  "::".Util::$currentId."base.html.twig", 'form'=>null)); 
                 break;
             }
             return $template;
@@ -151,14 +151,14 @@ class AuthorizationController extends Controller{
         $em = $this->getDoctrine()->getManager();
         $tag = new Tag();
         $form = $this->createForm(new TagType(), $tag);
-        $form->add('submit', 'submit', ['label'=>'Create Tag']);
+        $form->add('submit', 'submit', array('label'=>'Create Tag'));
         $form->handleRequest($request);
         if($form->isValid()){
             $tag->setUniversity($this->getUniversityObj());
             $em->persist($tag);
             $em->flush();
         }
-        return ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"];
+        return array('form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig");
     }
     
     /**
@@ -170,14 +170,14 @@ class AuthorizationController extends Controller{
         $em = $this->getDoctrine()->getManager();
         $badge = new Badge();
         $form = $this->createForm(new BadgeType(), $badge);
-        $form->add('submit', 'submit', ['label'=>'Create Badge']);
+        $form->add('submit', 'submit', array('label'=>'Create Badge'));
         $form->handleRequest($request);
         if($form->isValid()){
             $badge->setUniversity($this->getUniversityObj());
             $em->persist($badge);
             $em->flush();
         }
-        return ['form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig"];
+        return array('form'=>$form->createView(), 'baseLayout'=>  "::".Util::$currentId."base.html.twig");
     }
     
     

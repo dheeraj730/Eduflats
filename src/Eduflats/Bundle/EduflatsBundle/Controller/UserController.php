@@ -25,7 +25,7 @@ class UserController extends Controller {
     public function registerStudentAction(Request $request) {
         $em = $this->getDoctrine()->getEntityManager();
         $student = new User();
-        $form = $this->createForm(new StudentType($student), $student,['vitalInfo'=>true, 'location'=>false]);
+        $form = $this->createForm(new StudentType($student), $student,array('vitalInfo'=>true, 'location'=>false));
         
         $form->handleRequest($request);
         
@@ -48,7 +48,7 @@ class UserController extends Controller {
             $em->flush();
         }
         
-        return ['form'=>$form->createView()];
+        return array('form'=>$form->createView());
     }
 
     /**
@@ -60,7 +60,7 @@ class UserController extends Controller {
     public function registerProviderAction(Request $request) {
         $em = $this->getDoctrine()->getEntityManager();
         $provider = new User();
-        $form = $this->createForm(new UserType($provider), $provider, ['vitalInfo'=>true, 'location'=>true]);
+        $form = $this->createForm(new UserType($provider), $provider, array('vitalInfo'=>true, 'location'=>true));
         
         $form->handleRequest($request);
         
@@ -74,7 +74,7 @@ class UserController extends Controller {
             $em->flush();
         }
          
-        return ['form'=>$form->createView()];
+        return array('form'=>$form->createView());
     }
 
     /**
@@ -86,7 +86,7 @@ class UserController extends Controller {
     public function registerAdminAction(Request $request) {
         $em = $this->getDoctrine()->getEntityManager();
         $admin = new User();
-        $form = $this->createForm(new UserType($admin), $admin, ['vitalInfo'=>false, 'location'=>false]);
+        $form = $this->createForm(new UserType($admin), $admin, array('vitalInfo'=>false, 'location'=>false));
         
         $form->handleRequest($request);
         if($form->isValid()){
@@ -99,7 +99,7 @@ class UserController extends Controller {
             $em->flush();
         }
          
-        return ['form'=>$form->createView()];
+        return array('form'=>$form->createView());
     }
 
 }

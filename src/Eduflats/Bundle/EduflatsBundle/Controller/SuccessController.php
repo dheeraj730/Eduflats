@@ -15,7 +15,7 @@ class SuccessController extends Controller {
      */
     public function successAction(){
         
-        return[];
+        return array();
     }
 
 }

@@ -28,7 +28,7 @@ class AdminType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Eduflats\Bundle\EduflatsBundle\Entity\Client',
-            'validation_groups'=>['admin']   
+            'validation_groups'=>array('admin')
         ));
     }
 
