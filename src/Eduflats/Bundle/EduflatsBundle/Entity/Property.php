@@ -22,10 +22,10 @@ class Property
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="property")
+     * @ORM\ManyToOne(targetEntity="Client", inversedBy="property")
      * @ORM\JoinColumn(name="eduflats_user_id", referencedColumnName="id")
      */
-    protected $user;
+    protected $client;
 
     /**
      * @ORM\ManyToOne(targetEntity="University", inversedBy="property")

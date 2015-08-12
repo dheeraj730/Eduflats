@@ -1,17 +1,14 @@
 <?php
-
 namespace Eduflats\Bundle\EduflatsBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use FOS\UserBundle\Model\User as BaseUser;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Client
+ * User
  *
- * @ORM\Table(name="client") 
- * @UniqueEntity(fields="email",message ="client.email.not_unique")
+ * @ORM\Table(name="client")
  * @ORM\Entity(repositoryClass="Eduflats\Bundle\EduflatsBundle\Entity\ClientRepository")
  */
 class Client extends BaseUser {
@@ -26,174 +23,185 @@ class Client extends BaseUser {
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="University", inversedBy="client")
-     * @ORM\JoinColumn(name="university_id", referencedColumnName="id" )
+     * @ORM\OneToMany(targetEntity="Property", mappedBy="client")
+     */
+    protected $porperty;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="user")
+     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
      */
     protected $university;
 
     /**
-     * @var string
-     * @Assert\NotBlank()
+     * @var type integer
+     * holds index of list of porperties that are shortlisted by user
+     * @ORM\Column(name="shortlist", type="integer", nullable=true)
+     */
+    protected $nShortlist;
+
+    /**
      * @Assert\Length(
-     *                 min = 3,
-     *                 max = 15,
-     *                 minMessage = "User Name field must contain atleast 3 characters",
-     *                 maxMessage = "User Name field cannot contain more than 15 characters"
-     *              )
-     * @Assert\Type(type="alnum", message="User Name can contain only alphabets and numbers")
+     *                  min=3,
+     *                  max=35,
+     *                  minMessage= "min 3 characters limit",
+     *                  maxMessage = "name Cannot contain more than 35 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
+     * @var type string
+     * firstname of user
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      */
-    protected $username;
+    protected $tFirstName;
 
     /**
-     * @Assert\NotBlank( message = "client.password.not_blank")
-     * @Assert\Length(min=4,minMessage="client.password.min_length")
+     * @Assert\Length(
+     *                  min=3,
+     *                  max=35,
+     *                  minMessage= "min 3 characters limit",
+     *                  maxMessage = "name Cannot contain more than 35 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
+     * @var type string
+     * lastname of user
+     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
      */
-    protected $plainPassword;
+    protected $tLastName;
 
     /**
-     * @var string
-     * 
-     * @Assert\NotBlank()
-     * @Assert\Email
-     */
-    protected $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="firstname", type="string", length=255)
-     * @Assert\NotBlank()
      * @Assert\Length(
      *                  min=3,
      *                  max=15,
-     *                  minMessage= "First Name Field should contains at least 3 characters",
-     *                  maxMessage = "First Name Field Cannot contain more than 15 characters"
+     *                  minMessage= "min 3 characters limit",
+     *                  maxMessage = "phone number Cannot contain more than 15 characters"
      *               )
-     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="First name can only contain letters")
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
+     * @var type string
+     * optional phone number
+     * @ORM\Column(name="phonenumber", type="string", length=255, nullable=true)
      */
-    protected $firstname;
+    protected $tPhoneNumber;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="lastname", type="string", length=255)
-     * @Assert\NotBlank()
      * @Assert\Length(
-     *                  min = 3,
-     *                  max = 15,
-     *                  minMessage = "Last Name field must contain atleast 3 characters",
-     *                  maxMessage = "Last Name Field Cannot contain more than 15 characters"
-     *              )
-     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false, message = "Last Name field can only contain letters")
+     *                  min=3,
+     *                  max=15,
+     *                  minMessage= "min 3 characters limit",
+     *                  maxMessage = "phone number Cannot contain more than 15 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
+     * @var type string
+     * optional landline number
+     * @ORM\Column(name="landline", type="string", length=255, nullable=true)
      */
-    protected $lastname;
+    protected $tLandline;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="organization", type="string", length=255, nullable=true)
      * @Assert\Length(
-     *                  min = 0,
-     *                  max = 255,
-     *                  maxMessage = "Organization name can be maximum 255 characters"
-     *              )
+     *                  min=3,
+     *                  max=35,
+     *                  minMessage= "title should be more descriptive",
+     *                  maxMessage = "title Cannot contain more than 35 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
+     * @var type string
+     * address title of user
+     * @ORM\Column(name="addresstitle", type="string", length=255, nullable=true)
      */
-    protected $organization;
-    
+    protected $tAddressTitle;
+
     /**
-     * @var date
+     * @Assert\Length(
+     *                  min=3,
+     *                  max=100,
+     *                  minMessage= "Address should be more descriptive",
+     *                  maxMessage = "address Cannot contain more than 100 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
+     * @var type string
+     * address 
+     * @ORM\Column(name="addressline1", type="string", length=255, nullable=true)
+     */
+    protected $tAddressLine1;
+
+    /**
+     * @Assert\Length(
+     *                  min=3,
+     *                  max=100,
+     *                  minMessage= "Address should be more descriptive",
+     *                  maxMessage = "address Cannot contain more than 100 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
+     * @var type string
+     * address 
+     * @ORM\Column(name="addressline2", type="string", length=255, nullable=true)
+     */
+    protected $tAddressLine2;
+
+    /**
+     * @Assert\Length(
+     *                  min=3,
+     *                  max=20,
+     *                  minMessage= "needs a Min of 3 characters",
+     *                  maxMessage = "ciy name Cannot contain more than 20 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Title can only contain letters")
+     * @var type string
+     * city of location
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     */
+    protected $tCity;
+
+    /**
+     * @Assert\Length(
+     *                  min=3,
+     *                  max=20,
+     *                  minMessage= "needs a Min of 3 characters",
+     *                  maxMessage = "province name Cannot contain more than 20 characters"
+     *               )
+     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Title can only contain letters")
+     * @var type string
+     * @ORM\Column(name="province", type="string", length=255, nullable=true)
+     */
+    protected $tProvince;
+
+    /**
      * 
-     * @ORM\Column(name="joiningdate", type="date", nullable=true)
-     * @Assert\Date()
+     * @var type string
+     * @ORM\Column(name="zip", type="string", length=255, nullable=true)
      */
-    protected $joiningdate;
+    protected $tZipCode;
 
     /**
-     * @var date
-     * 
-     * @ORM\Column(name="exitdate", type="date", nullable=true)
-     * @Assert\Date()
+     * @var type integer
+     * @ORM\Column(name="country", type="integer", length=9, nullable=true)
      */
-    protected $exitdate;
+    protected $nCountry;
 
     /**
-     * @var text
-     * 
-     * @ORM\Column(name="mobile", type="string", length=18, nullable=true)
-     *  
+     * @var type date
+     * user creation date and time
+     * @ORM\Column(name="createdat", type="datetime", nullable=true)
      */
-    protected $mobile;
+    protected $dCreatedAt;
 
     /**
-     * @var text
-     * 
-     * @ORM\Column(name="landline", type="string", length=18, nullable=true)
-     *  
+     * @var type date
+     * user details updated date and time
+     * @ORM\Column(name="updatedat", type="datetime", nullable=true)
      */
-    protected $landline;
+    protected $dUpdatedAt;
 
     /**
-     * @ORM\Column(type="string", name="addressname", length=100,nullable=true)
-     * @Assert\NotBlank(message="field.not_blank")
-     * @Assert\Length(max=60,maxMessage="client.addressname.max_length")
+     * @var type date
+     * date of user account deletion
+     * @ORM\Column(name="exitdate", type="datetime", nullable=true)
      */
-    protected $addressname;
+    protected $dExitDate;
 
-    /**
-     * @ORM\Column(type="string", name="addressline1", length=250,nullable=true)
-     * @Assert\NotBlank(message="field.not_blank")
-     * @Assert\Length(max=240,maxMessage="client.addressline.max_length")
-     */
-    protected $addressline1;
-
-    /**
-     * @ORM\Column(type="string", name="addressline2", length=250,nullable=true)
-     * @Assert\Length(max=240,maxMessage="client.addressline.max_length")
-     * 
-     */
-    protected $addressline2;
-
-    /**
-     * @ORM\Column(type="string", name="addresscity", length=100,nullable=true)
-     * @Assert\NotBlank(message="field.not_blank")
-     * @Assert\Length(max=100,maxMessage="client.addresscity.max_length")
-     */
-    protected $addresscity;
-
-    /**
-     * @ORM\Column(type="string", name="addressprovince", length=80,nullable=true)
-     * @Assert\Length(max=78,maxMessage="client.addressprovince.max_length")
-     */
-    protected $addressprovince;
-
-    /**
-     * @ORM\Column(type="string", name="addresszipcode", length=20,nullable=true)
-     * @Assert\NotBlank(message="field.not_blank")
-     * @Assert\Length(max=20,maxMessage="client.addresszip.max_length")
-     */
-    protected $addresszipcode;
-
-    /**
-     * @ORM\Column(type="integer", name="addresscountry" , length=9, nullable=true)
-     * @Assert\NotBlank(message="field.not_blank")
-     */
-    protected $addresscountry;
-
-    /**
-     * @ORM\Column(type="datetime", name="createdon",nullable=true)
-     */
-    protected $createdon;
-
-    /**
-     * @ORM\Column(type="datetime", name="modifiedon",nullable=true)
-     */
-    protected $modifiedon;
-
-    /**
-     * Constructor method
-     */
     public function __construct() {
         parent::__construct();
+        $this->porperty = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -206,256 +214,371 @@ class Client extends BaseUser {
     }
 
     /**
-     * Set universtity
+     * Add porperty
      *
-     * @param string $university
-     * @return Client
+     * @param Property $porperty
+     * @return User
      */
-    public function setUniversity(\Eduflats\Bundle\EduflatsBundle\Entity\University $university) {
+    public function addPorperty(Property $porperty) {
+        $this->porperty[] = $porperty;
+
+        return $this;
+    }
+
+    /**
+     * Remove porperty
+     *
+     * @param Property $porperty
+     */
+    public function removePorperty(Property $porperty) {
+        $this->porperty->removeElement($porperty);
+    }
+
+    /**
+     * Get porperty
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPorperty() {
+        return $this->porperty;
+    }
+
+    /**
+     * Set university
+     *
+     * @param University $university
+     * @return User
+     */
+    public function setUniversity(University $university = null) {
         $this->university = $university;
 
         return $this;
     }
 
     /**
-     * Get universtity
+     * Get university
      *
-     * @return string 
+     * @return University 
      */
     public function getUniversity() {
         return $this->university;
     }
-
+    
     /**
-     * Set username
+     * Set nShortlist
      *
-     * @param string $username
-     * @return Client
+     * @param integer $nShortlist
+     * @return User
      */
-    public function setUsername($username) {
-        $this->username = $username;
+    public function setNShortlist($nShortlist)
+    {
+        $this->nShortlist = $nShortlist;
 
         return $this;
     }
 
     /**
-     * Get username
+     * Get nShortlist
+     *
+     * @return integer 
+     */
+    public function getNShortlist()
+    {
+        return $this->nShortlist;
+    }
+    
+    /**
+     * Set tFirstName
+     *
+     * @param string $tFirstName
+     * @return User
+     */
+    public function setTFirstName($tFirstName) {
+        $this->tFirstName = $tFirstName;
+
+        return $this;
+    }
+
+    /**
+     * Get tFirstName
      *
      * @return string 
      */
-    public function getUsername() {
-        return $this->username;
+    public function getTFirstName() {
+        return $this->tFirstName;
     }
 
     /**
-     * Set email
+     * Set tLastName
      *
-     * @param string $email
-     * @return Client
+     * @param string $tLastName
+     * @return User
      */
-    public function setEmail($email) {
-        $this->email = $email;
+    public function setTLastName($tLastName) {
+        $this->tLastName = $tLastName;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get tLastName
      *
      * @return string 
      */
-    public function getEmail() {
-        return $this->email;
+    public function getTLastName() {
+        return $this->tLastName;
     }
 
     /**
-     * Set firstname
+     * Set tPhoneNumber
      *
-     * @param string $firstname
-     * @return Client
+     * @param string $tPhoneNumber
+     * @return User
      */
-    public function setFirstname($firstname) {
-        $this->firstname = $firstname;
+    public function setTPhoneNumber($tPhoneNumber) {
+        $this->tPhoneNumber = $tPhoneNumber;
 
         return $this;
     }
 
     /**
-     * Get firstname
+     * Get tPhoneNumber
      *
      * @return string 
      */
-    public function getFirstname() {
-        return $this->firstname;
+    public function getTPhoneNumber() {
+        return $this->tPhoneNumber;
     }
 
     /**
-     * Set lastname
+     * Set tLandline
      *
-     * @param string $lastname
-     * @return Client
+     * @param string $tLandline
+     * @return User
      */
-    public function setLastname($lastname) {
-        $this->lastname = $lastname;
+    public function setTLandline($tLandline) {
+        $this->tLandline = $tLandline;
 
         return $this;
     }
 
     /**
-     * Get lastname
+     * Get tLandline
      *
      * @return string 
      */
-    public function getLastname() {
-        return $this->lastname;
+    public function getTLandline() {
+        return $this->tLandline;
     }
 
     /**
-     * Set enabled
+     * Set tAddressTitle
      *
-     * @param boolean $enabled
-     * @return Client
+     * @param string $tAddressTitle
+     * @return User
      */
-    public function setEnabled($enabled) {
-        $this->enabled = $enabled;
+    public function setTAddressTitle($tAddressTitle) {
+        $this->tAddressTitle = $tAddressTitle;
 
         return $this;
     }
 
-    public function getOrganization() {
-        return $this->organization;
+    /**
+     * Get tAddressTitle
+     *
+     * @return string 
+     */
+    public function getTAddressTitle() {
+        return $this->tAddressTitle;
     }
 
-    public function setOrganization($organization) {
-        $this->organization = $organization;
+    /**
+     * Set tAddressLine1
+     *
+     * @param string $tAddressLine1
+     * @return User
+     */
+    public function setTAddressLine1($tAddressLine1) {
+        $this->tAddressLine1 = $tAddressLine1;
+
+        return $this;
     }
 
-    public function getNotify() {
-        return $this->notify;
+    /**
+     * Get tAddressLine1
+     *
+     * @return string 
+     */
+    public function getTAddressLine1() {
+        return $this->tAddressLine1;
     }
 
-    public function getDisplaycontact() {
-        return $this->displaycontact;
+    /**
+     * Set tAddressLine2
+     *
+     * @param string $tAddressLine2
+     * @return User
+     */
+    public function setTAddressLine2($tAddressLine2) {
+        $this->tAddressLine2 = $tAddressLine2;
+
+        return $this;
     }
 
-    public function getJoiningdate() {
-        return $this->joiningdate;
+    /**
+     * Get tAddressLine2
+     *
+     * @return string 
+     */
+    public function getTAddressLine2() {
+        return $this->tAddressLine2;
     }
 
-    public function getExitdate() {
-        return $this->exitdate;
+    /**
+     * Set tCity
+     *
+     * @param string $tCity
+     * @return User
+     */
+    public function setTCity($tCity) {
+        $this->tCity = $tCity;
+
+        return $this;
     }
 
-    public function getMobile() {
-        return $this->mobile;
+    /**
+     * Get tCity
+     *
+     * @return string 
+     */
+    public function getTCity() {
+        return $this->tCity;
     }
 
-    public function getLandline() {
-        return $this->landline;
+    /**
+     * Set tProvince
+     *
+     * @param string $tProvince
+     * @return User
+     */
+    public function setTProvince($tProvince) {
+        $this->tProvince = $tProvince;
+
+        return $this;
     }
 
-    public function getAddressname() {
-        return $this->addressname;
+    /**
+     * Get tProvince
+     *
+     * @return string 
+     */
+    public function getTProvince() {
+        return $this->tProvince;
     }
 
-    public function getAddressline1() {
-        return $this->addressline1;
+    /**
+     * Set tZipCode
+     *
+     * @param string $tZipCode
+     * @return User
+     */
+    public function setTZipCode($tZipCode) {
+        $this->tZipCode = $tZipCode;
+
+        return $this;
     }
 
-    public function getAddressline2() {
-        return $this->addressline2;
+    /**
+     * Get tZipCode
+     *
+     * @return string 
+     */
+    public function getTZipCode() {
+        return $this->tZipCode;
     }
 
-    public function getAddresscity() {
-        return $this->addresscity;
+    /**
+     * Set nCountry
+     *
+     * @param integer $nCountry
+     * @return User
+     */
+    public function setNCountry($nCountry) {
+        $this->nCountry = $nCountry;
+
+        return $this;
     }
 
-    public function getAddressprovince() {
-        return $this->addressprovince;
+    /**
+     * Get nCountry
+     *
+     * @return integer 
+     */
+    public function getNCountry() {
+        return $this->nCountry;
     }
 
-    public function getAddresszipcode() {
-        return $this->addresszipcode;
+    /**
+     * Set dCreatedAt
+     *
+     * @param \DateTime $dCreatedAt
+     * @return User
+     */
+    public function setDCreatedAt($dCreatedAt) {
+        $this->dCreatedAt = $dCreatedAt;
+
+        return $this;
     }
 
-    public function getAddresscountry() {
-        return $this->addresscountry;
+    /**
+     * Get dCreatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDCreatedAt() {
+        return $this->dCreatedAt;
     }
 
-    public function setNotify($notify) {
-        $this->notify = $notify;
+    /**
+     * Set dUpdatedAt
+     *
+     * @param \DateTime $dUpdatedAt
+     * @return User
+     */
+    public function setDUpdatedAt($dUpdatedAt) {
+        $this->dUpdatedAt = $dUpdatedAt;
+
+        return $this;
     }
 
-    public function setDisplaycontact($displaycontact) {
-        $this->displaycontact = $displaycontact;
+    /**
+     * Get dUpdatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDUpdatedAt() {
+        return $this->dUpdatedAt;
     }
 
-    public function setJoiningdate(date $joiningdate) {
-        $this->joiningdate = $joiningdate;
+    /**
+     * Set dExitDate
+     *
+     * @param \DateTime $dExitDate
+     * @return User
+     */
+    public function setDExitDate($dExitDate) {
+        $this->dExitDate = $dExitDate;
+
+        return $this;
     }
 
-    public function setExitdate(date $exitdate) {
-        $this->exitdate = $exitdate;
-    }
-
-    public function setMobile(text $mobile) {
-        $this->mobile = $mobile;
-    }
-
-    public function setLandline(text $landline) {
-        $this->landline = $landline;
-    }
-
-    public function setAddressname($addressname) {
-        $this->addressname = $addressname;
-    }
-
-    public function setAddressline1($addressline1) {
-        $this->addressline1 = $addressline1;
-    }
-
-    public function setAddressline2($addressline2) {
-        $this->addressline2 = $addressline2;
-    }
-
-    public function setAddresscity($addresscity) {
-        $this->addresscity = $addresscity;
-    }
-
-    public function setAddressprovince($addressprovince) {
-        $this->addressprovince = $addressprovince;
-    }
-
-    public function setAddresszipcode($addresszipcode) {
-        $this->addresszipcode = $addresszipcode;
-    }
-
-    public function setAddresscountry($addresscountry) {
-        $this->addresscountry = $addresscountry;
-    }
-
-    public function getPlainPassword() {
-        return $this->plainPassword;
-    }
-
-    public function getCreatedon() {
-        return $this->createdon;
-    }
-
-    public function getModifiedon() {
-        return $this->modifiedon;
-    }
-
-    public function setPlainPassword($plainPassword) {
-        $this->plainPassword = $plainPassword;
-    }
-
-    public function setCreatedon($createdon) {
-        $this->createdon = $createdon;
-    }
-
-    public function setModifiedon($modifiedon) {
-        $this->modifiedon = $modifiedon;
+    /**
+     * Get dExitDate
+     *
+     * @return \DateTime 
+     */
+    public function getDExitDate() {
+        return $this->dExitDate;
     }
 
 }

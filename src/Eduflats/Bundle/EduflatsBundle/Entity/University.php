@@ -26,9 +26,9 @@ class University
     protected $campus;
     
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="university")
+     * @ORM\OneToMany(targetEntity="Client", mappedBy="university")
      */
-    protected $user;
+    protected $client;
     
     /**
      * @ORM\OneToMany(targetEntity="Property", mappedBy="university")
