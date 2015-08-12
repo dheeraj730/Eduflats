@@ -36,12 +36,12 @@ class University
     protected $property;
     
     /**
-     * @ORM\OneToOne(targetEntity="ListingsConfiguration", mappedBy="university")
+     * @ORM\OneToOne(targetEntity="ListingSetting", mappedBy="university")
      */
     protected $listingConfiguration;
     
     /**
-     * @ORM\OneToOne(targetEntity="WebsiteSettings", mappedBy="university")
+     * @ORM\OneToOne(targetEntity="WebsiteSetting", mappedBy="university")
      */
     protected $websiteSettings;
 

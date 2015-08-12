@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class ListingsConfiguration
+class ListingSetting
 {
     /**
      * @var integer
