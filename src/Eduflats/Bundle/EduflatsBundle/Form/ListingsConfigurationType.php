@@ -6,9 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Eduflats\Bundle\EduflatsBundle\Form\ListingsConfigurationType;
-
-class UniversityType extends AbstractType
+class ListingsConfigurationType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -17,9 +15,10 @@ class UniversityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tUniversityName', 'text', ['label'=>'University Name'])
-            ->add('tSubdomainName', 'text', ['label'=>'Subdomain Name'])
-            ->add('submit', 'submit', ['label'=>'Next']);
+            ->add('nAdvertisePeriod','text', ['label'=>'Advertise Period '])
+            ->add('bEnableBadges','radio',  ['label'=>'Enable Badges'])
+            ->add('bEnableStarRatings','radio', ['label'=>'Enable Star Ratings'])
+            ->add('submit', 'submit', ['label'=>'Next'])
         ;
     }
     
@@ -29,7 +28,7 @@ class UniversityType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Eduflats\Bundle\EduflatsBundle\Entity\University'
+            'data_class' => 'Eduflats\Bundle\EduflatsBundle\Entity\ListingsConfiguration'
         ));
     }
 
@@ -38,6 +37,6 @@ class UniversityType extends AbstractType
      */
     public function getName()
     {
-        return 'eduflats_bundle_eduflatsbundle_university';
+        return 'eduflats_bundle_eduflatsbundle_listingsconfiguration';
     }
 }

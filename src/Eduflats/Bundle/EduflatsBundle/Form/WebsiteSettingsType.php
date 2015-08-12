@@ -6,9 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Eduflats\Bundle\EduflatsBundle\Form\ListingsConfigurationType;
-
-class UniversityType extends AbstractType
+class WebsiteSettingsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -17,9 +15,12 @@ class UniversityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tUniversityName', 'text', ['label'=>'University Name'])
-            ->add('tSubdomainName', 'text', ['label'=>'Subdomain Name'])
-            ->add('submit', 'submit', ['label'=>'Next']);
+            ->add('tLogo', 'text', ['label'=>'Logo URL'])
+            ->add('tWebsiteName', 'text', ['label'=>'Website Name'])
+            ->add('tTagLine', 'text', ['label'=>'Tag Line'])
+            ->add('tBackgroundColor', 'text', ['label'=>'Background Color'])
+            ->add('tFontColor', 'text', ['label'=>'Font Color'])
+            ->add('submit', 'submit', ['label'=>'Finish'])
         ;
     }
     
@@ -29,7 +30,7 @@ class UniversityType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Eduflats\Bundle\EduflatsBundle\Entity\University'
+            'data_class' => 'Eduflats\Bundle\EduflatsBundle\Entity\WebsiteSettings'
         ));
     }
 
@@ -38,6 +39,6 @@ class UniversityType extends AbstractType
      */
     public function getName()
     {
-        return 'eduflats_bundle_eduflatsbundle_university';
+        return 'eduflats_bundle_eduflatsbundle_websitesettings';
     }
 }

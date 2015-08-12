@@ -1,101 +1,73 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta name="keywords" content="Student Accommodation, university accommodation, search property listing, post property listing " />
-        <meta name="description" content="Student accommodation service with property providers" />
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <title>{% block title %}Student Accommodation{% endblock %}</title>
-        {% block stylesheets %}
-            <link href="{{ asset('bundles/eduflats/style.css') }}" rel="stylesheet" type="text/css" media="screen" />
-            <style>
-                input{
-                    width: 180px;
-                }
-                input[type="checkbox"]{
-                    width: inherit;
-                }
-            </style>
-        {% endblock %}
+        <meta charset="UTF-8" />
+        <title> {% block title %}EduFlats{% endblock %} </title>
+        {% block stylesheets %}    {% endblock %}
+        <style>
+            body{
+                min-width: 960px;
+            }
+            li{
+                display:inline;
+                padding: 10px;
+                border:solid #5eb5e0 1px; 
+                border-bottom:solid transparent 1px; 
+            }
+            ul{
+                min-width: 960px;
+            }
+            li:hover{
+               border:solid #5eb5e0 1px; 
+            }
+            
+        </style>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     </head>
     <body>
-        {% block body %}
-            <div id="wrapper">
-                <div id="header-wrapper">
-                    <div id="header">
-                        <div id="logo">
-                            <h1><a href="#">Epita University</a></h1>
-                            <p> design by <a href="">Company name</a></p>
-                        </div>
-                        <div id="menu">
-                            <ul>
-                                <li class="current_page_item"><a href="#">Home</a></li>
-                                <li><a href="#">Search</a></li>
-                                <li><a href="#">Campuses</a></li>
-                                <li><a href="#">Add Listings</a></li>
-                                <li><a href="#">Admin pannel</a></li>  <!--show dynamicly-->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- end #header -->
-                <div id="page">
-                    <div id="page-bgtop">
-                        <div id="page-bgbtm">
-                            <div id="content">
-                                {% block form %}{% endblock %}
-                               <!--<div class="post">
-                                    <h2 class="title"><a href="#">Making student accommodation easier</a></h2>
-                                    <p class="meta">
-                                        <span class="date">Last Updated: July 08, 2015</span>
-                                        <span class="posted">Posted by <a href="#">Someone</a></span>
-                                    </p>
-                                    <div style="clear: both;">&nbsp;</div>
-                                    <div class="entry">
-                                        <p>StudyStays will help students find a home quickly and easily. You can put providers in charge of their own listings. Admin tools allow you to manage the system to make sure everything runs smoothly.</p>
-                                        <p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="b0x w">Comments</a></p>
-                                    </div>
-                                </div>-->
-                                <div style="clear: both;">&nbsp;</div>
-                            </div>
-                            <!-- end #content -->
-                            <div id="sidebar">
-                                <ul>
-                                    <li>
-                                        <div id="search" >
-                                        {%block search%}
-                                            <div style="border:solid gray 2px; padding:15px; border-radius: 5px;">
-                                                <h3 style="color:black; margin-bottom: 10px; text-align: center">Registration</h3>
-                                                <a href="{{ path('registerUser', {'userType': 'provider'}) }}"><div style="border:solid black 1px; display:inline-block; width:250px; text-align: center; background: #B55100">Register As Provider</div></a><br/><br/>
-                                                <a href="{{ path('registerUser', {'userType': 'student'}) }}"><div style="border:solid black 1px; display:inline-block; width:250px; text-align: center; background: #B55100">Register As Student</div></a>
-                                            </div></br>
-                                            <div style="border:solid gray 2px; padding:15px; border-radius: 5px;">
-                                                <h3 style="color:black; margin-bottom: 10px; text-align: center">Property Type</h3>
-                                                <a href="{{ path('provider', {'propertyType': 'rental'}) }}"><div style="border:solid black 1px; display:inline-block; width:250px; text-align: center; background: #B55100">Rental Rooms</div></a><br/><br/>
-                                                <a href="{{ path('provider', {'propertyType': 'sharedRoom'}) }}"><div style="border:solid black 1px; display:inline-block; width:250px; text-align: center; background: #B55100">Shared Rooms</div></a>
-                                            </div></br>
-                                        {% endblock %}
-                                    </div>
-                                    <div style="clear: both;">&nbsp;</div>
-                                </li></br></br></br>
-                                <li>
-                                    <h2></h2>
-                                    <p></p>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- end #sidebar -->
-                        <div style="clear: both;">&nbsp;</div>
-                    </div>
-                </div>
+        
+        <div class="container">
+            
+            <div class="well">
+                <h1>Epita University</h1>
+                <p>Design by <a href="">EduFlats</a></p> 
             </div>
-            <!-- end #page -->
-        </div>
-        {#<div id="footer">
-            <p>Copyright (c) 2015 Sitename.com. All rights reserved. Design by <a href="">Company Name</a>.</p>
-        </div>
-        <!-- end #footer -->
-        <div align=center>This Website created By <a href=''>Company Name</a></div>#}
-    {% endblock %}
-{% block javascripts %}{% endblock %}
-</body>
+            
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Menu</h2>
+                    <ul>
+                        <li ><a href="{{ path('registerUniversity') }}">Register University</a></li>
+                        <li ><a href="{{ path('registerUniversity') }}">Register Campus</a></li>
+                        <li ><a href="{{ path('registerUniversity') }}">Register Property</a></li>
+                        <li ><a href="{{ path('registerUniversity') }}">Register User</a></li>
+                        <li ><a href="{{ path('registerUniversity') }}">Register Badges</a></li>  
+                        <li ><a href="{{ path('registerUniversity') }}">Register Tags</a></li>  
+                        <li ><a href="{{ path('registerUniversity') }}">Listings Configurations</a></li>  
+                        <li ><a href="{{ path('registerUniversity') }}">Website Settings</a></li>  
+                    </ul>
+                    <hr/>
+                </div>
+            </div
+            
+        </div><!--end of container-->
+
+        
+
+        {% block body %} {% endblock %}
+        
+        {% block form %} {% endblock %}
+        
+        {%block search%} {% endblock %}
+
+        {% block javascripts %}{% endblock %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+            
+    </body>
 </html>

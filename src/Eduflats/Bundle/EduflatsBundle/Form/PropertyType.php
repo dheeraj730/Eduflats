@@ -15,21 +15,38 @@ class PropertyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('address','textarea', ['label'=>'Address'])
-            ->add('postalcode','integer', ['label'=>'Postal Code'])
-            ->add('rent','integer', ['label'=>'Rent per month'])
-            ->add('leaseperiod','integer', ['label'=>'Lease Period'])
-            ->add('utilities', 'choice', ['choices'=>[1=>'Internet Connection', 2=>'Serves Food']])
-            ->add('bedrooms','integer', ['label'=>'Bedrooms available'])
-            ->add('bathrooms','integer', ['label'=>'Bathrooms available'])
-            ->add('additionaldetails', 'textarea', ['label'=>'Some additional Details'])
+            ->add('tPropertyDescription', 'text', ['label'=> 'Property Description'])
+            ->add('nPropertyType','choice', ['choices'=>[],'label'=>'Property Type'])
+            ->add('nAvailabilityStatus','choice', ['choices'=>[],'label'=>'Availability Status'])
+            ->add('dAvailableFrom','date', ['label'=>'Available from'])
+            ->add('nMonthsOfOccupancy', 'integer', ['label'=> 'Months Of Occupancy'])
+            ->add('nBedroom', 'integer', ['label'=> 'Number of Bedrooms'])
+            ->add('nBathroom', 'integer', ['label'=> 'Number of Bathrooms'])
+            ->add('nTotalFloors', 'integer', ['label'=> 'Total Floors'])
+            ->add('nFloorNumber', 'integer', ['label'=> 'Floor Number'])
+            ->add('nFurnishedStatus','choice', ['choices'=>[],'label'=>'Furnishing Status'])
+            ->add('nBeds', 'integer', ['label'=> 'Number of Beds'])
+            ->add('nMaximumOccupants', 'integer', ['label'=> 'Maximum Occupants'])
+            ->add('nPrice', 'integer', ['label'=> 'Price'])
+            ->add('nMaintainanceCharge', 'integer', ['label'=> 'Maintainance Charge'])
+            ->add('bBrokersResponse', 'radio', ['label'=>'Brokerage Response'])
+            ->add('nSQFTcovered', 'integer', ['label'=> 'Square Feet Covered'])
+            ->add('bDisplayContactDetails', 'radio', ['label'=>'Display Contact Details'])
+            ->add('tAddressTitle', 'text', ['label'=> 'Address itle'])
+            ->add('tAddressLine1', 'textarea', ['label'=> 'Address Line 1'])
+            ->add('tAddressLine2', 'textarea', ['label'=> 'Address Line 2'])
+            ->add('tCity', 'text', ['label'=> 'City'])
+            ->add('tProvince', 'text', ['label'=> 'Province'])
+            ->add('tZipCode', 'integer', ['label'=> 'Zip Code'])
+            ->add('nCountry','choice', ['choices'=>[],'label'=>'Availability Status'])
             ->add('tag', 'entity', array(
                     'class' => 'EduflatsBundle:Tag',
                     'property' => 'name',
                     'multiple' => true,
                     'expanded' => true,
-                    ));
+                    ))
+            ->add('submit', 'submit', ['label'=>'Create Property'])
+        ;
     }
     
     /**
@@ -47,6 +64,6 @@ class PropertyType extends AbstractType
      */
     public function getName()
     {
-        return 'Eduflats_bundle_Eduflatsbundle_property';
+        return 'eduflats_bundle_eduflatsbundle_property';
     }
 }

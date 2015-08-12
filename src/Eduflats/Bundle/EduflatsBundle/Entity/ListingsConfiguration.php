@@ -27,43 +27,37 @@ class ListingsConfiguration
     protected $university;
 
     /**
-     * represents number of days to show the listing (created date untill number of days)
-     * 
      * @var integer
-     *
+     * represents number of days to show the listing (created date untill number of days)
      * @ORM\Column(name="advertiseperiod", type="integer")
      */
     private $nAdvertisePeriod;
 
     /**
-     * shows/hides all badges of a property
-     * 
      * @var boolean
-     *
+     * shows/hides all badges of a property
      * @ORM\Column(name="enablebadges", type="boolean")
      */
     private $bEnableBadges;
 
     /**
-     * shows/hides star ratings of a property
-     * 
      * @var boolean
-     *
+     * shows/hides star ratings of a property
      * @ORM\Column(name="enablestarratings", type="boolean")
      */
     private $bEnableStarRatings;
 
     /**
      * @var \DateTime
-     *
+     * lisitng configuration created on
      * @ORM\Column(name="createdat", type="datetime")
      */
     private $dCreatedAt;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="updatedat", type="datetime")
+     * lisitng configuration updated on
+     * @ORM\Column(name="updatedat", type="datetime", nullable=true)
      */
     private $dUpdatedAt;
 

@@ -29,39 +29,52 @@ class WebsiteSettings
     
     /**
      * @var string
-     *
-     * @ORM\Column(name="logo", type="string", length=255)
+     * Holds url of logo
+     * @ORM\Column(name="logo", type="string", length=255, nullable=false)
      */
     protected $tLogo;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="websitename", type="string", length=255)
+     * Holds title of website
+     * @ORM\Column(name="websitename", type="string", length=255, nullable=false)
      */
     protected $tWebsiteName;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="tagline", type="string", length=255)
+     * holds tagline
+     * @ORM\Column(name="tagline", type="string", length=255, nullable=false)
      */
     protected $tTagLine;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="backgroundcolor", type="string", length=255)
+     * holds hex value or color name of website's background
+     * @ORM\Column(name="backgroundcolor", type="string", length=255, nullable=false)
      */
     protected $tBackgroundColor;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="fontcolor", type="string", length=255)
+     * holds hex value or color name of website's font
+     * @ORM\Column(name="fontcolor", type="string", length=255, nullable=false)
      */
     protected $tFontColor;
 
+     /**
+     * @var \DateTime
+     * lisitng configuration created on
+     * @ORM\Column(name="createdat", type="datetime")
+     */
+    private $dCreatedAt;
+
+    /**
+     * @var \DateTime
+     * lisitng configuration updated on
+     * @ORM\Column(name="updatedat", type="datetime", nullable=true)
+     */
+    private $dUpdatedAt;
 
     /**
      * Get id
@@ -209,5 +222,51 @@ class WebsiteSettings
     public function getUniversity()
     {
         return $this->university;
+    }
+
+    /**
+     * Set dCreatedAt
+     *
+     * @param \DateTime $dCreatedAt
+     * @return WebsiteSettings
+     */
+    public function setDCreatedAt($dCreatedAt)
+    {
+        $this->dCreatedAt = $dCreatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get dCreatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDCreatedAt()
+    {
+        return $this->dCreatedAt;
+    }
+
+    /**
+     * Set dUpdatedAt
+     *
+     * @param \DateTime $dUpdatedAt
+     * @return WebsiteSettings
+     */
+    public function setDUpdatedAt($dUpdatedAt)
+    {
+        $this->dUpdatedAt = $dUpdatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get dUpdatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDUpdatedAt()
+    {
+        return $this->dUpdatedAt;
     }
 }

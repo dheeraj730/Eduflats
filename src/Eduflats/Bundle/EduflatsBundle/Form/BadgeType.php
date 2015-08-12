@@ -16,7 +16,7 @@ class BadgeType extends AbstractType
     {
         $builder
             ->add('name')
-        ;
+            ->add('submit', 'submit', ['label'=>'Create Tag']);
     }
     
     /**

@@ -2,18 +2,15 @@
 namespace Eduflats\Bundle\EduflatsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * University
  *
- * @ORM\Table(name="university")
- * @ORM\Entity(repositoryClass="Eduflats\Bundle\EduflatsBundle\Entity\UniversityRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\Table()
+ * @ORM\Entity
  */
-class University {
-
+class University
+{
     /**
      * @var integer
      *
@@ -24,174 +21,107 @@ class University {
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Client", mappedBy="university")
-     */
-    protected $client;
-
-    /**
      * @ORM\OneToMany(targetEntity="Campus", mappedBy="university")
      */
     protected $campus;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="university")
+     */
+    protected $user;
+    
     /**
      * @ORM\OneToMany(targetEntity="Property", mappedBy="university")
      */
     protected $property;
-
+    
     /**
-     * @ORM\OneToMany(targetEntity="Badge", mappedBy="university")
+     * @ORM\OneToOne(targetEntity="ListingsConfiguration", mappedBy="university")
      */
-    protected $badge;
-
+    protected $listingConfiguration;
+    
     /**
-     * @ORM\OneToMany(targetEntity="Tag", mappedBy="university")
+     * @ORM\OneToOne(targetEntity="WebsiteSettings", mappedBy="university")
      */
-    protected $tag;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=200)
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *                  min=3,
-     *                  max=200,
-     *                  minMessage= "Name Field should contains at least 3 characters",
-     *                  maxMessage = "Name Field Cannot contain more than 35 characters"
-     *               )
-     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
-     */
-    protected $name;
+    protected $websiteSettings;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="subdomain", type="string", length=200)
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *                  min=3,
-     *                  max=15,
-     *                  minMessage= "Subdomains should contains at least 3 characters",
-     *                  maxMessage = "Subdomains Cannot contain more than 30 characters"
-     *               )
-     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="subdomains can only contain letters")
+     * name of university
+     * @ORM\Column(name="universityname", type="string", length=255, nullable=false)
      */
-    protected $subdomain;
+    protected $tUniversityName;
+
+    /**
+     * @var string
+     * subdomain for university
+     * @ORM\Column(name="subdomainname", type="string", length=255, nullable=false)
+     */
+    protected $tSubdomainName;
+
+    /**
+     * @var \DateTime
+     * subdomain and details validity end date
+     * @ORM\Column(name="validity", type="datetime", nullable=false)
+     */
+    protected $dValidity;
 
     /**
      * @var boolean
-     *
-     * @ORM\Column(name="enabled", type="boolean")
+     * indicates if univeristy is blacklisted
+     * @ORM\Column(name="blacklisted", type="boolean", nullable=false)
      */
-    protected $enabled = true;
+    protected $bBlacklisted;
 
     /**
-     * @ORM\Column(type="datetime", name="createdon",nullable=true)
+     * @var \DateTime
+     * Date the subdomain and details were formed
+     * @ORM\Column(name="createdat", type="datetime", nullable=false)
      */
-    protected $createdon;
+    protected $dCreatedAt;
 
     /**
-     * @ORM\Column(type="datetime", name="modifiedon",nullable=true)
+     * @var \DateTime
+     * date the university and other details were created
+     * @ORM\Column(name="updatedat", type="datetime", nullable=true)
      */
-    protected $modifiedon;
+    protected $dUpdatedAt;
 
-    public function __construct() {
-        $this->client = new ArrayCollection();
-        $this->campus = new ArrayCollection();
-        $this->property = new ArrayCollection();
+    /**
+     * @var boolean
+     * true if subdomain and all services are useable
+     * @ORM\Column(name="enabled", type="boolean", nullable=false)
+     */
+    protected $bEnabled;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->campus = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->property = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+    
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
-
-    /**
-     * Set id
-     *
-     * @param string $id
-     * @return id
-     */
-    public function setId($id) {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return University
-     */
-    public function setName($name) {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName() {
-        return $this->name;
-    }
-
-    /**
-     * Set subdomain
-     *
-     * @param string $subdomain
-     * @return University
-     */
-    public function setSubdomain($subdomain) {
-        $this->subdomain = $subdomain;
-
-        return $this;
-    }
-
-    /**
-     * Get subdomain
-     *
-     * @return string 
-     */
-    public function getSubdomain() {
-        return $this->subdomain;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return University
-     */
-    public function setEnabled($enabled) {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled() {
-        return $this->enabled;
-    }
-
+    
     /**
      * Add campus
      *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus
+     * @param Campus $campus
      * @return University
      */
-    public function addCampus(\Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus) {
+    public function addCampus(Campus $campus)
+    {
         $this->campus[] = $campus;
 
         return $this;
@@ -200,9 +130,10 @@ class University {
     /**
      * Remove campus
      *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus
+     * @param Campus $campus
      */
-    public function removeCampus(\Eduflats\Bundle\EduflatsBundle\Entity\Campus $campus) {
+    public function removeCampus(Campus $campus)
+    {
         $this->campus->removeElement($campus);
     }
 
@@ -211,17 +142,215 @@ class University {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCampus() {
+    public function getCampus()
+    {
         return $this->campus;
     }
+    
+    
+    /**
+     * Add user
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\User $user
+     * @return University
+     */
+    public function addUser(\Eduflats\Bundle\EduflatsBundle\Entity\User $user)
+    {
+        $this->user[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\User $user
+     */
+    public function removeUser(\Eduflats\Bundle\EduflatsBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set tUniversityName
+     *
+     * @param string $tUniversityName
+     * @return University
+     */
+    public function setTUniversityName($tUniversityName)
+    {
+        $this->tUniversityName = $tUniversityName;
+
+        return $this;
+    }
+
+    /**
+     * Get tUniversityName
+     *
+     * @return string 
+     */
+    public function getTUniversityName()
+    {
+        return $this->tUniversityName;
+    }
+
+    /**
+     * Set tSubdomainName
+     *
+     * @param string $tSubdomainName
+     * @return University
+     */
+    public function setTSubdomainName($tSubdomainName)
+    {
+        $this->tSubdomainName = $tSubdomainName;
+
+        return $this;
+    }
+
+    /**
+     * Get tSubdomainName
+     *
+     * @return string 
+     */
+    public function getTSubdomainName()
+    {
+        return $this->tSubdomainName;
+    }
+
+    /**
+     * Set dValidity
+     *
+     * @param \DateTime $dValidity
+     * @return University
+     */
+    public function setDValidity($dValidity)
+    {
+        $this->dValidity = $dValidity;
+
+        return $this;
+    }
+
+    /**
+     * Get dValidity
+     *
+     * @return \DateTime 
+     */
+    public function getDValidity()
+    {
+        return $this->dValidity;
+    }
+
+    /**
+     * Set bBlacklisted
+     *
+     * @param boolean $bBlacklisted
+     * @return University
+     */
+    public function setBBlacklisted($bBlacklisted)
+    {
+        $this->bBlacklisted = $bBlacklisted;
+
+        return $this;
+    }
+
+    /**
+     * Get bBlacklisted
+     *
+     * @return boolean 
+     */
+    public function getBBlacklisted()
+    {
+        return $this->bBlacklisted;
+    }
+
+    /**
+     * Set dCreatedAt
+     *
+     * @param \DateTime $dCreatedAt
+     * @return University
+     */
+    public function setDCreatedAt($dCreatedAt)
+    {
+        $this->dCreatedAt = $dCreatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get dCreatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDCreatedAt()
+    {
+        return $this->dCreatedAt;
+    }
+
+    /**
+     * Set dUpdatedAt
+     *
+     * @param \DateTime $dUpdatedAt
+     * @return University
+     */
+    public function setDUpdatedAt($dUpdatedAt)
+    {
+        $this->dUpdatedAt = $dUpdatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get dUpdatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDUpdatedAt()
+    {
+        return $this->dUpdatedAt;
+    }
+
+    /**
+     * Set bEnabled
+     *
+     * @param boolean $bEnabled
+     * @return University
+     */
+    public function setBEnabled($bEnabled)
+    {
+        $this->bEnabled = $bEnabled;
+
+        return $this;
+    }
+
+    /**
+     * Get bEnabled
+     *
+     * @return boolean 
+     */
+    public function getBEnabled()
+    {
+        return $this->bEnabled;
+    }
+
 
     /**
      * Add property
      *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Property $property
+     * @param Property $property
      * @return University
      */
-    public function addProperty(\Eduflats\Bundle\EduflatsBundle\Entity\Property $property) {
+    public function addProperty(Property $property)
+    {
         $this->property[] = $property;
 
         return $this;
@@ -230,9 +359,10 @@ class University {
     /**
      * Remove property
      *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Property $property
+     * @param Property $property
      */
-    public function removeProperty(\Eduflats\Bundle\EduflatsBundle\Entity\Property $property) {
+    public function removeProperty(Property $property)
+    {
         $this->property->removeElement($property);
     }
 
@@ -241,113 +371,54 @@ class University {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getProperty() {
+    public function getProperty()
+    {
         return $this->property;
     }
 
     /**
-     * Add badge
+     * Set websiteSettings
      *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Badge $badge
+     * @param WebsiteSettings $websiteSettings
      * @return University
      */
-    public function addBadge(\Eduflats\Bundle\EduflatsBundle\Entity\Badge $badge) {
-        $this->badge[] = $badge;
+    public function setWebsiteSettings(WebsiteSettings $websiteSettings = null)
+    {
+        $this->websiteSettings = $websiteSettings;
 
         return $this;
     }
 
     /**
-     * Remove badge
+     * Get websiteSettings
      *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Badge $badge
+     * @return WebsiteSettings 
      */
-    public function removeBadge(\Eduflats\Bundle\EduflatsBundle\Entity\Badge $badge) {
-        $this->badge->removeElement($badge);
+    public function getWebsiteSettings()
+    {
+        return $this->websiteSettings;
     }
 
     /**
-     * Get badge
+     * Set listingConfiguration
      *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getBadge() {
-        return $this->badge;
-    }
-
-    /**
-     * Add tag
-     *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Tag $tag
+     * @param ListingConfiguration $listingConfiguration
      * @return University
      */
-    public function addTag(\Eduflats\Bundle\EduflatsBundle\Entity\Tag $tag) {
-        $this->tag[] = $tag;
+    public function setListingConfiguration( $listingConfiguration = null)
+    {
+        $this->listingConfiguration = $listingConfiguration;
 
         return $this;
     }
 
     /**
-     * Remove tag
+     * Get listingConfiguration
      *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Tag $tag
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\ListingConfiguration 
      */
-    public function removeTag(\Eduflats\Bundle\EduflatsBundle\Entity\Tag $tag) {
-        $this->tag->removeElement($tag);
-    }
-
-    /**
-     * Get tag
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTag() {
-        return $this->tag;
-    }
-
-    /**
-     * Add client
-     *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Client $client
-     * @return University
-     */
-    public function addClient(\Eduflats\Bundle\EduflatsBundle\Entity\Client $client) {
-        $this->client[] = $client;
-
-        return $this;
-    }
-
-    /**
-     * Remove client
-     *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Client $client
-     */
-    public function removeClient(\Eduflats\Bundle\EduflatsBundle\Entity\Client $client) {
-        $this->client->removeElement($client);
-    }
-
-    /**
-     * Get client
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getClient() {
-        return $this->client;
-    }
-
-    public function getCreatedon() {
-        return $this->createdon;
-    }
-
-    public function getModifiedon() {
-        return $this->modifiedon;
-    }
-
-    public function setCreatedon($createdon) {
-        $this->createdon = $createdon;
-    }
-
-    public function setModifiedon($modifiedon) {
-        $this->modifiedon = $modifiedon;
+    public function getListingConfiguration()
+    {
+        return $this->listingConfiguration;
     }
 }

@@ -1,0 +1,37 @@
+{% extends "::base.html.twig"%}
+
+{% block title %}listings settings{% endblock %}
+
+{% block body %}
+    <div class="col-sm-3 col-sm-offset-1">
+             {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
+            <table>
+                 <tr>
+                    <td align="left">{{form_label(form.tLogo)}}</td>
+                    <td>{{form_widget(form.tLogo)}}</td>
+                    <td>{{form_errors(form.tLogo)}}</td>
+                </tr>
+                <tr>
+                    <td align="left">{{form_label(form.tWebsiteName)}}</td>
+                    <td>{{form_widget(form.tWebsiteName)}}</td>
+                    <td>{{form_errors(form.tWebsiteName)}}</td>
+                </tr>
+                <tr>
+                    <td align="left">{{form_label(form.tTagLine)}}</td>
+                    <td>{{form_widget(form.tTagLine)}}</td>
+                    <td>{{form_errors(form.tTagLine)}}</td>
+                </tr>
+                <tr>
+                    <td align="left">{{form_label(form.tBackgroundColor)}}</td>
+                    <td>{{form_widget(form.tBackgroundColor)}}</td>
+                    <td>{{form_errors(form.tBackgroundColor)}}</td>
+                </tr>
+                <tr>
+                    <td align="left">{{form_label(form.tFontColor)}}</td>
+                    <td>{{form_widget(form.tFontColor)}}</td>
+                    <td>{{form_errors(form.tFontColor)}}</td>
+                </tr>
+            </table>
+            {{form_end(form)}}
+    </div>
+{% endblock %}
