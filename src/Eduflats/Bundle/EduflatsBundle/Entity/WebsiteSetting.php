@@ -22,7 +22,7 @@ class WebsiteSetting
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="University", inversedBy="websiteSettings")
+     * @ORM\OneToOne(targetEntity="University", inversedBy="websiteSetting")
      * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
      */
     protected $university;

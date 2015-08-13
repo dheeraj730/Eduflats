@@ -19,7 +19,7 @@ class UniversityType extends AbstractType
         $builder
             ->add('tUniversityName', 'text', array('label'=>'University Name'))
             ->add('tSubdomainName', 'text', array('label'=>'Subdomain Name'))
-            ->add('submit', 'submit', array('label'=>'Next'));
+            ->add('submit', 'submit', array('label'=>'Create University'));
         ;
     }
     

@@ -10,17 +10,7 @@ use Eduflats\Bundle\EduflatsBundle\Entity\Property;
 use Eduflats\Bundle\EduflatsBundle\Form\PropertyType;
 use Symfony\Component\HttpFoundation\Request;
 
-class ClientController extends Controller{
-    
-    /**
-     * @Route("/user", name="user")
-     * @Template()
-     */
-    public function userAction()
-    {
-        $this->accessControl('ROLE_STUDENT');
-        return array('baseLayout'=>  "::".Util::$currentId."base.html.twig");    
-    }
+class ClientController extends Controller {
 
     /**
      * @Route("/admin", name="admin")
@@ -42,7 +32,7 @@ class ClientController extends Controller{
             $em->persist($property);
             $em->flush();
         }
-        return array('baseLayout'=>  "::".Util::$currentId."base.html.twig", "form"=>$form->createView());    
+        return array("form"=>$form->createView());    
     }
     
     /**

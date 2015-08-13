@@ -38,12 +38,12 @@ class University
     /**
      * @ORM\OneToOne(targetEntity="ListingSetting", mappedBy="university")
      */
-    protected $listingConfiguration;
+    protected $listingSetting;
     
     /**
      * @ORM\OneToOne(targetEntity="WebsiteSetting", mappedBy="university")
      */
-    protected $websiteSettings;
+    protected $websiteSetting;
 
     /**
      * @var string
@@ -100,7 +100,7 @@ class University
     public function __construct()
     {
         $this->campus = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->client = new \Doctrine\Common\Collections\ArrayCollection();
         $this->property = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -147,40 +147,6 @@ class University
         return $this->campus;
     }
     
-    
-    /**
-     * Add user
-     *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\User $user
-     * @return University
-     */
-    public function addUser(\Eduflats\Bundle\EduflatsBundle\Entity\User $user)
-    {
-        $this->user[] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Remove user
-     *
-     * @param \Eduflats\Bundle\EduflatsBundle\Entity\User $user
-     */
-    public function removeUser(\Eduflats\Bundle\EduflatsBundle\Entity\User $user)
-    {
-        $this->user->removeElement($user);
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
     /**
      * Set tUniversityName
      *
@@ -376,49 +342,84 @@ class University
         return $this->property;
     }
 
+
+
     /**
-     * Set websiteSettings
+     * Add client
      *
-     * @param WebsiteSettings $websiteSettings
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Client $client
      * @return University
      */
-    public function setWebsiteSettings(WebsiteSettings $websiteSettings = null)
+    public function addClient(\Eduflats\Bundle\EduflatsBundle\Entity\Client $client)
     {
-        $this->websiteSettings = $websiteSettings;
+        $this->client[] = $client;
 
         return $this;
     }
 
     /**
-     * Get websiteSettings
+     * Remove client
      *
-     * @return WebsiteSettings 
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Client $client
      */
-    public function getWebsiteSettings()
+    public function removeClient(\Eduflats\Bundle\EduflatsBundle\Entity\Client $client)
     {
-        return $this->websiteSettings;
+        $this->client->removeElement($client);
     }
 
     /**
-     * Set listingConfiguration
+     * Get client
      *
-     * @param ListingConfiguration $listingConfiguration
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Set listingSetting
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\ListingSetting $listingSetting
      * @return University
      */
-    public function setListingConfiguration( $listingConfiguration = null)
+    public function setListingSetting(\Eduflats\Bundle\EduflatsBundle\Entity\ListingSetting $listingSetting = null)
     {
-        $this->listingConfiguration = $listingConfiguration;
+        $this->listingSetting = $listingSetting;
 
         return $this;
     }
 
     /**
-     * Get listingConfiguration
+     * Get listingSetting
      *
-     * @return \Eduflats\Bundle\EduflatsBundle\Entity\ListingConfiguration 
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\ListingSetting 
      */
-    public function getListingConfiguration()
+    public function getListingSetting()
     {
-        return $this->listingConfiguration;
+        return $this->listingSetting;
+    }
+
+    /**
+     * Set websiteSetting
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\WebsiteSetting $websiteSetting
+     * @return University
+     */
+    public function setWebsiteSetting(\Eduflats\Bundle\EduflatsBundle\Entity\WebsiteSetting $websiteSetting = null)
+    {
+        $this->websiteSetting = $websiteSetting;
+
+        return $this;
+    }
+
+    /**
+     * Get websiteSetting
+     *
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\WebsiteSetting 
+     */
+    public function getWebsiteSetting()
+    {
+        return $this->websiteSetting;
     }
 }

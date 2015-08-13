@@ -1359,4 +1359,27 @@ class Property
         return $this->dUpdatedAt;
     }
     
+
+    /**
+     * Set client
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Client $client
+     * @return Property
+     */
+    public function setClient(\Eduflats\Bundle\EduflatsBundle\Entity\Client $client = null)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\Client 
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
 }

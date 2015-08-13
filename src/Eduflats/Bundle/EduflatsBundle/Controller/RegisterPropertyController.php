@@ -46,6 +46,8 @@ class RegisterPropertyController extends Controller {
             
             $em->persist($property);
             $em->flush();
+            $this->get('session')->getFlashBag()->set('success', 'Porpery has been saved Successfully ');
+            return $this->redirect($this->generateUrl('success'));
         }
         return array('form'=>$form->createView());
     }

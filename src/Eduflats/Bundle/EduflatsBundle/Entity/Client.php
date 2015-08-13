@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * User
  *
  * @ORM\Table(name="client")
- * @ORM\Entity(repositoryClass="Eduflats\Bundle\EduflatsBundle\Entity\ClientRepository")
+ * @ORM\Entity()
  */
 class Client extends BaseUser {
 
@@ -75,7 +75,6 @@ class Client extends BaseUser {
      *                  minMessage= "min 3 characters limit",
      *                  maxMessage = "phone number Cannot contain more than 15 characters"
      *               )
-     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
      * @var type string
      * optional phone number
      * @ORM\Column(name="phonenumber", type="string", length=255, nullable=true)
@@ -89,7 +88,6 @@ class Client extends BaseUser {
      *                  minMessage= "min 3 characters limit",
      *                  maxMessage = "phone number Cannot contain more than 15 characters"
      *               )
-     * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
      * @var type string
      * optional landline number
      * @ORM\Column(name="landline", type="string", length=255, nullable=true)

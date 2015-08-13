@@ -10,7 +10,7 @@ class RequestListener
     public function onKernelRequest(GetResponseEvent $event)
     {
         $subdomainList = Util::$subdomainList;
-        $UrlSubdomain = str_replace('.tracestay.co.in', '' , $event->getRequest()->getHost());
+        $UrlSubdomain = str_replace('.eduflats', '' , $event->getRequest()->getHost());
         
         if(!array_search($UrlSubdomain, $subdomainList)){
             echo "susbdomain does not exists.";

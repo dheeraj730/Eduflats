@@ -76,6 +76,8 @@ fos_user:
     db_driver: orm 
     user_class: Eduflats\Bundle\EduflatsBundle\Entity\Client
     firewall_name: secured_area
+    service:
+        user_manager: EduflatsUserManager
     
 # Swiftmailer Configuration
 swiftmailer:

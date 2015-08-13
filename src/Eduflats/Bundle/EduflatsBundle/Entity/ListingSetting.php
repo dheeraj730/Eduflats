@@ -21,7 +21,7 @@ class ListingSetting
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="University", inversedBy="listingConfiguration")
+     * @ORM\OneToOne(targetEntity="University", inversedBy="listingSetting")
      * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
      */
     protected $university;

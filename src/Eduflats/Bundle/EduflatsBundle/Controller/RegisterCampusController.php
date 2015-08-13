@@ -38,6 +38,8 @@ class RegisterCampusController extends Controller {
             
             $em->persist($campus);
             $em->flush();
+            $this->get('session')->getFlashBag()->set('success', 'Campus has been saved Successfully ');
+            return $this->redirect($this->generateUrl('success'));
         }
         
         return array('form'=>$form->createView());

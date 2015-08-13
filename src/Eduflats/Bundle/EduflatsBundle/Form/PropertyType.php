@@ -15,7 +15,7 @@ class PropertyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tPropertyDescription', 'text', array('label'=> 'Property Description'))
+            ->add('tPropertyDescription', 'textarea', array('label'=> 'Property Description'))
             ->add('nPropertyType','choice', array('choices'=>array(),'label'=>'Property Type'))
             ->add('nAvailabilityStatus','choice', array('choices'=>array(),'label'=>'Availability Status'))
             ->add('dAvailableFrom','date', array('label'=>'Available from'))

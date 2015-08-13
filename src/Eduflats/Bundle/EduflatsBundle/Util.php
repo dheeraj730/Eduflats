@@ -9,9 +9,4 @@ class Util{
     );
     
     public static $currentId; //object
-    
-    
-    
-   
-    
 }

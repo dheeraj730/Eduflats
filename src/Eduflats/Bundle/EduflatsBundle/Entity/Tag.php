@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tag
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Eduflats\Bundle\EduflatsBundle\Entity\TagRepository")
+ * @ORM\Entity()
  */
 class Tag
 {
