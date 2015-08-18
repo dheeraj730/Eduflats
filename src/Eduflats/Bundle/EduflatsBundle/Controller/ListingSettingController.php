@@ -21,7 +21,7 @@ class ListingSettingController extends Controller {
      * @Template()
      */
     public function listingSettingAction(Request $request){
-        
+        $this->accessControl('ROLE_ADMIN');
         $em = $this->getDoctrine()->getEntityManager();
         $listingSetting = new ListingSetting();
         $form = $this->createForm(new ListingSettingType(), $listingSetting);
@@ -41,6 +41,12 @@ class ListingSettingController extends Controller {
             return $this->redirect($this->generateUrl('success'));
         }
         return array('form'=>$form->createView());
+    }
+
+    public function accessControl($role){
+        if(!$this->get('security.context')->isGranted($role)){
+            throw $this->createAccessDeniedException('Needs '.$role." to access page");
+        }
     }
     
 }

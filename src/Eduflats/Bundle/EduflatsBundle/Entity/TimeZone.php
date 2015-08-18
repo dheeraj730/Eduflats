@@ -27,6 +27,12 @@ class TimeZone
     protected $id;
 
     /**
+     * @ORM\OneToOne(targetEntity="WebsiteSetting", inversedBy="timeZone")
+     * @ORM\JoinColumn(name="timezone_id", referencedColumnName="id")
+     */
+    protected $websiteSetting;
+    
+    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $nTimeZone;
@@ -127,5 +133,28 @@ class TimeZone
     public function __sleep()
     {
         return array('id', 'nTimeZone');
+    }
+
+    /**
+     * Set websiteSetting
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\WebsiteSetting $websiteSetting
+     * @return TimeZone
+     */
+    public function setWebsiteSetting(\Eduflats\Bundle\EduflatsBundle\Entity\WebsiteSetting $websiteSetting = null)
+    {
+        $this->websiteSetting = $websiteSetting;
+
+        return $this;
+    }
+
+    /**
+     * Get websiteSetting
+     *
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\WebsiteSetting 
+     */
+    public function getWebsiteSetting()
+    {
+        return $this->websiteSetting;
     }
 }

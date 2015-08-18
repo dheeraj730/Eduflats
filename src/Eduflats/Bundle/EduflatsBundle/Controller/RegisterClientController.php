@@ -79,31 +79,4 @@ class RegisterClientController extends Controller {
         return array('form'=>$form->createView());
     }
 
-    /**
-     * Creates Admin User Record
-     * 
-     * @Route("/RegisterAdmin", name="registerAdmin")
-     * @Template("EduflatsBundle:Client:registerAdmin.html.twig")
-     */
-    public function registerAdminAction(Request $request) {
-        $em = $this->getDoctrine()->getEntityManager();
-        $admin = new Client();
-        $form = $this->createForm(new ClientType($admin), $admin, array('vitalInfo'=>false, 'location'=>false));
-        
-        $form->handleRequest($request);
-        if($form->isValid()){
-            $university = $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(siteConfig::$university_id);
-            $admin->setUniversity($university);
-            $admin->setDCreatedAt(new \DateTime());
-            $admin->addRole("ROLE_ADMIN");
-            
-            $em->persist($admin);
-            $em->flush();
-            $this->get('session')->getFlashBag()->set('success', 'Admin account has been saved Successfully ');
-            return $this->redirect($this->generateUrl('success'));
-        }
-         
-        return array('form'=>$form->createView());
-    }
-
 }

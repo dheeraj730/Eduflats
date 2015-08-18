@@ -42,6 +42,13 @@ class ListingSetting
 
     /**
      * @var boolean
+     * shows/hides all badges of a property
+     * @ORM\Column(name="$photorequired", type="boolean")
+     */
+    private $bPhotoRequired;
+
+    /**
+     * @var boolean
      * shows/hides star ratings of a property
      * @ORM\Column(name="enablestarratings", type="boolean")
      */
@@ -208,5 +215,28 @@ class ListingSetting
     public function getDUpdatedAt()
     {
         return $this->dUpdatedAt;
+    }
+
+    /**
+     * Set bPhotoRequired
+     *
+     * @param boolean $bPhotoRequired
+     * @return ListingSetting
+     */
+    public function setBPhotoRequired($bPhotoRequired)
+    {
+        $this->bPhotoRequired = $bPhotoRequired;
+
+        return $this;
+    }
+
+    /**
+     * Get bPhotoRequired
+     *
+     * @return boolean 
+     */
+    public function getBPhotoRequired()
+    {
+        return $this->bPhotoRequired;
     }
 }

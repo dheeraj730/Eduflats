@@ -22,6 +22,11 @@ class Property
     private $id;
     
     /**
+     * @ORM\OneToMany(targetEntity="PropertyCategory", mappedBy="property")
+     */
+    protected $propertyCategory;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="property")
      * @ORM\JoinColumn(name="eduflats_user_id", referencedColumnName="id")
      */
@@ -43,7 +48,7 @@ class Property
      * @ORM\ManyToMany(targetEntity="Tag")
      */
     protected $tag;
-    
+        
     /**
      * @ORM\Column(name="badges", type="array")
      */
@@ -63,13 +68,6 @@ class Property
      * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */
     protected $tPropertyDescription;
-    
-    /**
-     * @var type integer
-     * Type (eg:- residential house, appartment, paying guest etc)
-     * @ORM\Column(name="propertytype", type="integer", nullable=true)
-     */
-    protected $nPropertyType;
     
     /**
      * @var type integer
@@ -336,7 +334,8 @@ class Property
 
     public function __construct() {
     	$this->tag = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->Campus = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->Campus = new \Doctrine\Common\Collections\ArrayCollection(); 
+        $this->category = new \Doctrine\Common\Collections\ArrayCollection(); 
     }
 
     /**
@@ -350,28 +349,6 @@ class Property
     }
     
     
-    /**
-     * Set user
-     *
-     * @param User $user
-     * @return Property
-     */
-    public function setUser(User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
     
     /**
      * Add Campus
@@ -507,28 +484,6 @@ class Property
     public function getTPropertyDescription()
     {
         return $this->tPropertyDescription;
-    }
-    
-     /**
-     * Set nPropertyType
-     *
-     * @param integer $nPropertyType
-     * @return Property
-     */
-    public function setNPropertyType($nPropertyType)
-    {
-        $this->nPropertyType = $nPropertyType;
-        return $this;
-    }
-
-    /**
-     * Get nPropertyType
-     *
-     * @return integer 
-     */
-    public function getNPropertyType()
-    {
-        return $this->nPropertyType;
     }
     
     /**
@@ -1381,5 +1336,52 @@ class Property
     public function getClient()
     {
         return $this->client;
+    }
+     
+
+    /**
+     * Set propertyCategory
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory
+     * @return Property
+     */
+    public function setPropertyCategory(\Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory = null)
+    {
+        $this->propertyCategory = $propertyCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get propertyCategory
+     *
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory 
+     */
+    public function getPropertyCategory()
+    {
+        return $this->propertyCategory;
+    }
+
+    /**
+     * Add propertyCategory
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory
+     * @return Property
+     */
+    public function addPropertyCategory(\Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory)
+    {
+        $this->propertyCategory[] = $propertyCategory;
+
+        return $this;
+    }
+
+    /**
+     * Remove propertyCategory
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory
+     */
+    public function removePropertyCategory(\Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory)
+    {
+        $this->propertyCategory->removeElement($propertyCategory);
     }
 }

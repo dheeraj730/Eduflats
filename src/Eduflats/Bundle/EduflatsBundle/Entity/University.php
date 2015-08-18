@@ -19,6 +19,11 @@ class University
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PropertyCategory", mappedBy="university")
+     */
+    protected $propertyCategory;
 
     /**
      * @ORM\OneToMany(targetEntity="Campus", mappedBy="university")
@@ -34,7 +39,7 @@ class University
      * @ORM\OneToMany(targetEntity="Property", mappedBy="university")
      */
     protected $property;
-    
+
     /**
      * @ORM\OneToOne(targetEntity="ListingSetting", mappedBy="university")
      */
@@ -44,6 +49,12 @@ class University
      * @ORM\OneToOne(targetEntity="WebsiteSetting", mappedBy="university")
      */
     protected $websiteSetting;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Plan", inversedBy="university")
+     * @ORM\JoinColumn(name="plan_id", referencedColumnName="id")
+     */
+    protected $plan;
 
     /**
      * @var string
@@ -421,5 +432,75 @@ class University
     public function getWebsiteSetting()
     {
         return $this->websiteSetting;
+    }
+
+
+    /**
+     * Set propertyCategory
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory
+     * @return University
+     */
+    public function setPropertyCategory(\Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory = null)
+    {
+        $this->propertyCategory = $propertyCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get propertyCategory
+     *
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory 
+     */
+    public function getPropertyCategory()
+    {
+        return $this->propertyCategory;
+    }
+
+    /**
+     * Add propertyCategory
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory
+     * @return University
+     */
+    public function addPropertyCategory(\Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory)
+    {
+        $this->propertyCategory[] = $propertyCategory;
+
+        return $this;
+    }
+
+    /**
+     * Remove propertyCategory
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory
+     */
+    public function removePropertyCategory(\Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory)
+    {
+        $this->propertyCategory->removeElement($propertyCategory);
+    }
+
+    /**
+     * Set plan
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Plan $plan
+     * @return University
+     */
+    public function setPlan(\Eduflats\Bundle\EduflatsBundle\Entity\Plan $plan = null)
+    {
+        $this->plan = $plan;
+
+        return $this;
+    }
+
+    /**
+     * Get plan
+     *
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\Plan 
+     */
+    public function getPlan()
+    {
+        return $this->plan;
     }
 }

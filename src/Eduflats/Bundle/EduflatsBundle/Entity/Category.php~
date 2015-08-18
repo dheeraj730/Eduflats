@@ -1,0 +1,131 @@
+<?php
+
+namespace Eduflats\Bundle\EduflatsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Category
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Category
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="required", type="boolean")
+     */
+    private $required;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isMultiple", type="boolean")
+     */
+    private $isMultiple;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isText", type="boolean")
+     */
+    private $isText;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Category
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set required
+     *
+     * @param boolean $required
+     * @return Category
+     */
+    public function setRequired($required)
+    {
+        $this->required = $required;
+
+        return $this;
+    }
+
+    /**
+     * Get required
+     *
+     * @return boolean 
+     */
+    public function getRequired()
+    {
+        return $this->required;
+    }
+
+    /**
+     * Set isMultiple
+     *
+     * @param boolean $isMultiple
+     * @return Category
+     */
+    public function setIsMultiple($isMultiple)
+    {
+        $this->isMultiple = $isMultiple;
+
+        return $this;
+    }
+
+    /**
+     * Get isMultiple
+     *
+     * @return boolean 
+     */
+    public function getIsMultiple()
+    {
+        return $this->isMultiple;
+    }
+}

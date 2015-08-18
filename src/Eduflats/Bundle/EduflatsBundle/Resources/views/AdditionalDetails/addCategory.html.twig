@@ -1,0 +1,36 @@
+{% extends "::base.html.twig"%}
+
+{% block title %}listings settings{% endblock %}
+
+{% block body %}
+    <div class="col-sm-6 col-sm-offset-1">
+             {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
+            <table>
+                 <tr>
+                    <td align="left">{{form_label(form.name)}}</td>
+                    <td>{{form_widget(form.name)}}</td>
+                    <td>{{form_errors(form.name)}}</td>
+                </tr>
+                <tr>
+                    <td align="left">{{form_label(form.required)}}</td>
+                    <td>{{form_widget(form.required)}}</td>
+                    <td>{{form_errors(form.required)}}</td>
+                </tr>
+                <tr>
+                    <td align="left">{{form_label(form.isMultiple)}}</td>
+                    <td>{{form_widget(form.isMultiple)}}</td>
+                    <td>{{form_errors(form.isMultiple)}}</td>
+                </tr>
+                <tr>
+                    <td align="left">{{form_label(form.isText)}}</td>
+                    <td>{{form_widget(form.isText)}}</td>
+                    <td>{{form_errors(form.isText)}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>{{form_widget(form.submit)}}</td>
+                </tr>
+            </table>
+            {{form_end(form)}}
+    </div>
+{% endblock %}

@@ -16,7 +16,6 @@ class PropertyType extends AbstractType
     {
         $builder
             ->add('tPropertyDescription', 'textarea', array('label'=> 'Property Description'))
-            ->add('nPropertyType','choice', array('choices'=>array(),'label'=>'Property Type'))
             ->add('nAvailabilityStatus','choice', array('choices'=>array(),'label'=>'Availability Status'))
             ->add('dAvailableFrom','date', array('label'=>'Available from'))
             ->add('nMonthsOfOccupancy', 'integer', array('label'=> 'Months Of Occupancy'))

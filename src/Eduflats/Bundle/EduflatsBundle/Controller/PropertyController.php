@@ -12,15 +12,13 @@ use Eduflats\Bundle\EduflatsBundle\siteConfig;
 use Eduflats\Bundle\EduflatsBundle\Entity\Property;
 use Eduflats\Bundle\EduflatsBundle\Form\PropertyType;
 
-class RegisterPropertyController extends Controller {
-    
+class PropertyController extends Controller
+{
     /**
-     * Creates Property Record
-     * 
-     * @Route("/RegisterProperty", name="registerProperty")
-     * @Template("EduflatsBundle:Property:registerProperty.html.twig")
+     * @Route("/CreateProperty", name="createProperty")
+     * @Template()
      */
-    public function registerPropertyAction(Request $request) {
+    public function createPropertyAction(Request $request) {
         $em = $this->getDoctrine()->getEntityManager();
         $property = new Property();
         $form = $this->createForm(new PropertyType(), $property);
@@ -49,7 +47,22 @@ class RegisterPropertyController extends Controller {
             $this->get('session')->getFlashBag()->set('success', 'Porpery has been saved Successfully ');
             return $this->redirect($this->generateUrl('success'));
         }
-        return array('form'=>$form->createView());
+        return array('form'=>$form->createView()); 
     }
-    
+
+    /**
+     * @Route("/UpdateProperty", name="updateProperty")
+     * @Template()
+     */
+    public function updatePropertyAction(Request $request) {
+        return array();
+    }
+
+    /**
+     * @Route("/DeleteProperty", name="deleteProperty")
+     * @Template()
+     */
+    public function deletePropertyAction(Request $request) {
+        return array();    
+    }
 }

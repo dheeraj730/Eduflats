@@ -50,19 +50,86 @@ class WebsiteSetting
 
     /**
      * @var string
-     * holds hex value or color name of website's background
-     * @ORM\Column(name="backgroundcolor", type="string", length=255, nullable=false)
+     * holds full name of Institution name
+     * @ORM\Column(name="institutionname", type="string", length=255, nullable=true)
      */
-    protected $tBackgroundColor;
-
+    protected $tInstitutionName;
+    
     /**
      * @var string
-     * holds hex value or color name of website's font
-     * @ORM\Column(name="fontcolor", type="string", length=255, nullable=false)
+     * holds contact email address
+     * @ORM\Column(name="emailtrackingaddress", type="string", length=255, nullable=true)
      */
-    protected $tFontColor;
+    protected $tEmailTrackingAddress;
+    
+    /**
+     * @var string
+     * holds the reply to email for university
+     * @ORM\Column(name="emailreplyto", type="string", length=255, nullable=true)
+     */
+    protected $tEmailReplyTo;
+    
+    /**
+     * holds the country name for university
+     * @ORM\Column(name="country", type="integer", nullable=true)
+     * @var integer
+     */
+    protected $nCountry;
+    
+    /**
+     * enable https secured connection
+     * @ORM\Column(name="https", type="boolean", nullable=true)
+     * @var boolean
+     */
+    protected $bHTTPS;
+    
+    /**
+     * enable google analytics
+     * @ORM\Column(name="googleanalytics", type="boolean", nullable=true)
+     * @var boolean
+     */
+    protected $bGoogleAnalytics;
+    
+    /**
+     * enable webmaster tools
+     * @ORM\Column(name="webmastertools", type="boolean", nullable=true)
+     * @var boolean
+     */
+    protected $bWebmasterTools;
+    
+    /**
+     * enable website Language
+     * @ORM\Column(name="websitelanguage", type="integer", nullable=true)
+     * @var integer
+     */
+    protected $nWebsiteLanugage;
+    
+    
+    /**
+     * enable mail chimp
+     * @ORM\Column(name="mailchimp", type="boolean", nullable=true)
+     * @var boolean
+     */
+    protected $bMailchimp;
+    
+    /**
+     * enable mail chimp
+     * @ORM\Column(name="mailchimpapikey", type="boolean", nullable=true)
+     * @var boolean
+     */
+    protected $bMailchimpApiKey;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="HexValue", mappedBy="websiteSetting")
+     */
+    protected $hexValue;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="TimeZone", mappedBy="websiteSetting")
+     */
+    protected $timeZone;
 
-     /**
+    /**
      * @var \DateTime
      * lisitng configuration created on
      * @ORM\Column(name="createdat", type="datetime")
@@ -268,5 +335,281 @@ class WebsiteSetting
     public function getDUpdatedAt()
     {
         return $this->dUpdatedAt;
+    }
+
+    /**
+     * Set tInstitutionName
+     *
+     * @param string $tInstitutionName
+     * @return WebsiteSetting
+     */
+    public function setTInstitutionName($tInstitutionName)
+    {
+        $this->tInstitutionName = $tInstitutionName;
+
+        return $this;
+    }
+
+    /**
+     * Get tInstitutionName
+     *
+     * @return string 
+     */
+    public function getTInstitutionName()
+    {
+        return $this->tInstitutionName;
+    }
+
+    /**
+     * Set tEmailTrackingAddress
+     *
+     * @param string $tEmailTrackingAddress
+     * @return WebsiteSetting
+     */
+    public function setTEmailTrackingAddress($tEmailTrackingAddress)
+    {
+        $this->tEmailTrackingAddress = $tEmailTrackingAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get tEmailTrackingAddress
+     *
+     * @return string 
+     */
+    public function getTEmailTrackingAddress()
+    {
+        return $this->tEmailTrackingAddress;
+    }
+
+    /**
+     * Set tEmailReplyTo
+     *
+     * @param string $tEmailReplyTo
+     * @return WebsiteSetting
+     */
+    public function setTEmailReplyTo($tEmailReplyTo)
+    {
+        $this->tEmailReplyTo = $tEmailReplyTo;
+
+        return $this;
+    }
+
+    /**
+     * Get tEmailReplyTo
+     *
+     * @return string 
+     */
+    public function getTEmailReplyTo()
+    {
+        return $this->tEmailReplyTo;
+    }
+
+    /**
+     * Set nCountry
+     *
+     * @param integer $nCountry
+     * @return WebsiteSetting
+     */
+    public function setNCountry($nCountry)
+    {
+        $this->nCountry = $nCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get nCountry
+     *
+     * @return integer 
+     */
+    public function getNCountry()
+    {
+        return $this->nCountry;
+    }
+
+    /**
+     * Set bHTTPS
+     *
+     * @param boolean $bHTTPS
+     * @return WebsiteSetting
+     */
+    public function setBHTTPS($bHTTPS)
+    {
+        $this->bHTTPS = $bHTTPS;
+
+        return $this;
+    }
+
+    /**
+     * Get bHTTPS
+     *
+     * @return boolean 
+     */
+    public function getBHTTPS()
+    {
+        return $this->bHTTPS;
+    }
+
+    /**
+     * Set bGoogleAnalytics
+     *
+     * @param boolean $bGoogleAnalytics
+     * @return WebsiteSetting
+     */
+    public function setBGoogleAnalytics($bGoogleAnalytics)
+    {
+        $this->bGoogleAnalytics = $bGoogleAnalytics;
+
+        return $this;
+    }
+
+    /**
+     * Get bGoogleAnalytics
+     *
+     * @return boolean 
+     */
+    public function getBGoogleAnalytics()
+    {
+        return $this->bGoogleAnalytics;
+    }
+
+    /**
+     * Set bWebmasterTools
+     *
+     * @param boolean $bWebmasterTools
+     * @return WebsiteSetting
+     */
+    public function setBWebmasterTools($bWebmasterTools)
+    {
+        $this->bWebmasterTools = $bWebmasterTools;
+
+        return $this;
+    }
+
+    /**
+     * Get bWebmasterTools
+     *
+     * @return boolean 
+     */
+    public function getBWebmasterTools()
+    {
+        return $this->bWebmasterTools;
+    }
+
+    /**
+     * Set nWebsiteLanugage
+     *
+     * @param integer $nWebsiteLanugage
+     * @return WebsiteSetting
+     */
+    public function setNWebsiteLanugage($nWebsiteLanugage)
+    {
+        $this->nWebsiteLanugage = $nWebsiteLanugage;
+
+        return $this;
+    }
+
+    /**
+     * Get nWebsiteLanugage
+     *
+     * @return integer 
+     */
+    public function getNWebsiteLanugage()
+    {
+        return $this->nWebsiteLanugage;
+    }
+
+    /**
+     * Set bMailchimp
+     *
+     * @param boolean $bMailchimp
+     * @return WebsiteSetting
+     */
+    public function setBMailchimp($bMailchimp)
+    {
+        $this->bMailchimp = $bMailchimp;
+
+        return $this;
+    }
+
+    /**
+     * Get bMailchimp
+     *
+     * @return boolean 
+     */
+    public function getBMailchimp()
+    {
+        return $this->bMailchimp;
+    }
+
+    /**
+     * Set bMailchimpApiKey
+     *
+     * @param boolean $bMailchimpApiKey
+     * @return WebsiteSetting
+     */
+    public function setBMailchimpApiKey($bMailchimpApiKey)
+    {
+        $this->bMailchimpApiKey = $bMailchimpApiKey;
+
+        return $this;
+    }
+
+    /**
+     * Get bMailchimpApiKey
+     *
+     * @return boolean 
+     */
+    public function getBMailchimpApiKey()
+    {
+        return $this->bMailchimpApiKey;
+    }
+
+    /**
+     * Set hexValue
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\HexValue $hexValue
+     * @return WebsiteSetting
+     */
+    public function setHexValue(\Eduflats\Bundle\EduflatsBundle\Entity\HexValue $hexValue = null)
+    {
+        $this->hexValue = $hexValue;
+
+        return $this;
+    }
+
+    /**
+     * Get hexValue
+     *
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\HexValue 
+     */
+    public function getHexValue()
+    {
+        return $this->hexValue;
+    }
+
+    /**
+     * Set timeZone
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\TimeZone $timeZone
+     * @return WebsiteSetting
+     */
+    public function setTimeZone(\Eduflats\Bundle\EduflatsBundle\Entity\TimeZone $timeZone = null)
+    {
+        $this->timeZone = $timeZone;
+
+        return $this;
+    }
+
+    /**
+     * Get timeZone
+     *
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\TimeZone 
+     */
+    public function getTimeZone()
+    {
+        return $this->timeZone;
     }
 }

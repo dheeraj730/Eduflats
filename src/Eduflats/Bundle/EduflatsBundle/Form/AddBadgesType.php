@@ -26,7 +26,8 @@ class AddBadgesType extends AbstractType
                     'property' => 'name',
                     'multiple' => true,
                     'expanded' => true,
-                ))
+            ))
+            ->add('submit', 'submit', array('label'=>'Submit'))
             ;
     }
     
