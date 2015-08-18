@@ -35,6 +35,7 @@ class PropertyController extends Controller
             $property->setDApprovedOn(null);
             $property->setIsBlacklisted(false);
             $property->setDClosureDate(null);
+            $property->setTAddressTitle('asdf');
             $property->setDCreatedAt(new \DateTime());
             $property->setDUpdatedAt(null);
             $property->setNViews(NULL);

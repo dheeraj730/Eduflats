@@ -5,23 +5,7 @@
 {% block body %}
     <div class="col-sm-6 col-sm-offset-1">
              {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
-            <table>
-                 <tr>
-                    <td align="left">{{form_label(form.nAdvertisePeriod)}}</td>
-                    <td>{{form_widget(form.nAdvertisePeriod)}}</td>
-                    <td>{{form_errors(form.nAdvertisePeriod)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.bEnableBadges)}}</td>
-                    <td>{{form_widget(form.bEnableBadges)}}</td>
-                    <td>{{form_errors(form.bEnableBadges)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.bEnableStarRatings)}}</td>
-                    <td>{{form_widget(form.bEnableStarRatings)}}</td>
-                    <td>{{form_errors(form.bEnableStarRatings)}}</td>
-                </tr>
-            </table>
+            
             {{form_end(form)}}
     </div>
 {% endblock %}

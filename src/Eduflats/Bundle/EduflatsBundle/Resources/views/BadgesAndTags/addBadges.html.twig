@@ -5,20 +5,7 @@
 {% block body %}
     <div class="col-sm-6 col-sm-offset-1">
              {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
-            <table>
-                
-                 <tr>
-                    <td align="left">{{form_label(form.property)}}</td>
-                    <td>{{form_widget(form.property)}}</td>
-                    <td>{{form_errors(form.property)}}</td>
-                </tr>
-                 <tr>
-                    <td align="left">{{form_label(form.badges)}}</td>
-                    <td>{{form_widget(form.badges)}}</td>
-                    <td>{{form_errors(form.badges)}}</td>
-                </tr>
-                
-            </table>
+            
             {{form_end(form)}}
     </div>
 {% endblock %}

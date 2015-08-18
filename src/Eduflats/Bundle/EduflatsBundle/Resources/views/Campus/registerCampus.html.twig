@@ -5,59 +5,7 @@
 {% block body %}
     <div class="col-sm-6 col-sm-offset-1">
              {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
-            <table style="display:inline-block">
-                 <tr>
-                    <td align="left">{{form_label(form.tName)}}</td>
-                    <td>{{form_widget(form.tName)}}</td>
-                    <td>{{form_errors(form.tName)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.isMain)}}</td>
-                    <td>{{form_widget(form.isMain)}}</td>
-                    <td>{{form_errors(form.isMain)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.tCampusCode)}}</td>
-                    <td>{{form_widget(form.tCampusCode)}}</td>
-                    <td>{{form_errors(form.tCampusCode)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.tAddressTitle)}}</td>
-                    <td>{{form_widget(form.tAddressTitle)}}</td>
-                    <td>{{form_errors(form.tAddressTitle)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.tAddressLine1)}}</td>
-                    <td>{{form_widget(form.tAddressLine1)}}</td>
-                    <td>{{form_errors(form.tAddressLine1)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.tAddressLine2)}}</td>
-                    <td>{{form_widget(form.tAddressLine2)}}</td>
-                    <td>{{form_errors(form.tAddressLine2)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.tCity)}}</td>
-                    <td>{{form_widget(form.tCity)}}</td>
-                    <td>{{form_errors(form.tCity)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.tProvince)}}</td>
-                    <td>{{form_widget(form.tProvince)}}</td>
-                    <td>{{form_errors(form.tProvince)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.nCountry)}}</td>
-                    <td>{{form_widget(form.nCountry)}}</td>
-                    <td>{{form_errors(form.nCountry)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.tZipcode)}}</td>
-                    <td>{{form_widget(form.tZipcode)}}</td>
-                    <td>{{form_errors(form.tZipcode)}}</td>
-                </tr>
-                
-            </table>
-            {{form_end(form)}}
+           
+             {{form_end(form)}}
     </div>
 {% endblock %}

@@ -21,25 +21,25 @@ class PropertyCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options) {
         
         foreach ($this->options as $key => $value) {
+            if($value->getCategory()->getIsMultiple()){
+                $checkList[] = $value->getValue();
+                $builder
+                ->add($value->getCategory()->getName(), 'choice', array('expanded'  => true, 'choices'=>$checkList,'multiple'=>true, "mapped"=>false, 'required'=>$value->getCategory()->getRequired()));
+               
+            }elseif($value->getCategory()->getIsText()){
+                 $builder
+                ->add($value->getCategory()->getName(), 'text', array( "mapped"=>false, 'required'=>$value->getCategory()->getRequired()));
+            }elseif($value->getCategory()->getIsText() == false && $value->getCategory()->getIsMultiple() == false){
+                $dropdownlist[] = $value->getValue();
+
+                $builder
+                ->add($value->getCategory()->getName(), 'choice', array('choices'=>$dropdownlist,'multiple'=>false, "mapped"=>false, 'required'=>$value->getCategory()->getRequired())); 
+               
+            }
             
-            var_dump($value->getCategory()->getName());
-            var_dump($value->getCategory()->getRequired());
-            var_dump($value->getCategory()->getIsMultiple());
-            var_dump($value->getCategory()->getIsText());
-            var_dump($value->getValue());
-       
-        if($value->getCategory()->getIsMultiple()){
-            $type = 'choice';
-            $optionlist = array($value->getValue());
-        }else{
-            $type = 'choice';
-            $optionlist = array($value->getValue());
         }
         $builder
-            ->add($value->getCategory()->getName(), $type, array('choices'=>$optionlist, "mapped"=>false, 'required'=>$value->getCategory()->getRequired()));
-            
-            
-        }
+                ->add('submit', 'submit', ['label'=>'submit', 'attr'=>array('class'=>'btn btn-danger')]);
     }
     
     /**

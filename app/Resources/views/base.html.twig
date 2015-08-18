@@ -14,16 +14,16 @@
             body{
                 min-width: 960px;
             }
-            li{
+            .itmes{
                 display:inline;
                 padding: 10px;
                 border:solid #5eb5e0 1px; 
                 border-bottom:solid transparent 1px; 
             }
-            ul{
+            #menu{
                 min-width: 960px;
             }
-            li:hover{
+            .itmes:hover{
                border:solid #5eb5e0 1px; 
             }
             
@@ -42,19 +42,19 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h2>Registration</h2></br>
-                    <ul>
-                        <li ><a href="{{ path('registerUniversity') }}"> University</a></li>
-                        <li ><a href="{{ path('registerCampus') }}"> Campus</a></li>
-                        <li ><a href="{{ path('createProperty') }}"> Property</a></li>
-                        <li ><a href="{{ path('registerStudent') }}"> Student</a></li>
-                        <li ><a href="{{ path('registerProvider') }}"> Provider</a></li>  
-                        <li ><a href="{{ path('createAdmin') }}"> Admin</a></li>  
-                        <li ><a href="{{ path('registerTags') }}"> Tags</a></li>  
-                        <li ><a href="{{ path('registerBadges') }}"> Badges</a></li>  
-                        <li ><a href="{{ path('listingSetting') }}">Listing Settings</a></li>  
-                        <li ><a href="{{ path('websiteSetting') }}">Website Settings</a></li>  
-                        <li ><a href="{{ path('home') }}login">Login</a></li>  
-                        <li ><a href="{{ path('home') }}logout">logout</a></li>  
+                    <ul id="menu">
+                        <li class="itmes"><a href="{{ path('registerUniversity') }}"> University</a></li>
+                        <li class="itmes"><a href="{{ path('registerCampus') }}"> Campus</a></li>
+                        <li class="itmes"><a href="{{ path('createProperty') }}"> Property</a></li>
+                        <li class="itmes"><a href="{{ path('registerStudent') }}"> Student</a></li>
+                        <li class="itmes"><a href="{{ path('registerProvider') }}"> Provider</a></li>  
+                        <li class="itmes"><a href="{{ path('createAdmin') }}"> Admin</a></li>  
+                        <li class="itmes"><a href="{{ path('registerTags') }}"> Tags</a></li>  
+                        <li class="itmes"><a href="{{ path('registerBadges') }}"> Badges</a></li>  
+                        <li class="itmes"><a href="{{ path('listingSetting') }}">Listing Settings</a></li>  
+                        <li class="itmes"><a href="{{ path('websiteSetting') }}">Website Settings</a></li>  
+                        <li class="itmes"><a href="{{ path('home') }}login">Login</a></li>  
+                        <li class="itmes"><a href="{{ path('home') }}logout">logout</a></li>  
                     </ul>
                     <hr/>
                 </div>

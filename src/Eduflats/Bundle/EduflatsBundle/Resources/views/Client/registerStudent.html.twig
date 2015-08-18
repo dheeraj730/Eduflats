@@ -5,48 +5,7 @@
 {% block body %}
     <div class="col-sm-6 col-sm-offset-1">
              {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
-            <table>
-                 <tr>
-                    <td align="left">{{form_label(form.username)}}</td>
-                    <td>{{form_widget(form.username)}}</td>
-                    <td>{{form_errors(form.username)}}</td>
-                </tr>
-                 <tr>
-                    <td align="left">{{form_label(form.email)}}</td>
-                    <td>{{form_widget(form.email)}}</td>
-                    <td>{{form_errors(form.email)}}</td>
-                </tr>
-                 <tr>
-                    <td align="left">{{form_label(form.plainPassword.first)}}</td>
-                    <td>{{form_widget(form.plainPassword.first)}}</td>
-                    <td>{{form_errors(form.plainPassword.first)}}</td>
-                </tr>
-                 <tr>
-                    <td align="left">{{form_label(form.plainPassword.second)}}</td>
-                    <td>{{form_widget(form.plainPassword.second)}}</td>
-                    <td>{{form_errors(form.plainPassword.second)}}</td>
-                </tr>
-                 <tr>
-                    <td align="left">{{form_label(form.tFirstName)}}</td>
-                    <td>{{form_widget(form.tFirstName)}}</td>
-                    <td>{{form_errors(form.tFirstName)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.tLastName)}}</td>
-                    <td>{{form_widget(form.tLastName)}}</td>
-                    <td>{{form_errors(form.tLastName)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.tPhoneNumber)}}</td>
-                    <td>{{form_widget(form.tPhoneNumber)}}</td>
-                    <td>{{form_errors(form.tPhoneNumber)}}</td>
-                </tr>
-                <tr>
-                    <td align="left">{{form_label(form.tLandline)}}</td>
-                    <td>{{form_widget(form.tLandline)}}</td>
-                    <td>{{form_errors(form.tLandline)}}</td>
-                </tr>
-            </table>
+            
             {{form_end(form)}}
     </div>
 {% endblock %}

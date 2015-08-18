@@ -4,13 +4,6 @@
 
 {% block form %}
 {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
-<table>
-   
-     <tr>
-        <td align="left">{{form_label(form.name)}}</td>
-        <td>{{form_widget(form.name)}}</td>
-        <td>{{form_errors(form.name)}}</td>
-    </tr>
-</table>
+
 {{form_end(form)}}
 {% endblock %}

@@ -50,17 +50,8 @@ class AdditionalDetailsController extends Controller
         $form->handleRequest($request);
         
         if($form->isValid()){
-            $university = $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(siteConfig::$university_id);
             $category = $this->getDoctrine()->getRepository('EduflatsBundle:Category')->findOneById($id);
-            $property = $this->getDoctrine()->getRepository('EduflatsBundle:Property')->findOneById(1);
             $options->setCategory($category);
-            $propertyCategory = new PropertyCategory();
-            
-            $propertyCategory->setUniversity($university);
-            $propertyCategory->setProperty($property);
-            $propertyCategory->setCategory($category);
-            $propertyCategory->setOptions($options);
-            $em->persist($propertyCategory);
             $em->persist($options);
             $em->flush();
             
@@ -86,6 +77,16 @@ class AdditionalDetailsController extends Controller
         $form->handleRequest($request);
         
         if($form->isValid()){
+            $university = $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(siteConfig::$university_id);
+            $property = $this->getDoctrine()->getRepository('EduflatsBundle:Property')->findOneById(1);
+            $category = $this->getDoctrine()->getRepository('EduflatsBundle:Category')->findOneById(1);
+            
+            $propertyCategory = new PropertyCategory();
+            
+            $propertyCategory->setUniversity($university);
+            $propertyCategory->setProperty($property);
+            $propertyCategory->setCategory($category);
+            $propertyCategory->setOptions();
             
             $em->persist($propertyCategory);
             $em->flush();
