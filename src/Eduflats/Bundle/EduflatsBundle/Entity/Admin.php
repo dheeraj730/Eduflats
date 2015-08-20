@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\Admin
  *
- * @ORM\Entity(repositoryClass="AdminRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="`admin`", indexes={@ORM\Index(name="fk_admin_university1_idx", columns={"university_id"})})
  */
 class Admin

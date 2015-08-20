@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\StudentApproval
  *
- * @ORM\Entity(repositoryClass="StudentApprovalRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="studentApproval", indexes={@ORM\Index(name="fk_studentApproval_university1_idx", columns={"university_id"})})
  */
 class StudentApproval

@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\Amenity
  *
- * @ORM\Entity(repositoryClass="AmenityRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="amenity", indexes={@ORM\Index(name="fk_amenity_university1_idx", columns={"university_id"})})
  */
 class Amenity

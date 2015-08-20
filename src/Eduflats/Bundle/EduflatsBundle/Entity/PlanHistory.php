@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\PlanHistory
  *
- * @ORM\Entity(repositoryClass="PlanHistoryRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="planHistory", indexes={@ORM\Index(name="fk_planHistory_university_idx", columns={"universityId"}), @ORM\Index(name="fk_planHistory_currencyCode1_idx", columns={"currencyCodeId"})})
  */
 class PlanHistory

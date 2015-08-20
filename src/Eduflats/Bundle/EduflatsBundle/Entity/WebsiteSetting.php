@@ -223,52 +223,6 @@ class WebsiteSetting
     }
 
     /**
-     * Set tBackgroundColor
-     *
-     * @param string $tBackgroundColor
-     * @return WebsiteSettings
-     */
-    public function setTBackgroundColor($tBackgroundColor)
-    {
-        $this->tBackgroundColor = $tBackgroundColor;
-
-        return $this;
-    }
-
-    /**
-     * Get tBackgroundColor
-     *
-     * @return string 
-     */
-    public function getTBackgroundColor()
-    {
-        return $this->tBackgroundColor;
-    }
-
-    /**
-     * Set tFontColor
-     *
-     * @param string $tFontColor
-     * @return WebsiteSettings
-     */
-    public function setTFontColor($tFontColor)
-    {
-        $this->tFontColor = $tFontColor;
-
-        return $this;
-    }
-
-    /**
-     * Get tFontColor
-     *
-     * @return string 
-     */
-    public function getTFontColor()
-    {
-        return $this->tFontColor;
-    }
-
-    /**
      * Set university
      *
      * @param University $university

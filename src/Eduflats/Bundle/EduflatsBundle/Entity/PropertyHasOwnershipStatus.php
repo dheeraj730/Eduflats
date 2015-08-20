@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\PropertyHasOwnershipStatus
  *
- * @ORM\Entity(repositoryClass="PropertyHasOwnershipStatusRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="propertyHasOwnershipStatus", indexes={@ORM\Index(name="fk_property_has_ownership_status_ownership_status1_idx", columns={"ownershipStatusId"}), @ORM\Index(name="fk_property_has_ownership_status_property1_idx", columns={"propertyId"})})
  */
 class PropertyHasOwnershipStatus

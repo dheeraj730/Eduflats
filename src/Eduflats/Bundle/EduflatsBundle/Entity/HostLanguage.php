@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\HostLanguage
  *
- * @ORM\Entity(repositoryClass="HostLanguageRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="hostLanguage", indexes={@ORM\Index(name="fk_property_has_host_language_property1_idx", columns={"propertyId"})})
  */
 class HostLanguage

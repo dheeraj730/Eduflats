@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\PropertyType
  *
- * @ORM\Entity(repositoryClass="PropertyTypeRepository")
+ * @ORM\Entity()
  * @ORM\Table()
  */
 class PropertyType

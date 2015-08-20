@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Eduflats\Bundle\EduflatsBundle\Form\ListingsConfigurationType;
+use Eduflats\Bundle\EduflatsBundle\Form\ClientType;
 
 class UniversityType extends AbstractType
 {
@@ -14,13 +14,17 @@ class UniversityType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('tUniversityName', 'text', array('label'=>'University Name'))
             ->add('tSubdomainName', 'text', array('label'=>'Subdomain Name'))
-            ->add('submit', 'submit', array('label'=>'Create University'));
-        ;
+            ->add('client', 'collection', array('type'=>new ClientType(),
+                                                'allow_add' => true,
+                                                'prototype' => true,
+                                                'by_reference' => false,
+                                                'options'=>array('vitalInfo'=>false, 'location'=>false),
+                                                'label'=>false
+                                               ));
     }
     
     /**

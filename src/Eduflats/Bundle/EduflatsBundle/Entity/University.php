@@ -21,6 +21,11 @@ class University
     private $id;
     
     /**
+     * @ORM\OneToMany(targetEntity="Options", mappedBy="university")
+     */
+    protected $options;
+    
+    /**
      * @ORM\OneToMany(targetEntity="PropertyCategory", mappedBy="university")
      */
     protected $propertyCategory;
@@ -502,5 +507,38 @@ class University
     public function getPlan()
     {
         return $this->plan;
+    }
+
+    /**
+     * Add options
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Options $options
+     * @return University
+     */
+    public function addOption(\Eduflats\Bundle\EduflatsBundle\Entity\Options $options)
+    {
+        $this->options[] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Remove options
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\Options $options
+     */
+    public function removeOption(\Eduflats\Bundle\EduflatsBundle\Entity\Options $options)
+    {
+        $this->options->removeElement($options);
+    }
+
+    /**
+     * Get options
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOptions()
+    {
+        return $this->options;
     }
 }

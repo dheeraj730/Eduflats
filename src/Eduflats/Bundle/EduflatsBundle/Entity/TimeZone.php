@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\TimeZone
  *
- * @ORM\Entity(repositoryClass="TimeZoneRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="timeZone")
  */
 class TimeZone

@@ -21,6 +21,21 @@ class Client extends BaseUser {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    
+     /**
+     * @var string
+     */
+    protected $username;
+    
+    /**
+     * @var string
+     */
+    protected $email;
+    
+    /**
+     * @var string
+     */
+    protected $plainPassword;
 
     /**
      * @ORM\OneToMany(targetEntity="Property", mappedBy="client")

@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\RoomType
  *
- * @ORM\Entity(repositoryClass="RoomTypeRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="roomType", indexes={@ORM\Index(name="fk_roomType_university1_idx", columns={"university_id"})})
  */
 class RoomType

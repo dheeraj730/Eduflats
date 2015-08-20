@@ -30,18 +30,9 @@ class PropertyController extends Controller
             $property->setUniversity($university);
             $property->setIsApprovedNotRejected(true);
             $property->setIsActiveNotExpired(true);
-            $property->setTNonApprovalReason(null);
-            $property->setDApprovalRequestedOn(null);
-            $property->setDApprovedOn(null);
             $property->setIsBlacklisted(false);
-            $property->setDClosureDate(null);
             $property->setTAddressTitle('asdf');
             $property->setDCreatedAt(new \DateTime());
-            $property->setDUpdatedAt(null);
-            $property->setNViews(NULL);
-            $property->setNStarRating(null);
-            $property->setNLatitude(NULL);
-            $property->setNLongitude(NULL);
             
             $em->persist($property);
             $em->flush();

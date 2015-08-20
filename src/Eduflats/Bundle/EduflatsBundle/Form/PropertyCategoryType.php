@@ -1,5 +1,4 @@
 <?php
-
 namespace Eduflats\Bundle\EduflatsBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -9,9 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class PropertyCategoryType extends AbstractType
 {
     
-    public function __construct($options, $category) {
+    public function __construct($options) {
         $this->options = $options;
-        $this->category = $category;
     }
     
     /**
@@ -22,24 +20,28 @@ class PropertyCategoryType extends AbstractType
         
         foreach ($this->options as $key => $value) {
             if($value->getCategory()->getIsMultiple()){
-                $checkList[] = $value->getValue();
-                $builder
-                ->add($value->getCategory()->getName(), 'choice', array('expanded'  => true, 'choices'=>$checkList,'multiple'=>true, "mapped"=>false, 'required'=>$value->getCategory()->getRequired()));
-               
+                $checkbox[$value->getCategory()->getName()][] = $value->getValue();
+                $type = 'choice';
+                $options = array('choices'=>$checkbox[$value->getCategory()->getName()],'multiple'=>true, "mapped"=>false, 'expanded'  => true, 'required'=>$value->getCategory()->getRequired());
+            
+                
             }elseif($value->getCategory()->getIsText()){
-                 $builder
-                ->add($value->getCategory()->getName(), 'text', array( "mapped"=>false, 'required'=>$value->getCategory()->getRequired()));
+                $type = 'text';
+                $options = array( "mapped"=>false, 'required'=>$value->getCategory()->getRequired());
+            
+                
             }elseif($value->getCategory()->getIsText() == false && $value->getCategory()->getIsMultiple() == false){
-                $dropdownlist[] = $value->getValue();
-
-                $builder
-                ->add($value->getCategory()->getName(), 'choice', array('choices'=>$dropdownlist,'multiple'=>false, "mapped"=>false, 'required'=>$value->getCategory()->getRequired())); 
-               
+                $ddl[$value->getCategory()->getName()][] = $value->getValue();
+                $type = 'choice';
+                $options = array('choices'=>$ddl[$value->getCategory()->getName()],'multiple'=>false, "mapped"=>false, 'required'=>$value->getCategory()->getRequired()); 
+           
             }
             
+            $builder
+                ->add($value->getCategory()->getName(), $type, $options);
         }
         $builder
-                ->add('submit', 'submit', ['label'=>'submit', 'attr'=>array('class'=>'btn btn-danger')]);
+                ->add('submit', 'submit', array('label'=>'submit', 'attr'=>array('class'=>'btn btn-danger')));
     }
     
     /**

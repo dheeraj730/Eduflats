@@ -34,14 +34,6 @@ class RegisterClientController extends Controller {
             $student->setDCreatedAt(new \DateTime());
             $student->addRole("ROLE_STUDENT");
             
-            $student->setTAddressTitle(null);
-            $student->setTAddressLine1(null);
-            $student->setTAddressLine2(null);
-            $student->setTCity(null);
-            $student->setNCountry(null);
-            $student->setTProvince(null);
-            $student->setTZipCode(null);
-            
             $em->persist($student);
             $em->flush();
             $this->get('session')->getFlashBag()->set('success', 'Student Account has been saved Successfully ');

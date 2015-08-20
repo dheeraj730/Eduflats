@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\PropertyStatus
  *
- * @ORM\Entity(repositoryClass="PropertyStatusRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="propertyStatus")
  */
 class PropertyStatus

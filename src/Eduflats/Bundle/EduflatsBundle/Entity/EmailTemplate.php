@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\EmailTemplate
  *
- * @ORM\Entity(repositoryClass="EmailTemplateRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="emailTemplates", indexes={@ORM\Index(name="fk_emailTemplates_university1_idx", columns={"university_id"})})
  */
 class EmailTemplate

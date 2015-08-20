@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\Authentication
  *
- * @ORM\Entity(repositoryClass="AuthenticationRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="authentication", indexes={@ORM\Index(name="fk_authentication_authentication_type1_idx", columns={"authenticationTypeId"}), @ORM\Index(name="fk_authentication_university1_idx", columns={"university_id"})})
  */
 class Authentication

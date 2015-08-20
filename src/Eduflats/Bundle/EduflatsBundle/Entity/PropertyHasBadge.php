@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\PropertyHasBadge
  *
- * @ORM\Entity(repositoryClass="PropertyHasBadgeRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="propertyHasBadge", indexes={@ORM\Index(name="fk_property_has_badge_badge1_idx", columns={"badgeId"}), @ORM\Index(name="fk_property_has_badge_property1_idx", columns={"propertyId"})})
  */
 class PropertyHasBadge

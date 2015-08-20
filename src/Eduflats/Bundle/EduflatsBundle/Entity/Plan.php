@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\Plan
  *
- * @ORM\Entity(repositoryClass="PlanRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="`plan`", indexes={@ORM\Index(name="fk_plan_currencyCode1_idx", columns={"currencyCodeId"})})
  */
 class Plan

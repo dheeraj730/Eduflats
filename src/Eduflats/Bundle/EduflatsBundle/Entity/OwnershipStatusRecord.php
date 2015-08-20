@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\OwnershipStatusRecord
  *
- * @ORM\Entity(repositoryClass="OwnershipStatusRecordRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="ownershipStatusRecord", indexes={@ORM\Index(name="fk_ownershipStatusRecord_university1_idx", columns={"university_id"})})
  */
 class OwnershipStatusRecord

@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\CurrencyCode
  *
- * @ORM\Entity(repositoryClass="CurrencyCodeRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="currencyCode")
  */
 class CurrencyCode

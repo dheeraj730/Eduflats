@@ -14,7 +14,7 @@ class UserManager extends BaseUserManager {
     }
 
     /**
-     * Finds a user by email or username, with University
+     * Finds a user by email or username, within University
      *
      * @param string $usernameOrEmail
      * @return UserInterface

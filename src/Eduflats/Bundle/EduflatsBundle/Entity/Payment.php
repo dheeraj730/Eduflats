@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\Payment
  *
- * @ORM\Entity(repositoryClass="PaymentRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="payment", indexes={@ORM\Index(name="fk_payment_invoice1_idx", columns={"invoiceId"})})
  */
 class Payment

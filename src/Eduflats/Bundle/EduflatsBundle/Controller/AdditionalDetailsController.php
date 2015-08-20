@@ -44,6 +44,7 @@ class AdditionalDetailsController extends Controller
      * @Template()
      */
     public function addOptionAction(Request $request, $id){
+        
         $em = $this->getDoctrine()->getEntityManager();
         $options = new Options();
         $form = $this->createForm(new OptionsType(), $options);
@@ -51,7 +52,9 @@ class AdditionalDetailsController extends Controller
         
         if($form->isValid()){
             $category = $this->getDoctrine()->getRepository('EduflatsBundle:Category')->findOneById($id);
+            $university = $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(siteConfig::$university_id);
             $options->setCategory($category);
+            $options->setUniversity($university);
             $em->persist($options);
             $em->flush();
             
@@ -59,6 +62,7 @@ class AdditionalDetailsController extends Controller
             return $this->redirect($this->generateUrl('addOption',array('id'=>$id)));
         }
         return array('form'=>$form->createView());
+        
     }
 
     /**
@@ -67,25 +71,18 @@ class AdditionalDetailsController extends Controller
      */
     public function propertyCategoryFormAction(Request $request) {
         
-        $category = $this->getDoctrine()->getRepository('EduflatsBundle:Category')->findAll();
         $options = $this->getDoctrine()->getRepository('EduflatsBundle:Options')->findAll();
-        
         
         $em = $this->getDoctrine()->getEntityManager();
         $propertyCategory = new PropertyCategory();
-        $form = $this->createForm(new PropertyCategoryType($options, $category), $propertyCategory);
+        $form = $this->createForm(new PropertyCategoryType($options), $propertyCategory);
         $form->handleRequest($request);
         
         if($form->isValid()){
-            $university = $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(siteConfig::$university_id);
             $property = $this->getDoctrine()->getRepository('EduflatsBundle:Property')->findOneById(1);
-            $category = $this->getDoctrine()->getRepository('EduflatsBundle:Category')->findOneById(1);
-            
             $propertyCategory = new PropertyCategory();
             
-            $propertyCategory->setUniversity($university);
             $propertyCategory->setProperty($property);
-            $propertyCategory->setCategory($category);
             $propertyCategory->setOptions();
             
             $em->persist($propertyCategory);

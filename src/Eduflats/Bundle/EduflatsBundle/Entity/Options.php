@@ -26,6 +26,12 @@ class Options
     protected $propertyCategory;
     
     /**
+     * @ORM\ManyToOne(targetEntity="University", inversedBy="options")
+     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
+     */
+    protected $university;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="options")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
@@ -116,5 +122,28 @@ class Options
     public function getPropertyCategory()
     {
         return $this->property_category;
+    }
+
+    /**
+     * Set university
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\University $university
+     * @return Options
+     */
+    public function setUniversity(\Eduflats\Bundle\EduflatsBundle\Entity\University $university = null)
+    {
+        $this->university = $university;
+
+        return $this;
+    }
+
+    /**
+     * Get university
+     *
+     * @return \Eduflats\Bundle\EduflatsBundle\Entity\University 
+     */
+    public function getUniversity()
+    {
+        return $this->university;
     }
 }

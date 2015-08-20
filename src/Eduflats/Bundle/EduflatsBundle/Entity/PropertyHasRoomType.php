@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\PropertyHasRoomType
  *
- * @ORM\Entity(repositoryClass="PropertyHasRoomTypeRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="propertyHasRoomType", indexes={@ORM\Index(name="fk_property_has_room_type_room_type1_idx", columns={"room_type_id"}), @ORM\Index(name="fk_property_has_room_type_property1_idx", columns={"property_id"})})
  */
 class PropertyHasRoomType

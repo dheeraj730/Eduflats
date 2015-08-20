@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entity\CampusHasProperty
  *
- * @ORM\Entity(repositoryClass="CampusHasPropertyRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="campusHasProperty", indexes={@ORM\Index(name="fk_campus_has_property_property1_idx", columns={"propertyId"}), @ORM\Index(name="fk_campus_has_property_campus1_idx", columns={"campusId"})})
  */
 class CampusHasProperty

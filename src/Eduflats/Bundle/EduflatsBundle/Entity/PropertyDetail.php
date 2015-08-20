@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\PropertyDetail
  *
- * @ORM\Entity(repositoryClass="PropertyDetailRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="propertyDetail", indexes={@ORM\Index(name="fk_propertyDetail_university1_idx", columns={"university_id"})})
  */
 class PropertyDetail

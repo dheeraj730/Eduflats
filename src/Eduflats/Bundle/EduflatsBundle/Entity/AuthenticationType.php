@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\AuthenticationType
  *
- * @ORM\Entity(repositoryClass="AuthenticationTypeRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="authenticationType")
  */
 class AuthenticationType

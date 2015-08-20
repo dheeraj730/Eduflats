@@ -18,8 +18,6 @@ class WebsiteSettingType extends AbstractType
             ->add('tLogo', 'text', array('label'=>'Logo URL'))
             ->add('tWebsiteName', 'text', array('label'=>'Website Name'))
             ->add('tTagLine', 'text', array('label'=>'Tag Line'))
-            ->add('tBackgroundColor', 'text', array('label'=>'Background Color'))
-            ->add('tFontColor', 'text', array('label'=>'Font Color'))
             ->add('submit', 'submit', array('label'=>'Finish'))
         ;
     }

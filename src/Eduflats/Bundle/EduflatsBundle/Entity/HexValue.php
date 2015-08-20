@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\HexValue
  *
- * @ORM\Entity(repositoryClass="HexValueRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="hexValue")
  */
 class HexValue

@@ -4,9 +4,9 @@ namespace Eduflats\Bundle\EduflatsBundle\Form;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
+use Symfony\Component\Form\AbstractType;
 
-class ClientType extends BaseType
+class ClientType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -14,7 +14,10 @@ class ClientType extends BaseType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder, $options);
+        $builder
+                ->add('username','text',array('label'=>'User name'))
+                ->add('email','email',array('label'=>'Email Id'))
+                ->add('plainPassword', 'password', array('label'=>'Password'));
         
            
             if($options['vitalInfo']){
@@ -23,16 +26,16 @@ class ClientType extends BaseType
                 ->add('tLastName', 'text', array('label'=>'Last Name'))
                 ->add('tPhoneNumber', 'integer', array('label'=>'Phone Number'))
                 ->add('tLandline', 'integer', array('label'=>'Landline'));
-                if($options['location']){ 
-                    $builder
-                    ->add('tAddressTitle', 'text', array('label'=>'Address Title'))
-                    ->add('tAddressLine1', 'textarea', array('label'=>'Address Line 1'))
-                    ->add('tAddressLine2', 'textarea', array('label'=>'Address Line 2'))
-                    ->add('tCity', 'text', array('label'=>'City'))
-                    ->add('tProvince', 'text', array('label'=>'Province'))
-                    ->add('tZipCode', 'text', array('label'=>'Zip Code'))
-                    ->add('nCountry', 'choice', array('choices'=>array(),'label'=>'Country'));
-                }
+            }
+            if($options['location']){ 
+                $builder
+                ->add('tAddressTitle', 'text', array('label'=>'Address Title'))
+                ->add('tAddressLine1', 'textarea', array('label'=>'Address Line 1'))
+                ->add('tAddressLine2', 'textarea', array('label'=>'Address Line 2'))
+                ->add('tCity', 'text', array('label'=>'City'))
+                ->add('tProvince', 'text', array('label'=>'Province'))
+                ->add('tZipCode', 'text', array('label'=>'Zip Code'))
+                ->add('nCountry', 'choice', array('choices'=>array(),'label'=>'Country'));
             }
             $builder
             ->add('submit','submit',array('label'=>'Create Account'));
