@@ -14,18 +14,6 @@
             body{
                 min-width: 960px;
             }
-            .itmes{
-                display:inline;
-                padding: 10px;
-                border:solid #5eb5e0 1px; 
-                border-bottom:solid transparent 1px; 
-            }
-            #menu{
-                min-width: 960px;
-            }
-            .itmes:hover{
-               border:solid #5eb5e0 1px; 
-            }
             
         </style>
             
@@ -33,36 +21,28 @@
     <body>
         
         <div class="container">
-            
-            <div class="well">
-                <h1>Epita University</h1>
-                <p>Design by <a href="">EduFlats</a></p> 
+            <div class="dropdown" style="float:right;">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu
+                <span class="caret"></span></button>
+                <ol  type="1" class="dropdown-menu" style="list-style-type: decimal;">
+                    <li class="itmes"><a href="{{ path('registerUniversity') }}"> University</a></li> 
+                    <li class="itmes"><a href="{{ path('websiteSetting') }}">Website Settings</a></li> 
+                    <li class="itmes"><a href="{{ path('registerCampus') }}"> Campus</a></li>
+                    <li class="itmes"><a href="{{ path('registerAdmin') }}"> Admin</a></li> 
+                    <li class="itmes"><a href="{{ path('listingSetting') }}">Listing Settings</a></li> 
+                    <li class="itmes"><a href="{{ path('registerTags') }}"> Tags</a></li>  
+                    <li class="itmes"><a href="{{ path('registerBadges') }}"> Badges</a></li>
+                    <li class="itmes"><a href="{{ path('registerProvider') }}"> Provider</a></li> 
+                    <li class="itmes"><a href="{{ path('createProperty') }}"> Property</a></li>
+                    <li class="itmes"><a href="{{ path('addCategory') }}"> Add Category</a></li>  
+                    <li class="itmes"><a href="{{ path('addBadges') }}"> Add Badges</a></li>
+                    <li class="itmes"><a href="{{ path('addTags') }}"> Add Tags</a></li>
+                    <li class="itmes"><a href="{{ path('registerStudent') }}"> Student</a></li>
+                    <li class="itmes"><a href="{{ path('home') }}login">Login</a></li>  
+                    <li class="itmes"><a href="{{ path('home') }}logout">logout</a></li>    
+                </ol>
             </div>
-            
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2>Registration</h2></br>
-                    <ul id="menu">
-                        <li class="itmes"><a href="{{ path('registerUniversity') }}"> University</a></li>
-                        <li class="itmes"><a href="{{ path('registerCampus') }}"> Campus</a></li>
-                        <li class="itmes"><a href="{{ path('createProperty') }}"> Property</a></li>
-                        <li class="itmes"><a href="{{ path('registerStudent') }}"> Student</a></li>
-                        <li class="itmes"><a href="{{ path('registerProvider') }}"> Provider</a></li>  
-                        <li class="itmes"><a href="{{ path('createAdmin') }}"> Admin</a></li>  
-                        <li class="itmes"><a href="{{ path('registerTags') }}"> Tags</a></li>  
-                        <li class="itmes"><a href="{{ path('registerBadges') }}"> Badges</a></li>  
-                        <li class="itmes"><a href="{{ path('listingSetting') }}">Listing Settings</a></li>  
-                        <li class="itmes"><a href="{{ path('websiteSetting') }}">Website Settings</a></li>  
-                        <li class="itmes"><a href="{{ path('home') }}login">Login</a></li>  
-                        <li class="itmes"><a href="{{ path('home') }}logout">logout</a></li>  
-                    </ul>
-                    <hr/>
-                </div>
-            </div
-            
         </div><!--end of container-->
-
-        
 
         {% block body %} {% endblock %}
         

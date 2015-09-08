@@ -1,5 +1,4 @@
 <?php
-
 namespace Eduflats\Bundle\EduflatsBundle\Form;
 
 use Symfony\Component\Form\AbstractType;

@@ -2,12 +2,14 @@
 namespace Eduflats\Bundle\EduflatsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Options
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @UniqueEntity("value")
  */
 class Options
 {
@@ -21,7 +23,7 @@ class Options
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="PropertyCategory", mappedBy="options")
+     * @ORM\OneToMany(targetEntity="PropertyCategory", mappedBy="options")
      */
     protected $propertyCategory;
     
@@ -40,7 +42,7 @@ class Options
     /**
      * @var string
      *
-     * @ORM\Column(name="value", type="string", length=255)
+     * @ORM\Column(name="value", type="string", length=255, unique=true, nullable=true)
      */
     protected $value;
 
@@ -145,5 +147,35 @@ class Options
     public function getUniversity()
     {
         return $this->university;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->propertyCategory = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add propertyCategory
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory
+     * @return Options
+     */
+    public function addPropertyCategory(\Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory)
+    {
+        $this->propertyCategory[] = $propertyCategory;
+
+        return $this;
+    }
+
+    /**
+     * Remove propertyCategory
+     *
+     * @param \Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory
+     */
+    public function removePropertyCategory(\Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory $propertyCategory)
+    {
+        $this->propertyCategory->removeElement($propertyCategory);
     }
 }

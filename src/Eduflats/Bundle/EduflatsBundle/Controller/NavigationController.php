@@ -17,14 +17,5 @@ class NavigationController extends Controller {
         
         return array();   
     }
-    
-    /**
-     * @Route("/Users", name="users")
-     * @Template()
-     */
-    public function userAction(){
-        
-        return array();
-    }
 
 }

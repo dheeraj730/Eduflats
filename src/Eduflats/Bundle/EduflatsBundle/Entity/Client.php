@@ -6,13 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * User
- *
  * @ORM\Table(name="client")
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
  */
 class Client extends BaseUser {
-
+    
     /**
      * @var integer
      *

@@ -9,8 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class University
-{
+class University {
     /**
      * @var integer
      *
@@ -68,6 +67,13 @@ class University
      */
     protected $tUniversityName;
 
+    /**
+     * @var string 
+     * holds the locale used in internationalization and localization
+     * @ORM\Column(name="locale", type="string", length=255, nullable=true)
+     */
+    protected $locale;
+    
     /**
      * @var string
      * subdomain for university
@@ -540,5 +546,28 @@ class University
     public function getOptions()
     {
         return $this->options;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return University
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

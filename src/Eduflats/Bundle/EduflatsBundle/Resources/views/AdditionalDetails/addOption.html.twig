@@ -4,8 +4,7 @@
 
 {% block body %}
     <div class="col-sm-6 col-sm-offset-1">
-             {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
-           
+            {{ form_start(form, {attr:{novalidate: 'novalidate'}}) }}
             {{form_end(form)}}
     </div>
     <a href="{{ path('addCategory') }}"><button type="button" class="btn btn-success">Save Values</button></a>

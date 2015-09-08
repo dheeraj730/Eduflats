@@ -13,7 +13,8 @@ use Eduflats\Bundle\EduflatsBundle\Entity\Client;
 class RegisterUniversityController extends Controller{
     
     /**
-     * Creates University Record, Creates subdomain, generates config.php and redirects to success page
+     * Creates University Record,
+     * generates config.php and redirects to success page
      * 
      * @Route("/RegisterUniversity", name="registerUniversity")
      * @Template()
@@ -31,7 +32,7 @@ class RegisterUniversityController extends Controller{
         if($form->isValid()){
             $createdAt = new \DateTime();
             $validity = clone $createdAt;
-            $validity->modify('+6 months'); //createdAt date + six months, (check for edge cases with dates)
+            $validity->modify('+6 months'); //check for edge cases with dates
             
             $university->setDCreatedAt($createdAt);
             $university->setDValidity($validity);
@@ -55,5 +56,5 @@ class RegisterUniversityController extends Controller{
         }
         return array('form'=>$form->createView());
     }
-    
+
 }

@@ -34,6 +34,11 @@ class Badge
      */
     protected $name;
 
+    /**
+     * @var string
+     * @ORM\Column(name="value", type="string", length=255, nullable=true)
+     */
+    protected $value;
 
     /**
      * Get id
@@ -89,5 +94,28 @@ class Badge
     public function getUniversity()
     {
         return $this->university;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     * @return Badge
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string 
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 }

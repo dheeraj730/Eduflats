@@ -15,10 +15,10 @@ use Eduflats\Bundle\EduflatsBundle\siteConfig;
 class AdminController extends Controller
 {
     /**
-     * @Route("/CreateAdmin", name="createAdmin")
+     * @Route("/RegisterAdmin", name="registerAdmin")
      * @Template()
      */
-    public function createAdminAction(Request $request) {
+    public function registerAdminAction(Request $request) {
         $em = $this->getDoctrine()->getEntityManager();
         $admin = new Client();
         $form = $this->createForm(new ClientType($admin), $admin, array('vitalInfo'=>false, 'location'=>false));
@@ -28,8 +28,7 @@ class AdminController extends Controller
             $university = $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(siteConfig::$university_id);
             $admin->setUniversity($university);
             $admin->setDCreatedAt(new \DateTime());
-            $admin->addRole("ROLE_ADMIN");
-            
+            $admin->addRole("ROLE_ADMIN");          
             $em->persist($admin);
             $em->flush();
             $this->get('session')->getFlashBag()->set('success', 'Admin account has been saved Successfully ');
@@ -38,25 +37,5 @@ class AdminController extends Controller
          
         return array('form'=>$form->createView());
     }
-
-    /**
-     * @Route("/updateAdmin")
-     * @Template()
-     */
-    public function updateAdminAction()
-    {
-        return array(
-                // ...
-            );    }
-
-    /**
-     * @Route("/deleteAdmin")
-     * @Template()
-     */
-    public function deleteAdminAction()
-    {
-        return array(
-                // ...
-            );    }
 
 }

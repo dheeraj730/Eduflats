@@ -40,8 +40,7 @@ class PropertyCategoryType extends AbstractType
             $builder
                 ->add($value->getCategory()->getName(), $type, $options);
         }
-        $builder
-                ->add('submit', 'submit', array('label'=>'submit', 'attr'=>array('class'=>'btn btn-danger')));
+   
     }
     
     /**

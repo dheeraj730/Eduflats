@@ -22,7 +22,7 @@ class Property
     private $id;
     
     /**
-     * @ORM\OneToMany(targetEntity="PropertyCategory", mappedBy="property")
+     * @ORM\OneToOne(targetEntity="PropertyCategory", mappedBy="property")
      */
     protected $propertyCategory;
     
@@ -55,7 +55,6 @@ class Property
     protected $badges;
 
     /**
-     * @Assert\NotBlank
      * @Assert\Length(
      *                  min=10,
      *                  max=200,
@@ -65,7 +64,7 @@ class Property
      * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
      * @var type string
      * Verbal description of property
-     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     protected $tPropertyDescription;
     
@@ -79,42 +78,42 @@ class Property
     /**
      * @var type date
      * date available to move in
-     * @ORM\Column(name="availablefrom", type="datetime", nullable=false)
+     * @ORM\Column(name="availablefrom", type="datetime", nullable=true)
      */
     protected $dAvailableFrom;
     
     /**
      * @var type integer
      * max staying period
-     * @ORM\Column(name="monthsofoccupancy", type="integer", nullable=false)
+     * @ORM\Column(name="monthsofoccupancy", type="integer", nullable=true)
      */
     protected $nMonthsOfOccupancy;
     
     /**
      * @var type integer
      * number of bedroom
-     * @ORM\Column(name="bedroom", type="integer", nullable=false)
+     * @ORM\Column(name="bedroom", type="integer", nullable=true)
      */
     protected $nBedroom;
     
     /**
      * @var type integer
      * number of bathroom
-     * @ORM\Column(name="bathroom", type="integer", nullable=false)
+     * @ORM\Column(name="bathroom", type="integer", nullable=true)
      */
     protected $nBathroom;
     
     /**
      * @var type integer
      * number of total floors
-     * @ORM\Column(name="totalfloors", type="integer", nullable=false)
+     * @ORM\Column(name="totalfloors", type="integer", nullable=true)
      */
     protected $nTotalFloors;
     
     /**
      * @var type integer
      * number of flor number
-     * @ORM\Column(name="floornumber", type="integer", nullable=false)
+     * @ORM\Column(name="floornumber", type="integer", nullable=true)
      */
     protected $nFloorNumber;
     
@@ -128,42 +127,42 @@ class Property
     /**
      * @var type integer
      * number of beds
-     * @ORM\Column(name="beds", type="integer", nullable=false)
+     * @ORM\Column(name="beds", type="integer", nullable=true)
      */
     protected $nBeds;
     
     /**
      * @var type integer
      * max number of occupants allowed
-     * @ORM\Column(name="maximumoccupants", type="integer", nullable=false)
+     * @ORM\Column(name="maximumoccupants", type="integer", nullable=true)
      */
     protected $nMaximumOccupants;
     
     /**
      * @var type integer
      * price per month
-     * @ORM\Column(name="price", type="integer", nullable=false)
+     * @ORM\Column(name="price", type="integer", nullable=true)
      */
     protected $nPrice;
     
     /**
      * @var type integer
      * Maintainance Charge
-     * @ORM\Column(name="maintainancecharge", type="integer", nullable=false)
+     * @ORM\Column(name="maintainancecharge", type="integer", nullable=true)
      */
     protected $nMaintainanceCharge;
     
     /**
      * @var type boolean
      * indicates if property can be viewed/responded by brokers
-     * @ORM\Column(name="borkerresponse", type="boolean", nullable=false)
+     * @ORM\Column(name="borkerresponse", type="boolean", nullable=true)
      */
     protected $bBrokersResponse;
 
     /**
      * @var type integer
      * total property area in square feet
-     * @ORM\Column(name="sqftcovered", type="integer", nullable=false)
+     * @ORM\Column(name="sqftcovered", type="integer", nullable=true)
      */
     protected $nSQFTcovered;
 
@@ -196,12 +195,11 @@ class Property
     /**
      * @var type boolean
      * indicates if contacts details can be displayed to public
-     * @ORM\Column(name="displaycontactdetails", type="boolean", nullable=false)
+     * @ORM\Column(name="displaycontactdetails", type="boolean", nullable=true)
      */
     protected $bDisplayContactDetails;
     
     /**
-     * @Assert\NotBlank
      * @Assert\Length(
      *                  min=3,
      *                  max=35,
@@ -211,12 +209,11 @@ class Property
      * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
      * @var type string
      * address title
-     * @ORM\Column(name="addresstitle", type="string", length=255, nullable=false)
+     * @ORM\Column(name="addresstitle", type="string", length=255, nullable=true)
      */
     protected $tAddressTitle;
     
     /**
-     * @Assert\NotBlank
      * @Assert\Length(
      *                  min=3,
      *                  max=100,
@@ -226,7 +223,7 @@ class Property
      * @Assert\Regex(pattern="/[^a-z\s-]/i", match=false , message="Name can only contain letters")
      * @var type string
      * address
-     * @ORM\Column(name="addressline1", type="string", length=255, nullable=false)
+     * @ORM\Column(name="addressline1", type="string", length=255, nullable=true)
      */
     protected $tAddressLine1;
     
@@ -247,19 +244,19 @@ class Property
     
     /**
      * @var type string
-     * @ORM\Column(name="city", type="string", length=255, nullable=false)
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
      */
     protected $tCity;
     
      /**
      * @var type string
-     * @ORM\Column(name="province", type="string", length=255, nullable=false)
+     * @ORM\Column(name="province", type="string", length=255, nullable=true)
      */
     protected $tProvince;
     
     /**
      * @var type string
-     * @ORM\Column(name="zip", type="string", length=255, nullable=false)
+     * @ORM\Column(name="zip", type="string", length=255, nullable=true)
      */
     protected $tZipCode;
     
@@ -272,14 +269,14 @@ class Property
     /**
      * @var type boolean
      * true if approved for display, false if rejected
-     * @ORM\Column(name="isapprovednotrejected", type="boolean", nullable=false)
+     * @ORM\Column(name="isapprovednotrejected", type="boolean", nullable=true)
      */
     protected $isApprovedNotRejected;
     
     /**
      * @var type boolean
      * true if active, false if expired
-     * @ORM\Column(name="isactivenotexpired", type="boolean", nullable=false)
+     * @ORM\Column(name="isactivenotexpired", type="boolean", nullable=true)
      */
     protected $isActiveNotExpired;
     
@@ -307,7 +304,7 @@ class Property
     /**
      * @var type boolean
      * indicates if property is blacklisted
-     * @ORM\Column(name="isblacklisted", type="boolean", nullable=false)
+     * @ORM\Column(name="isblacklisted", type="boolean", nullable=true)
      */
     protected $isBlacklisted;
     
@@ -321,7 +318,7 @@ class Property
     /**
      * @var type \DateTime
      * date the property was created
-     * @ORM\Column(name="createdat", type="datetime", nullable=false)
+     * @ORM\Column(name="createdat", type="datetime", nullable=true)
      */
     protected $dCreatedAt;
     

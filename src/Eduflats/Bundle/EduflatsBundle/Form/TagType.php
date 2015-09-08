@@ -16,6 +16,7 @@ class TagType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('value')
             ->add('submit', 'submit', array('label'=>'Create Tag'));
     }
     

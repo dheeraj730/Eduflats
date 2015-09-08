@@ -30,10 +30,7 @@ class RegisterCampusController extends Controller {
         
         if($form->isValid()){
             $university = $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(siteConfig::$university_id);
-            $campus->setNLongitude(null);
-            $campus->setNLatitude(null);
             $campus->setDCreatedAt(new \DateTime());
-            $campus->setDUpdatedAt(null);
             $campus->setUniversity($university);
             
             $em->persist($campus);

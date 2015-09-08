@@ -29,35 +29,35 @@ class ListingSetting
     /**
      * @var integer
      * represents number of days to show the listing (created date untill number of days)
-     * @ORM\Column(name="advertiseperiod", type="integer")
+     * @ORM\Column(name="advertiseperiod", type="integer", nullable=true)
      */
     private $nAdvertisePeriod;
 
     /**
      * @var boolean
      * shows/hides all badges of a property
-     * @ORM\Column(name="enablebadges", type="boolean")
+     * @ORM\Column(name="enablebadges", type="boolean", nullable=true)
      */
     private $bEnableBadges;
 
     /**
      * @var boolean
      * shows/hides all badges of a property
-     * @ORM\Column(name="$photorequired", type="boolean")
+     * @ORM\Column(name="photorequired", type="boolean", nullable=true)
      */
     private $bPhotoRequired;
 
     /**
      * @var boolean
      * shows/hides star ratings of a property
-     * @ORM\Column(name="enablestarratings", type="boolean")
+     * @ORM\Column(name="enablestarratings", type="boolean", nullable=true)
      */
     private $bEnableStarRatings;
 
     /**
      * @var \DateTime
      * lisitng configuration created on
-     * @ORM\Column(name="createdat", type="datetime")
+     * @ORM\Column(name="createdat", type="datetime", nullable=true)
      */
     private $dCreatedAt;
 

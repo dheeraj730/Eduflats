@@ -13,9 +13,7 @@ use Eduflats\Bundle\EduflatsBundle\Form\CategoryType;
 use Eduflats\Bundle\EduflatsBundle\Entity\Options;
 use Eduflats\Bundle\EduflatsBundle\Form\OptionsType;
 
-use Eduflats\Bundle\EduflatsBundle\Entity\PropertyCategory;
 use Eduflats\Bundle\EduflatsBundle\siteConfig;
-use Eduflats\Bundle\EduflatsBundle\Form\PropertyCategoryType;
 
 class AdditionalDetailsController extends Controller
 {
@@ -45,50 +43,38 @@ class AdditionalDetailsController extends Controller
      */
     public function addOptionAction(Request $request, $id){
         
-        $em = $this->getDoctrine()->getEntityManager();
+        $category = $this->getDoctrine()->getRepository('EduflatsBundle:Category')->findOneById($id);
+        $university = $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(siteConfig::$university_id);
         $options = new Options();
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        if($category->getIsMultiple() === true){
+            // isMultiple overrides isText
+        } elseif ($category->getIsText() === true) {
+            $options->setCategory($category);
+            $options->setUniversity($university);
+            $em->persist($options);
+            $em->flush();
+            $this->get('session')->getFlashBag()->set('success', 'Your options have been saved Successfully');
+            return $this->redirect($this->generateUrl('success'));
+        }
+        
+        
         $form = $this->createForm(new OptionsType(), $options);
         $form->handleRequest($request);
         
         if($form->isValid()){
-            $category = $this->getDoctrine()->getRepository('EduflatsBundle:Category')->findOneById($id);
-            $university = $this->getDoctrine()->getRepository('EduflatsBundle:University')->findOneById(siteConfig::$university_id);
             $options->setCategory($category);
             $options->setUniversity($university);
             $em->persist($options);
             $em->flush();
             
-            $this->get('session')->getFlashBag()->set('success', 'Your options have been saved Successfully');
-            return $this->redirect($this->generateUrl('addOption',array('id'=>$id)));
+            $this->get('session')->getFlashBag()->set('success', 'Your options have been add Successfully');
+            return $this->redirect($this->generateUrl('addOption', array('id'=>$id)));
+               
         }
         return array('form'=>$form->createView());
         
-    }
-
-    /**
-     * @Route("/form", name="form")
-     * @Template()
-     */
-    public function propertyCategoryFormAction(Request $request) {
-        
-        $options = $this->getDoctrine()->getRepository('EduflatsBundle:Options')->findAll();
-        
-        $em = $this->getDoctrine()->getEntityManager();
-        $propertyCategory = new PropertyCategory();
-        $form = $this->createForm(new PropertyCategoryType($options), $propertyCategory);
-        $form->handleRequest($request);
-        
-        if($form->isValid()){
-            $property = $this->getDoctrine()->getRepository('EduflatsBundle:Property')->findOneById(1);
-            $propertyCategory = new PropertyCategory();
-            
-            $propertyCategory->setProperty($property);
-            $propertyCategory->setOptions();
-            
-            $em->persist($propertyCategory);
-            $em->flush();
-        }
-        return array('form'=>$form->createView());
     }
     
 }

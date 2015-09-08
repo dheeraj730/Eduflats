@@ -24,7 +24,7 @@ class PropertyCategory {
     protected $university;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Property", inversedBy="propertyCategory")
+     * @ORM\OneToOne(targetEntity="Property", inversedBy="propertyCategory")
      */
     protected $property;
     
@@ -34,7 +34,7 @@ class PropertyCategory {
     protected $category;
     
     /**
-     * @ORM\OneToOne(targetEntity="Options", inversedBy="propertyCategory")
+     * @ORM\ManyToOne(targetEntity="Options", inversedBy="propertyCategory")
      */
     protected $options;
     

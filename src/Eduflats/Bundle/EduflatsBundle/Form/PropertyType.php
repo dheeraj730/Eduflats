@@ -5,9 +5,14 @@ namespace Eduflats\Bundle\EduflatsBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Eduflats\Bundle\EduflatsBundle\Form\PropertyCategoryType;
 
 class PropertyType extends AbstractType
 {
+    public function __construct($options) {
+        $this->options = $options;
+    }
+    
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -38,13 +43,14 @@ class PropertyType extends AbstractType
             ->add('tProvince', 'text', array('label'=> 'Province'))
             ->add('tZipCode', 'integer', array('label'=> 'Zip Code'))
             ->add('nCountry','choice', array('choices'=>array(),'label'=>'Availability Status'))
+            ->add('propertyCategory', new PropertyCategoryType($this->options), array('label'=>false))
             ->add('tag', 'entity', array(
                     'class' => 'EduflatsBundle:Tag',
                     'property' => 'name',
                     'multiple' => true,
                     'expanded' => true,
                     ))
-            ->add('submit', 'submit', array('label'=>'Create Property'))
+            ->add('submit', 'submit', array('label'=>'Create Property', 'attr'=>array('class'=>'btn btn-primary')))
         ;
     }
     

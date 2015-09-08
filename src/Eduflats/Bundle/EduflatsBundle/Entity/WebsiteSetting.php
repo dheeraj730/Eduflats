@@ -1,5 +1,4 @@
 <?php
-
 namespace Eduflats\Bundle\EduflatsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -30,21 +29,21 @@ class WebsiteSetting
     /**
      * @var string
      * Holds url of logo
-     * @ORM\Column(name="logo", type="string", length=255, nullable=false)
+     * @ORM\Column(name="logo", type="string", length=255, nullable=true)
      */
     protected $tLogo;
 
     /**
      * @var string
      * Holds title of website
-     * @ORM\Column(name="websitename", type="string", length=255, nullable=false)
+     * @ORM\Column(name="websitename", type="string", length=255, nullable=true)
      */
     protected $tWebsiteName;
 
     /**
      * @var string
      * holds tagline
-     * @ORM\Column(name="tagline", type="string", length=255, nullable=false)
+     * @ORM\Column(name="tagline", type="string", length=255, nullable=true)
      */
     protected $tTagLine;
 
@@ -132,7 +131,7 @@ class WebsiteSetting
     /**
      * @var \DateTime
      * lisitng configuration created on
-     * @ORM\Column(name="createdat", type="datetime")
+     * @ORM\Column(name="createdat", type="datetime", nullable=true)
      */
     private $dCreatedAt;
 

@@ -101,9 +101,10 @@ class Tag
     /**
      * Set value
      *
+     * @param \string $value
      * @return Tag
      */
-    public function setValue($value)
+    public function setValue(\string $value)
     {
         $this->value = $value;
 
