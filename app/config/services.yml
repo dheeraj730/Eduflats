@@ -1,12 +1,14 @@
 parameters:
-#    parameter_name: value
+  domain: 
+    - www.eduflats.com
+    - eduflats.com
 
 services:
     kernel.listener.request:
         class: Eduflats\Bundle\EduflatsBundle\EventListener\RequestListener
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest}
-        arguments: [ @router, @service_container ]
+        arguments: ["@doctrine.orm.entity_manager","@eduflats.university_resolver",'%domain%']
         
     Helper_Functions:
         class: Eduflats\Bundle\EduflatsBundle\Services\HelperFunctions
@@ -14,7 +16,18 @@ services:
         
     EduflatsUserManager:
         class: Eduflats\Bundle\EduflatsBundle\Entity\UserManager
-        arguments: [@security.encoder_factory, @fos_user.util.username_canonicalizer, @fos_user.util.email_canonicalizer, @fos_user.entity_manager, Eduflats\Bundle\EduflatsBundle\Entity\Client]
+        arguments: ["@security.encoder_factory", "@fos_user.util.username_canonicalizer", "@fos_user.util.email_canonicalizer", "@fos_user.entity_manager", Eduflats\Bundle\EduflatsBundle\Entity\Client]
+    
+    eduflats.university_resolver:
+        class: Eduflats\Bundle\EduflatsBundle\Services\UniversityResolver
+        arguments: ["@request_stack",'%domain%','@university_repository','@security.token_storage']        
+    
+    university_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Eduflats\Bundle\EduflatsBundle\Entity\University
         
     post_persist_listener:
         class: Eduflats\Bundle\EduflatsBundle\EventListener\PostPersistListener
