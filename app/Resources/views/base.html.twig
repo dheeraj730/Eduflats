@@ -1,57 +1,178 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
-        <meta charset="UTF-8" />
-        <title> {% block title %}EduFlats{% endblock %} </title>
-        {% block stylesheets %}    {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-   
-        <style>
-            body{
-                min-width: 960px;
-            }
-            
-        </style>
-            
+        <meta charset="utf-8">
+        <meta name="description" content=" ">
+        <meta name="author" content="CreateIT">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="{{ asset('bundles/eduflats/assets/js/modernizr.custom.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/device.min.js') }}"></script>
+        <title>{% block title %}Eduflats{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/eduflats/assets/css/style.css') }}">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' type='text/css'>
+        <!--[if lt IE 9]>
+        <script src="{{ asset('bundles/eduflats/assets/bootstrap/js/html5shiv.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/bootstrap/js/respond.min.js') }}"></script>
+        <![endif]-->
+        <script src="{{ asset('bundles/eduflats/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/modernizr.custom.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/jquery-ui.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/jQuery-ui-touch.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/lightbox-2.6.min.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/device.min.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/jquery.browser.min.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/jquery.appear.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/jquery.parallax.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/gmap3.min.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/jquery.flexslider-min.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/form/js/contact-form.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/assets/js/main.js') }}"></script>
+        <script src="{{ asset('bundles/eduflats/demo/js/demo.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/eduflats/demo/css/demo.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/eduflats/demo/generator.css') }}">
+        
     </head>
-    <body>
-        
-        <div class="container">
-            <div class="dropdown" style="float:right;">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu
-                <span class="caret"></span></button>
-                <ol  type="1" class="dropdown-menu" style="list-style-type: decimal;">
-                    <li class="itmes"><a href="{{ path('registerUniversity') }}"> University</a></li> 
-                    <li class="itmes"><a href="{{ path('websiteSetting') }}">Website Settings</a></li> 
-                    <li class="itmes"><a href="{{ path('registerCampus') }}"> Campus</a></li>
-                    <li class="itmes"><a href="{{ path('registerAdmin') }}"> Admin</a></li> 
-                    <li class="itmes"><a href="{{ path('listingSetting') }}">Listing Settings</a></li> 
-                    <li class="itmes"><a href="{{ path('registerTags') }}"> Tags</a></li>  
-                    <li class="itmes"><a href="{{ path('registerBadges') }}"> Badges</a></li>
-                    <li class="itmes"><a href="{{ path('registerProvider') }}"> Provider</a></li> 
-                    <li class="itmes"><a href="{{ path('createProperty') }}"> Property</a></li>
-                    <li class="itmes"><a href="{{ path('addCategory') }}"> Add Category</a></li>  
-                    <li class="itmes"><a href="{{ path('addBadges') }}"> Add Badges</a></li>
-                    <li class="itmes"><a href="{{ path('addTags') }}"> Add Tags</a></li>
-                    <li class="itmes"><a href="{{ path('registerStudent') }}"> Student</a></li>
-                    <li class="itmes"><a href="{{ path('home') }}login">Login</a></li>  
-                    <li class="itmes"><a href="{{ path('home') }}logout">logout</a></li>    
-                </ol>
+    <body class="gray withAnimation">
+        <div class="wrapper">
+            <header>
+
+            </header>
+
+            <div class="container">
+
             </div>
-        </div><!--end of container-->
 
-        {% block body %} {% endblock %}
+            <nav class="navbar navbar-brick navbar-fixed-top no-animation" role="navigation">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 text-center">
+
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" data-href="#" class="navbar-toggle toggle-sidebar pull-left" >
+                                    <i class="icon-house"></i>
+                                </button>
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand visible-sm visible-xs" href="#"><img src=src="{{ asset('bundles/eduflats/assets/images/bricklogo-smal.png') }}" alt=""></a>
+                                <a class="logo-small hidden-xs hidden-sm" href="#"><img src="{{ asset('bundles/eduflats/assets/images/bricklogo-smal.png') }}" alt=""></a>
+                            </div>
+                            <p class="navbar-text scroll-move visible-md visible-lg"></p>
+                        </div>
+
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="/">Home</a></li>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+
+                                        <li><a href="{{ path('agents')}}">Agents</a></li>
+                                        <li><a href="{{ path('faq')}}">FAQ</a></li>
+                                        <li><a href="{{ path('pagenotfound')}}">404</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Properties <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('properties')}}">Properties list</a></li>
+                                        <li><a href="{{ path('propertydetail')}}">Property Detail</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Reference Pages<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('blog')}}">Blog List</a></li>
+                                        <li><a href="{{ path('blogdetail')}}">Blog Detail</a></li>
+                                        <li><a href="{{ path('shortcodes')}}">Short codes</a></li>
+                                    </ul>
+                                </li>
+
+                                
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div>
+                </div><!-- /.container-fluid -->
+            </nav>
+
+            <div class="container">
+
+            </div>
+            <!--end hader-->
+            <!--begin Page Content-->
+
+            {% block body %} {% endblock %}
+
+            {% block form %} {% endblock %}
+
+            {% block javascripts %}{% endblock %}
+
+            <!--end Page Content-->
+            <!--begin footer-->
+            <div class="container">
+
+            </div>
+
+            <section class="full-width-map padding-top-medium">
+                <div class="googleMap" data-location="331 w 4th Street, New York" data-height="300" data-offset="0"></div>
+            </section>
+
+            <div class="container">
+
+            </div>
+
+            <footer class="light">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-bottom">
+                            <div class="col-md-10">
+                                <nav class="navigation-footer">
+                                    <ul>
+                                        <li>
+                                            <a href="#">Privacy Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Cookie Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Social Media Terms</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Satutory Information</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Supply Chain</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Sitemap</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Mobile Site</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="col-md-2 text-right ">
+                                © Eduflats 2015
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+
+            <a href="#" id="toTop"><i class="fa fa-angle-up"></i></a>
+        </div>
         
-        {% block form %} {% endblock %}
-
-        {% block javascripts %}{% endblock %}
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-            
     </body>
 </html>

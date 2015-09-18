@@ -1,0 +1,534 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+<div class="wrapper">
+    <div class="container">
+
+    </div>
+
+    <section class="property-map">
+        <div  style=" height:400px; width:100%; background-image: url('http://www.testifydigital.com/wp-content/uploads/2013/02/background1.jpg')">
+        <div class="search-block">
+            <div class="container">
+                <div class="block">
+                    <div class="table">
+                        <div class="left">
+                            <div class="table-cell">
+                                            <span class="select-box input-right" title="Location">
+                                                <select name="Location" data-placeholder="Location">
+                                                    <option>Location</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </span>
+                            </div>
+                            <div class="table-cell">
+                                            <span class="select-box input-right" title="Type">
+                                                <select name="Type" data-placeholder="Type">
+                                                    <option>Type</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </span>
+                            </div>
+                            <div class="table-cell">
+                                            <span class="select-box input-right" title="Bedrooms">
+                                                <select name="Bedrooms" data-placeholder="Bedrooms">
+                                                    <option>Bedrooms</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </span>
+                            </div>
+                            <div class="table-cell">
+                                            <span class="select-box input-right" title="Bathrooms">
+                                                <select name="Bathrooms" data-placeholder="Bathrooms">
+                                                    <option>Bathrooms</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="left">
+                                <div class="slider-range-container">
+                                    <div class="row">
+                                        <div class="header">
+                                            <div class="col-xs-6">
+                                                <input type="text" id="amount-min-map">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <input type="text" id="amount-max-map">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div id="slider-range-map"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <a href="#" class="btn btn-lg btn-filter uppercase">Filter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 sidebar-top-none">
+                <div class="sidebar">
+                    <div class="input-group">
+                        
+                    </div>
+
+                    <h4 class="uppercase motive section-top"><strong>Recent Blog Posts</strong></h4>
+                    <div class="media">
+                        <img src="{{ asset('bundles/eduflats/assets/images/demo-content/blogpost1.jpg')}}" class="pull-left" alt="Blog Post Image">
+                        <div class="media-body">
+                            <h6 class="motive"><a href="#">Recent Blog Post 1</a></h6>
+                            Pellentesque habitant morbi tristique senectus et netus et
+                        </div>
+                    </div>
+                    <div class="media">
+                        <img src="{{ asset('bundles/eduflats/assets/images/demo-content/blogpost2.jpg')}}" class="pull-left" alt="Blog Post Image">
+                        <div class="media-body">
+                            <h6 class="motive"><a href="#">Recent Blog Post 2</a></h6>
+                            Pellentesque habitant morbi tristique senectus et netus et
+                        </div>
+                    </div>
+                    <div class="media">
+                        <img src="{{ asset('bundles/eduflats/assets/images/demo-content/blogpost3.jpg')}}" class="pull-left" alt="Blog Post Image">
+                        <div class="media-body">
+                            <h6 class="motive"><a href="#">Recent Blog Post 3</a></h6>
+                            Pellentesque habitant morbi tristique senectus et netus et
+                        </div>
+                    </div>
+                    <div class="media">
+                        <img src="{{ asset('bundles/eduflats/assets/images/demo-content/blogpost3.jpg')}}" class="pull-left" alt="Blog Post Image">
+                        <div class="media-body">
+                            <h6 class="motive"><a href="#">Recent Blog Post 3</a></h6>
+                            Pellentesque habitant morbi tristique senectus et netus et
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8" style="display:inline-block; position:relative">
+                <div class="caption">
+                    <h3 class="uppercase">
+                        Welcome to "Brick Real Estate HTML Template"
+                    </h3>
+                    <p>
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+                    </p>
+                </div>
+                <section>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-link dropdown-toggle uppercase" data-toggle="dropdown">
+                                Show all offerings <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                    <div class="flexslider title-slider" data-animation="fade" data-loop="true">
+                        <div class="title">
+                            Recent Listings
+                        </div>
+                        <ul class="slides">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="thumbnail boxed">
+                                            <div class="listing-image">
+                                                <span class="listing-tag important">New</span>
+                                                <img src="{{ asset('bundles/eduflats/assets/images/demo-content/listing5.jpg')}}" alt="Listing">
+                                                <div class="image-links">
+                                                    <div class="left">
+                                                        <a class="inner" href="{{ asset('bundles/eduflats/assets/images/demo-content/listing5.jpg')}}" data-lightbox="related-1">
+                                                            <i class="fa fa-camera"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="right">
+                                                        <a class="inner" href="#">
+                                                            <i class="fa fa-link"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="image-tags">
+                                                    <ul class="property-tags">
+                                                        <li><span><i class="icon-bed"></i> 5<br><span class="small">Bedrooms</span></span></li>
+                                                        <li><span><i class="icon-shower"></i> 3<br><span class="small">Bathrooms</span></span></li>
+                                                        <li><span><i class="icon-garage"></i> 1<br><span class="small">Garages</span></span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="description">
+                                                <h4>Alemanys 5<br>
+                                                    <small>Australia, Caslecrag</small></h4>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+                                                        <strong>Property Type:</strong>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        Villa
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <strong>Property Size:</strong>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        6 000 Sq
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <strong>Rooms:</strong>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        6 Bed, 4 Bath
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <span class="price-tag">
+                                                    2 750 000 USD
+                                                </span>
+                                                <a href="#" class="btn btn-link " role="button">+ Show Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="thumbnail boxed">
+                                            <div class="listing-image">
+                                                <span class="listing-tag important">New</span>
+                                                <img src="{{ asset('bundles/eduflats/assets/images/demo-content/listing2.jpg')}}" alt="Listing">
+                                                <div class="image-links">
+                                                    <div class="left">
+                                                        <a class="inner" href="{{ asset('bundles/eduflats/assets/images/demo-content/listing2.jpg')}}" data-lightbox="related-3">
+                                                            <i class="fa fa-camera"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="right">
+                                                        <a class="inner" href="#">
+                                                            <i class="fa fa-link"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="image-tags">
+                                                    <ul class="property-tags">
+                                                        <li><span><i class="icon-bed"></i> 5<br><span class="small">Bedrooms</span></span></li>
+                                                        <li><span><i class="icon-shower"></i> 3<br><span class="small">Bathrooms</span></span></li>
+                                                        <li><span><i class="icon-garage"></i> 1<br><span class="small">Garages</span></span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="description">
+                                                <h4>Villa Överby<br>
+                                                    <small>Sweden, Stockholm</small></h4>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+                                                        <strong>Property Type:</strong>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        Villa
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <strong>Property Size:</strong>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        6 000 Sq
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <strong>Rooms:</strong>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        6 Bed, 4 Bath
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <span class="price-tag">
+                                                    1 250 000 USD
+                                                </span>
+                                                <a href="#" class="btn btn-link " role="button">+ Show Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="thumbnail boxed">
+                                            <div class="listing-image">
+                                                <span class="listing-tag important">New</span>
+                                                <img src="{{ asset('bundles/eduflats/assets/images/demo-content/listing4.jpg')}}" alt="Listing">
+                                                <div class="image-links">
+                                                    <div class="left">
+                                                        <a class="inner" href="{{ asset('bundles/eduflats/assets/images/demo-content/listing4.jpg')}}" data-lightbox="related-4">
+                                                            <i class="fa fa-camera"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="right">
+                                                        <a class="inner" href="">
+                                                            <i class="fa fa-link"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="image-tags">
+                                                    <ul class="property-tags">
+                                                        <li><span><i class="icon-bed"></i> 5<br><span class="small">Bedrooms</span></span></li>
+                                                        <li><span><i class="icon-shower"></i> 3<br><span class="small">Bathrooms</span></span></li>
+                                                        <li><span><i class="icon-garage"></i> 1<br><span class="small">Garages</span></span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="description">
+                                                <h4>Cosgriff House<br>
+                                                    <small>Australia, Sydney</small></h4>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <strong>Property Type:</strong>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        Villa
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <strong>Property Size:</strong>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        6 000 Sq
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <strong>Rooms:</strong>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        6 Bed, 4 Bath
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <span class="price-tag">
+                                                    2 750 000 USD
+                                                </span>
+                                                <a href="#" class="btn btn-link " role="button">+ Show Details</a>
+                                            </div>
+
+                                            <ul class="property-tags">
+                                                <li><span data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fa fa-home"></i> 546 sqm</span></li>
+                                                <li><span data-toggle="tooltip" data-placement="left" title="Tooltip on left"><i class="icon-bed"></i> 3</span></li>
+                                                <li><span data-toggle="tooltip" data-placement="right" title="Tooltip on right"><i class="icon-shower"></i> 5</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="thumbnail boxed">
+                                            <div class="listing-image">
+                                                <span class="listing-tag important">New</span>
+                                                <img src="{{ asset('bundles/eduflats/assets/images/demo-content/listing9.jpg')}}" alt="Listing">
+                                                <div class="image-links">
+                                                    <div class="left">
+                                                        <a class="inner" href="{{ asset('bundles/eduflats/assets/images/demo-content/listing9.jpg')}}" data-lightbox="related-5">
+                                                            <i class="fa fa-camera"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="right">
+                                                        <a class="inner" href="">
+                                                            <i class="fa fa-link"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="image-tags">
+                                                    <ul class="property-tags">
+                                                        <li><span><i class="icon-bed"></i> 5<br><span class="small">Bedrooms</span></span></li>
+                                                        <li><span><i class="icon-shower"></i> 3<br><span class="small">Bathrooms</span></span></li>
+                                                        <li><span><i class="icon-garage"></i> 1<br><span class="small">Garages</span></span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="description">
+                                                <h4>Casa Del Viento<br>
+                                                    <small>Mexico, Morelos</small></h4>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <strong>Property Type:</strong>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        Villa
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <strong>Property Size:</strong>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        6 000 Sq
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <strong>Rooms:</strong>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        6 Bed, 4 Bath
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <span class="price-tag">
+                                                    2 750 000 USD
+                                                </span>
+                                                <a href="#" class="btn btn-link " role="button">+ Show Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+    </div>
+
+    <div class="grey-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="title">
+                        Buying a property with Brick Real Estate
+                    </div>
+                    <img src="{{ asset('bundles/eduflats/assets/images/demo-content/buyingproperty.jpg')}}" alt="" class="fit-image">
+                    <div class="caption">
+                        <h3 class="uppercase">Welcome to your new home</h3>
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+                    </div>
+                    <a href="#" class="btn btn-brick btn-xs large-padding">learn more</a>
+                </div>
+                <hr class="visible-xs visible-sm">
+                <div class="col-md-5 col-md-offset-2">
+                    <div class="title">
+                        My Brick Real Estate Section
+                    </div>
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active"><a href="#brick" data-toggle="tab">My House</a></li>
+                        <li><a href="#why" data-toggle="tab">Why with us?</a></li>
+                        <li><a href="#smooth" data-toggle="tab">Smooth move!</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="brick">
+                            <div class="inner">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat et nibh id hendrerit. , et commodo nisl sodales vel. Etiam sit amet Duis pellentesque vulputate tortor, ac volutpat in. In ultrices metus purus comot es.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="why">
+                            <div class="inner">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat et nibh id hendrerit. , et commodo nisl sodales vel. Etiam sit amet Duis pellentesque vulputate tortor, ac volutpat in. In ultrices metus purus comot es.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="smooth">
+                            <div class="inner">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat et nibh id hendrerit. , et commodo nisl sodales vel. Etiam sit amet Duis pellentesque vulputate tortor, ac volutpat in. In ultrices metus purus comot es.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h3 class="uppercase">Your area</h3>
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+                    </div>
+                    <a href="#" class="btn btn-brick btn-xs large-padding">log in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container padding-big">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="title">
+                    Latest Blog Posts
+                </div>
+                <div class="list-posts">
+                    <article>
+                        <span class="motive">12.12.2014 |</span> about 2 hours ago<br>
+                        <h4 class="uppercase"><a href="#">The Deck House</a></h4>
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
+                        <a href="#"><i>read more <i class="fa fa-angle-double-right"></i></i></a>
+                    </article>
+                    <hr>
+                    <article>
+                        <span class="motive">12.12.2014 |</span> about 2 hours ago<br>
+                        <h4 class="uppercase"><a href="#">Beyond your dreams</a></h4>
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
+                        <a href="#"><i>read more <i class="fa fa-angle-double-right"></i></i></a>
+                    </article>
+                    <br>
+                    <a href="#" class="btn btn-brick btn-xs large-padding">view more</a>
+                </div>
+
+            </div>
+            <hr class="visible-xs visible-sm">
+            <div class="col-md-4">
+                <div class="title">
+                    About Casa Real Estate
+                </div>
+                <img src="{{ asset('bundles/eduflats/assets/images/demo-content/about-image.jpg')}}" alt="" class="fit-image">
+                <div class="caption">
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
+                </div>
+                <a href="#" class="btn btn-brick btn-xs large-padding">view more</a>
+            </div>
+            <hr class="visible-xs visible-sm">
+            <div class="col-md-4">
+                <div class="title">
+                    Download our app
+                </div>
+                <div class="text-center">
+                    <img src="{{ asset('bundles/eduflats/assets/images/demo-content/downloadapp.png')}}" alt="">
+                </div>
+                <div class="caption">
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
+                </div>
+                <a href="#" class="btn btn-brick btn-xs large-padding">download now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block form %}{% endblock %}

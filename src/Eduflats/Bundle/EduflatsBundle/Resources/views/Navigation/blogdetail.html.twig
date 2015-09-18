@@ -1,0 +1,184 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}blog details{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    
+<div class="wrapper">
+
+    <div class="container">
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-12">
+                <div class="breadcrumbs">
+                    <ol class="breadcrumb text-right">
+                        <li><a href="#">Home</a></li><li class="active">Financing</li>
+                    </ol>
+                </div>
+                <section>
+                    <article class="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    Standard Post with Full Width Image
+                                </div>
+                                <div class="post-info">
+                                    <p>Post by <a href="#">John Doe</a> in <a href="#">general</a> on <strong>12.03.2013</strong></p>
+                                    <hr>
+                                    <p class="date">Last updated on <strong>12.03.2013</strong></p>
+                                </div>
+                                <div class="description">
+                                        <img class="fit-image" src="{{ asset('bundles/eduflats/assets/images/demo-content/listing12.jpg')}}" alt="">
+                                    <div class="caption">
+                                        <h3 class="uppercase">Gatineau Hills - Living in an extraordinary space</h3>
+
+                                        <p>
+                                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.
+                                        </p>
+                                    </div>
+                                    <p>
+                                        Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.                                    </p>
+                                    <p>
+                                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.                                    </p>
+                                    <br>
+                                    <a href="#" class="btn btn-brick flat">Previous Post</a>
+                                    <a href="#" class="btn btn-brick flat pull-right">Next Post</a>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <span class="commentsNumber"><span class="number">3</span>  <span class="text">Comments</span></span>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <section class="commentList">
+                        <ul class="commentList list-unstyled">
+                            <li>
+                                <div class="oneComment">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object" src="{{ asset('bundles/eduflats/assets/images/demo-content/agent3.jpg')}}"
+                                                 alt="">
+                                        </a>
+
+                                        <div class="media-body">
+                                            <div class="inner-body">
+                                                <h3 class="media-heading"><a href="#">Mike Arny</a>
+                                                    <small class="date">March 24, 2014 at 5:52pm</small>
+                                                </h3>
+
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+                                                </p>
+
+                                                <a href="#" class="btn btn-brick reply-button">Reply</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- / oneComment -->
+                                <ol class="children">
+
+                                    <li>
+                                        <div class="oneComment">
+                                            <div class="media ">
+                                                <a class="pull-left" href="#">
+                                                    <img class="media-object"
+                                                         src="{{ asset('bundles/eduflats/assets/images/demo-content/agent7.jpg')}}" alt=" ">
+                                                </a>
+
+                                                <div class="media-body">
+                                                    <div class="inner-body">
+                                                        <h3 class="media-heading"><a href="#">Clare Denns</a>
+                                                            <small class="date">March 25, 2014 at 5:52pm</small>
+                                                        </h3>
+
+                                                        <p>
+                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+                                                        </p>
+
+                                                        <a href="#" class="btn btn-brick reply-button">Reply</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- / oneComment -->
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                <div class="oneComment">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object"
+                                                 src="{{ asset('bundles/eduflats/assets/images/demo-content/agent3.jpg')}}" alt=" ">
+                                        </a>
+
+                                        <div class="media-body">
+                                            <div class="inner-body">
+                                                <h3 class="media-heading"><a href="#">Sebastian Riser</a>
+                                                    <small class="date">March 26, 2014 at 5:52pm</small>
+                                                </h3>
+
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+                                                </p>
+
+                                                <a href="#" class="btn btn-brick reply-button">Reply</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+                <hr>
+                <section>
+                    <h3>Leave your comment</h3>
+                    <br>
+                    <form role="form" action="#" method="post">
+                        <div class="row padding-xs-top">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input required type="text" name="field[]" class="form-control input-lg"
+                                           placeholder="Your Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input required type="email" name="field[]" class="form-control input-lg"
+                                           placeholder="Your Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control input-lg" rows="4" name="field[]" required
+                                              placeholder="Your comment"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn-brick btn-lg">Post Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}
+{% block form %}{% endblock %}

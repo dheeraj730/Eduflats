@@ -1,0 +1,582 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}blog{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    
+<div class="wrapper">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 sidebar-top-big">
+                <div class="sidebar">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="search for property">
+                          <span class="input-group-btn">
+                            <button class="btn btn-brick" type="button"><i class="fa fa-search"></i></button>
+                          </span>
+                    </div>
+                    <h4 class="uppercase motive section-top"><strong>Categories</strong></h4>
+                    <ul>
+                        <li class="cat-item">
+                            <a href="#">All</a>
+                        </li>
+                        <li class="cat-item">
+                            <a href="#">Real Estate</a>
+                        </li>
+                        <li class="cat-item">
+                            <a href="#">Economy News</a>
+                        </li>
+                        <li class="cat-item">
+                            <a href="#">Law</a>
+                        </li>
+                        <li class="cat-item">
+                            <a href="#">Order</a>
+                        </li>
+                        <li class="cat-item">
+                            <a href="#">Agents</a>
+                        </li>
+                        <li class="cat-item">
+                            <a href="#">Tips & Tricks</a>
+                        </li>
+                    </ul>
+
+                    <h4 class="uppercase motive section-top"><strong>Tags</strong></h4>
+                    <div class="tagcloud">
+                        <a href="#">Real Estate</a>
+                        <a href="#">Loft</a>
+                        <a href="#">Penthouse</a>
+                        <a href="#">Selling</a>
+                        <a href="#">Buying</a>
+                        <a href="#">Insurance</a>
+                        <a href="#">Financing</a>
+                        <a href="#">Agents</a>
+                        <a href="#">Economy</a>
+                    </div>
+
+                    <h4 class="uppercase motive section-top"><strong>Recent Blog Posts</strong></h4>
+                    <div class="media">
+                        <img src="{{ asset('bundles/eduflats/assets/images/demo-content/blogpost1.jpg')}}" class="pull-left" alt="Blog Post Image">
+                        <div class="media-body">
+                            <h6 class="motive"><a href="#">Recent Blog Post 1</a></h6>
+                            Pellentesque habitant morbi tristique senectus et netus et
+                        </div>
+                    </div>
+                    <div class="media">
+                        <img src="{{ asset('bundles/eduflats/assets/images/demo-content/blogpost2.jpg')}}" class="pull-left" alt="Blog Post Image">
+                        <div class="media-body">
+                            <h6 class="motive"><a href="#">Recent Blog Post 2</a></h6>
+                            Pellentesque habitant morbi tristique senectus et netus et
+                        </div>
+                    </div>
+                    <div class="media">
+                        <img src={{ asset('bundles/eduflats/assets/images/demo-content/blogpost3.jpg')}}" class="pull-left" alt="Blog Post Image">
+                        <div class="media-body">
+                            <h6 class="motive"><a href="#">Recent Blog Post 3</a></h6>
+                            Pellentesque habitant morbi tristique senectus et netus et
+                        </div>
+                    </div>
+
+                    <h4 class="uppercase motive section"><strong>Features & Functions</strong></h4>
+                    <h4 class="uppercase">Designed for your business</h4>
+                    <div class="media">
+                        <div class="pull-left">
+                            <i class="fa fa-home"></i>
+                        </div>
+                        <div class="media-body">
+                            <p>Pellentesque habitant morbi tristique senectus et netus et male suada fames ac turpis egestas.</p>
+                            <a href="#" class="btn btn-link motive"><i>read more >></i></a>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4 class="uppercase">Responsive example included</h4>
+                    <div class="media">
+                        <div class="pull-left">
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="media-body">
+                            <p>Pellentesque habitant morbi tristique senectus et netus et male suada fames ac turpis egestas.</p>
+                            <a href="#" class="btn btn-link motive"><i>read more >></i></a>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4 class="uppercase">Easy Customization</h4>
+                    <div class="media">
+                        <div class="pull-left">
+                            <i class="fa fa-cogs"></i>
+                        </div>
+                        <div class="media-body">
+                            <p>Pellentesque habitant morbi tristique senectus et netus et male suada fames ac turpis egestas.</p>
+                            <a href="#" class="btn btn-link motive"><i>read more >></i></a>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4 class="uppercase">Structures and color coded</h4>
+                    <div class="media">
+                        <div class="pull-left">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <div class="media-body">
+                            <p>Pellentesque habitant morbi tristique senectus et netus et male suada fames ac turpis egestas.</p>
+                            <a href="#" class="btn btn-link motive"><i>read more >></i></a>
+                        </div>
+                    </div>
+                    <hr class="sidebar-separator">
+                    <h4 class="uppercase motive section-top"><strong>Find your new home</strong></h4>
+                    <br>
+                    <span class="select-box input-right" title="Location">
+                        <select name="Location" data-placeholder="Location">
+                            <option>Location</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </span>
+                    <span class="select-box input-right" title="RentBuy">
+                        <select name="RentBuy" data-placeholder="Rent or Buy">
+                            <option>Children</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </span>
+                    <span class="select-box input-right" title="Type">
+                        <select name="Type" data-placeholder="Type">
+                            <option>Type</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="select-box input-right" title="Bedrooms">
+                                <select name="Bedrooms" data-placeholder="Bedrooms">
+                                    <option>Bedrooms</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="select-box input-right" title="Bathrooms">
+                                <select name="Bathrooms" data-placeholder="Bathrooms">
+                                    <option>Bathrooms</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="slider-range-container">
+                        <div class="row">
+                            <div class="header">
+                                <div class="col-xs-6">
+                                    <label for="amount-min" class="uppercase">Price Min.</label>
+                                    <input type="text" id="amount-min">
+                                </div>
+                                <div class="col-xs-6">
+                                    <label for="amount-max" class="uppercase">Price Max.</label>
+                                    <input type="text" id="amount-max">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div id="slider-range"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="btn btn-brick flat btn-block uppercase">
+                        Find Property
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="breadcrumbs">
+                    <ol class="breadcrumb text-right">
+                        <li><a href="#">Home</a></li><li class="active">Blog</li>
+                    </ol>
+                </div>
+                <section>
+                    <article class="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <a href="{{ path('blog')}}">Standard Post with Full Width Image</a>
+                                </div>
+                                <div class="post-info">
+                                    <p><span>Post by <a href="#">John Doe</a> in <a href="#">general</a> on <strong>12.03.2013</strong></span> <span class="pull-right">| <span class="motive">12</span> comments</span></p>
+                                    <hr>
+                                    <p class="date">Last updated on <strong>12.03.2013</strong></p>
+                                </div>
+                                <div class="description">
+                                        <img class="fit-image" src="{{ asset('bundles/eduflats/assets/images/demo-content/listing12.jpg')}}" alt="">
+                                    <div class="caption">
+                                        <h3 class="uppercase">Gatineau Hills - Living in an extraordinary space</h3>
+
+                                        <p>
+                                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+                                            Tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies  lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus.
+                                        </p>
+                                    </div>
+                                    <p>
+                                        Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.
+                                    </p>
+                                    <p>
+                                        Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat. volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+                                    </p>
+                                    <br>
+                                    <a href="{{ path('blog')}}" class="btn btn-xs btn-brick large-padding pull-right">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr>
+                    <article class="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <a href="{{ path('blog')}}">Standard Post with Normal Image</a>
+                                </div>
+                                <div class="post-info">
+                                    <p><span>Post by <a href="#">John Doe</a> in <a href="#">general</a> on <strong>12.03.2013</strong></span> <span class="pull-right">| <span class="motive">12</span> comments</span></p>
+                                    <hr>
+                                    <p class="date">Last updated on <strong>12.03.2013</strong></p>
+                                </div>
+                                <div class="description">
+                                    <div class="listing-image pull-left">
+                                        <img src="{{ asset('bundles/eduflats/assets/images/demo-content/listing2.jpg')}}" alt="Listing">
+                                        <div class="image-links">
+                                            <div class="left">
+                                                <a class="inner" href="{{ asset('bundles/eduflats/assets/images/demo-content/listing12.jpg')}}" data-lightbox="related-9">
+                                                    <i class="fa fa-camera"></i>
+                                                </a>
+                                            </div>
+                                            <div class="right">
+                                                <a class="inner" href="{{ path('propertydetail')}}">
+                                                    <i class="fa fa-link"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                                    </p>
+                                    <p>
+                                        Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam.
+                                    </p>
+                                    <br>
+                                    <a href="{{ path('blog')}}" class="btn btn-xs btn-brick large-padding pull-right">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr>
+                    <article class="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <a href="{{ path('blog')}}">Standard Post with Full Flexslider</a>
+                                </div>
+                                <div class="post-info">
+                                    <p><span>Post by <a href="#">John Doe</a> in <a href="#">general</a> on <strong>12.03.2013</strong></span> <span class="pull-right">| <span class="motive">12</span> comments</span></p>
+                                    <hr>
+                                    <p class="date">Last updated on <strong>12.03.2013</strong></p>
+                                </div>
+                                <div class="description">
+                                    <div class="flexslider property-slider inner-slider">
+                                        <ul class="slides-inner">
+                                            <li>
+                                                <div class="listing-image-slider">
+                                                    <img src="{{ asset('bundles/eduflats/assets/images/demo-content/listing7.jpg')}}" alt="Listing">
+                                                    <div class="image-links">
+                                                        <div class="left">
+                                                            <a class="inner" href="{{ asset('bundles/eduflats/assets/images/demo-content/listing7.jpg')}}" data-lightbox="related-30">
+                                                                <i class="fa fa-camera"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="right">
+                                                            <a class="inner" href="{{ path('blogdetail')}}">
+                                                                <i class="fa fa-link"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="listing-image-slider">
+                                                    <img src="{{ asset('bundles/eduflats/assets/images/demo-content/listing2.jpg') }}" alt="Listing">
+                                                    <div class="image-links">
+                                                        <div class="left">
+                                                            <a class="inner" href="{{ asset('bundles/eduflats/assets/images/demo-content/listing2.jpg') }}" data-lightbox="related-30">
+                                                                <i class="fa fa-camera"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="right">
+                                                            <a class="inner" href="{{ path('blogdetail')}}">
+                                                                <i class="fa fa-link"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption">
+                                        <h3 class="uppercase">Gatineau Hills - Living in an extraordinary space</h3>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. </p>
+                                    </div>
+                                    <br>
+                                    <a href="{{ path('blog')}}" class="btn btn-xs btn-brick large-padding pull-right">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr>
+                    <article class="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <a href="{{ path('blog')}}">Standard Post with Small Flexslider</a>
+                                </div>
+                                <div class="post-info">
+                                    <p><span>Post by <a href="#">John Doe</a> in <a href="#">general</a> on <strong>12.03.2013</strong></span> <span class="pull-right">| <span class="motive">12</span> comments</span></p>
+                                    <hr>
+                                    <p class="date">Last updated on <strong>12.03.2013</strong></p>
+                                </div>
+                                <div class="description">
+                                    <div class="flexslider blog-small-slider pull-left">
+                                        <ul class="slides">
+                                            <li>
+                                                <div class="listing-image-slider">
+                                                    <img src="{{ asset('bundles/eduflats/assets/images/demo-content/listing7.jpg')}}" alt="Listing">
+                                                    <div class="image-links">
+                                                        <div class="left">
+                                                            <a class="inner" href="{{ asset('bundles/eduflats/assets/images/demo-content/listing7.jpg')}}" data-lightbox="related-30">
+                                                                <i class="fa fa-camera"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="right">
+                                                            <a class="inner" href="{{ path('blogdetail')}}">
+                                                                <i class="fa fa-link"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="listing-image-slider">
+                                                    <img src="{{ asset('bundles/eduflats/assets/images/demo-content/listing2.jpg') }}" alt="Listing">
+                                                    <div class="image-links">
+                                                        <div class="left">
+                                                            <a class="inner" href="{{ asset('bundles/eduflats/assets/images/demo-content/listing2.jpg')}}" data-lightbox="related-30">
+                                                                <i class="fa fa-camera"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="right">
+                                                            <a class="inner" href="{{ path('blogdetail') }}">
+                                                                <i class="fa fa-link"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p>
+                                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                                    </p>
+                                    <p>
+                                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+                                        Tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies  lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus.
+                                    </p>
+                                    <p>
+                                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+                                    </p>
+                                    <p>
+                                        Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.
+                                    </p>
+                                    <p>
+                                        Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat. volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+                                    </p>
+                                    <br>
+                                    <a href="{{ path('blog') }}" class="btn btn-xs btn-brick large-padding pull-right">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr>
+                    <article class="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <a href="{{ path('blog') }}">A Quote Post</a>
+                                </div>
+                                <div class="post-info">
+                                    <p><span>Post by <a href="#">John Doe</a> in <a href="#">general</a> on <strong>12.03.2013</strong></span> <span class="pull-right">| <span class="motive">12</span> comments</span></p>
+                                    <hr>
+                                    <p class="date">Last updated on <strong>12.03.2013</strong></p>
+                                </div>
+                                <div class="description">
+                                    <div class="caption">
+                                        <div class="block-post motive">
+                                            <div class="table">
+                                                <div class="table-cell">
+                                                    <div class="icon">
+                                                        <i class="fa fa-quote-left"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="table-cell">
+                                                    <span class="h3 uppercase">This is how a quote post will look like<br>Subtle and Clean</span>
+                                                    <span class="h4">James Carner, CEO BRICK Company</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <a href="{{ path('blog') }}" class="btn btn-xs btn-brick large-padding pull-right">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr>
+                    <article class="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <a href="{{ path('blog') }}">A Link Post</a>
+                                </div>
+                                <div class="post-info">
+                                    <p><span>Post by <a href="#">John Doe</a> in <a href="#">general</a> on <strong>12.03.2013</strong></span> <span class="pull-right">| <span class="motive">12</span> comments</span></p>
+                                    <hr>
+                                    <p class="date">Last updated on <strong>12.03.2013</strong></p>
+                                </div>
+                                <div class="description">
+                                    <div class="caption grey">
+                                        <div class="block-post grey">
+                                            <div class="table">
+                                                <div class="table-cell">
+                                                    <div class="icon">
+                                                        <i class="fa fa-link"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="table-cell">
+                                                    <span class="h3 uppercase">This is how a link post will look like<br>Also Subtle and Clean!</span>
+                                                    <span class="h4">James Carner, CEO BRICK Company</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <a href="{{ path('blog') }}" class="btn btn-xs btn-brick large-padding pull-right">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr>
+                    <article class="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <a href="{{ path('blog') }}">Standard Post with Video</a>
+                                </div>
+                                <div class="post-info">
+                                    <p><span>Post by <a href="#">John Doe</a> in <a href="#">general</a> on <strong>12.03.2013</strong></span> <span class="pull-right">| <span class="motive">12</span> comments</span></p>
+                                    <hr>
+                                    <p class="date">Last updated on <strong>12.03.2013</strong></p>
+                                </div>
+                                <div class="description">
+                                    <div class="fit-video">
+                                        <iframe src="http://player.vimeo.com/video/60147471?title=0&amp;byline=0&amp;portrait=0" width="620" height="349" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    </div>
+                                    <div class="caption">
+                                        <h3 class="uppercase">Gatineau Hills - Living in an extraordinary space</h3>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. </p>
+                                    </div>
+                                    <br>
+                                    <a href="{{ path('blog') }}" class="btn btn-xs btn-brick large-padding pull-right">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr>
+                    <article class="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <a href="{{ path('blog') }}">An Audio Post</a>
+                                </div>
+                                <div class="post-info">
+                                    <p><span>Post by <a href="#">John Doe</a> in <a href="#">general</a> on <strong>12.03.2013</strong></span> <span class="pull-right">| <span class="motive">12</span> comments</span></p>
+                                    <hr>
+                                    <p class="date">Last updated on <strong>12.03.2013</strong></p>
+                                </div>
+                                <div class="description">
+                                    <div class="caption">
+                                        <iframe width="100%" height="120" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/117927267&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=true"></iframe>
+                                    </div>
+                                    <br>
+                                    <a href="{{ path('blog') }}" class="btn btn-xs btn-brick large-padding pull-right">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr>
+                    <article class="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <a href="{{ path('blog') }}">An Aside Post</a>
+                                </div>
+                                <div class="post-info">
+                                    <p><span>Post by <a href="#">John Doe</a> in <a href="#">general</a> on <strong>12.03.2013</strong></span> <span class="pull-right">| <span class="motive">12</span> comments</span></p>
+                                    <hr>
+                                    <p class="date">Last updated on <strong>12.03.2013</strong></p>
+                                </div>
+                                <div class="description">
+                                    <div class="caption">
+                                        <h3 class="uppercase">This is an aside post</h3>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. </p>
+                                    </div>
+                                    <br>
+                                    <a href="{{ path('blog') }}" class="btn btn-xs btn-brick large-padding pull-right">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr>
+                    <ul class="pagination pull-right">
+                        <li><a href="#">Previous</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li class="active"><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+        
+       
+    </div>
+</div>
+    
+{% endblock %}
+{% block form %}{% endblock %}

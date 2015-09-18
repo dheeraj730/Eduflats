@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <title> {% block title %}EduFlats{% endblock %} </title>
+        {% block stylesheets %}    {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+   
+        <style>
+           body{
+               min-width: 960px;
+               font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+               background-image: url("http://richsweb.com/new/wp-content/uploads/2013/03/soft-color-blurred-background-rocks-hd-wallpaper-abstrack-photo-blurred-colors-hd-wallpaper-1500x630.jpg");
+               background-size: cover;
+           }
+           
+           .register-container {
+               background: #f8f8f8;
+               height:100%;
+               margin-top: 85px;
+               bottom:0px;
+           }
+           
+           .register form {
+               background: #f8f8f8;
+               padding: 20px 50px 40px 50px;
+               -moz-border-radius: 8px;
+               -webkit-border-radius: 8px;
+               border-radius: 8px;
+               -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
+               -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
+               box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
+           }
+
+           .register form input {
+               width: 95%;
+               height: 30px;
+           }
+           .register form label {
+               margin: 7px 0 10px 5px;
+               font-size: 16px;
+               text-align: left;
+           }
+
+           .register form button {
+               cursor: pointer;
+               width: 60%;
+               height: 42px;
+               margin-top: 25px;
+               padding: 0;
+               background: #eb4141;
+               -moz-border-radius: 3px;
+               -webkit-border-radius: 3px;
+               border-radius: 3px;
+               border: 0;
+               -moz-box-shadow: 0 15px 30px 0 rgba(255,255,255,.1) inset;
+               -webkit-box-shadow: 0 15px 30px 0 rgba(255,255,255,.1) inset;
+               box-shadow: 0 15px 30px 0 rgba(255,255,255,.1) inset;
+               font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+               font-size: 16px;
+               font-weight: 400;
+               color: #fff;
+               text-shadow: 0 1px 2px rgba(0,0,0,.1);
+               -o-transition: all .2s;
+               -moz-transition: all .2s;
+               -webkit-transition: all .2s;
+               -ms-transition: all .2s;
+           }
+
+           .register form button:hover {
+               -moz-box-shadow: 0 -15px 30px 0 rgba(255,255,255,.05) inset;
+               -webkit-box-shadow: 0 -15px 30px 0 rgba(255,255,255,.05) inset;
+               box-shadow: 0 -15px 30px 0 rgba(255,255,255,.05) inset;
+           }
+
+           .register form button:active {
+               -moz-box-shadow:
+                   0 -15px 30px 0 rgba(255,255,255,.05) inset,       
+                   0 5px 8px 0 rgba(0,0,0,.1) inset;
+               -webkit-box-shadow:
+                   0 -15px 30px 0 rgba(255,255,255,.05) inset,       
+                   0 5px 8px 0 rgba(0,0,0,.1) inset;
+               box-shadow:
+                   0 -15px 30px 0 rgba(255,255,255,.05) inset,       
+                   0 5px 8px 0 rgba(0,0,0,.1) inset;
+           }
+
+        </style>
+            
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="dropdown" style="float:right;">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu
+                <span class="caret"></span></button>
+                <ol  type="1" class="dropdown-menu" style="list-style-type: decimal;">
+                    <li class="itmes"><a href="{{ path('registerUniversity') }}"> University</a></li> 
+                    <li class="itmes"><a href="{{ path('websiteSetting') }}">Website Settings</a></li> 
+                    <li class="itmes"><a href="{{ path('registerCampus') }}"> Campus</a></li>
+                    <li class="itmes"><a href="{{ path('registerAdmin') }}"> Admin</a></li> 
+                    <li class="itmes"><a href="{{ path('listingSetting') }}">Listing Settings</a></li> 
+                    <li class="itmes"><a href="{{ path('registerTags') }}"> Tags</a></li>  
+                    <li class="itmes"><a href="{{ path('registerBadges') }}"> Badges</a></li>
+                    <li class="itmes"><a href="{{ path('registerProvider') }}"> Provider</a></li> 
+                    <li class="itmes"><a href="{{ path('createProperty') }}"> Property</a></li>
+                    <li class="itmes"><a href="{{ path('addCategory') }}"> Add Category</a></li>  
+                    <li class="itmes"><a href="{{ path('addBadges') }}"> Add Badges</a></li>
+                    <li class="itmes"><a href="{{ path('addTags') }}"> Add Tags</a></li>
+                    <li class="itmes"><a href="{{ path('registerStudent') }}"> Student</a></li>
+                    <li class="itmes"><a href="/login">Login</a></li>  
+                    <li class="itmes"><a href="/logout">logout</a></li>    
+                </ol>
+            </div>
+        </div><!--end of container-->
+
+        {% block body %} {% endblock %}
+        
+        {% block form %} {% endblock %}
+
+        {% block javascripts %}{% endblock %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+            
+    </body>
+</html>

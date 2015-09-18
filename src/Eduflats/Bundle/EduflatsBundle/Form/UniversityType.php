@@ -21,7 +21,7 @@ class UniversityType extends AbstractType
                                                 'allow_add' => true,
                                                 'prototype' => true,
                                                 'by_reference' => false,
-                                                'options'=>array('vitalInfo'=>false, 'location'=>false),
+                                                'options'=>array('vitalInfo'=>false, 'location'=>false,'label' => false),
                                                 'label'=>false
                                                ));
     }

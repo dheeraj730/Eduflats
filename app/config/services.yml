@@ -8,7 +8,7 @@ services:
         class: Eduflats\Bundle\EduflatsBundle\EventListener\RequestListener
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest}
-        arguments: ["@doctrine.orm.entity_manager","@eduflats.university_resolver",'%domain%']
+        arguments: ["@eduflats.university_resolver",'%domain%']
         
     Helper_Functions:
         class: Eduflats\Bundle\EduflatsBundle\Services\HelperFunctions
@@ -20,7 +20,7 @@ services:
     
     eduflats.university_resolver:
         class: Eduflats\Bundle\EduflatsBundle\Services\UniversityResolver
-        arguments: ["@request_stack",'%domain%','@university_repository','@security.token_storage']        
+        arguments: ["@request_stack",'%domain%','@university_repository']        
     
     university_repository:
         class: Doctrine\ORM\EntityRepository

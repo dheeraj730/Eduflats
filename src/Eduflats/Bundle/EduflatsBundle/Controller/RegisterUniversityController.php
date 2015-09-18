@@ -48,7 +48,7 @@ class RegisterUniversityController extends Controller{
             $em->flush();
             
             //add subdomain entry to whitelist
-            //creates config file
+            //create config file
             
             $link = 'http://'.$university->getTSubdomainName().'.eduflats.com/';
             $this->get('session')->getFlashBag()->set('success', 'Your University account has been successully created At '.$link);
