@@ -8,6 +8,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class NavigationController extends Controller {
     
     /**
+     * @Route("/login_page", name="login")
+     * @Template()
+     */
+    public function loginAction(){
+        return array();
+    }
+    /**
      * @Route("/Agents", name="agents")
      * @Template()
      */
@@ -16,7 +23,7 @@ class NavigationController extends Controller {
     }
     
     /**
-     * @Route("/FAQ", name="faq")
+     * @Route("/faq", name="faq")
      * @Template()
      */
     public function faqAction(){
@@ -70,6 +77,14 @@ class NavigationController extends Controller {
      * @Template()
      */
     public function blogdetailAction(){
+        return array();
+    }
+    
+    /**
+     * @Route("/registrtaion", name="registrtaion")
+     * @Template()
+     */
+    public function registrtaionAction(){
         return array();
     }
     

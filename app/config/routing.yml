@@ -2,16 +2,21 @@ homepage:
     path:     /
     host:     "{domain}"
     defaults:
-        _controller: EduflatsBundle:Home:home
+        _controller: WebsiteBundle:Home:home
     requirements:
         domain: eduflats.com|www.eduflats.com
-    
+  
 subdomain_homepage:
     path:     /
-    defaults: { _controller: EduflatsBundle:Home:subdomainhome }
-    
+    defaults: { _controller: EduflatsBundle:Search:search }
+  
 eduflats:
     resource: "@EduflatsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+website:
+    resource: "@WebsiteBundle/Controller/"
     type:     annotation
     prefix:   /
 

@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Eduflats\Bundle\EduflatsBundle\EduflatsBundle(),
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Eduflats\Bundle\WebsiteBundle\WebsiteBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

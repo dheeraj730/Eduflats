@@ -1,0 +1,791 @@
+{% extends "EduflatsBundle:Home:home.html.twig"%}
+
+{% block body %}
+
+{% if not app.user %}
+<header>
+    <div class="ct-js-owl" data-items="1" data-navigation="true" data-autoPlay="true" data-lazyLoad="true" data-animations="true">
+        <div class="item">
+            <div class="ct-owl--background">
+                <img src="{{ asset('bundles/eduflats/images/demo-content/header-slider-1.jpg') }}" alt="">
+            </div>
+            <div class="ct-owl--description">
+                <div class="ct-owl--description--inner">
+                    <div class="ct-owl--descriptionItem">
+                        <div class="container">
+                            <img class="ct-u-marginBottom20 animated" data-fx="fadeInDown" data-time="300" src="{{ asset('bundles/eduflats/images/demo-content/logo-slider.png') }}" alt="">
+                            <h2 class="ct-u-marginBottom20 animated" data-fx="fadeInDown" data-time="300">Your <span>Real Estate</span> Partner</h2>
+                            <a class="btn btn-default btn-transparent--border ct-u-text--white animated" data-fx="fadeInUp" data-time="300" href="blog-single.html">Read More</a>
+                            <a class="btn btn-success ct-btn--green animated" data-fx="fadeInUp" data-time="300" href="submission.html">List Property</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% elseif app.user %}
+<!-- if authenticated fully -->
+<header>
+    <div class="ct-js-owl" data-items="1" data-navigation="true" data-autoPlay="true" data-lazyLoad="true" data-animations="true">
+        <div class="item">
+            <div class="ct-owl--background">
+                <img src="assets/images/demo-content/property-slider-1.jpg" alt="">
+            </div>
+            <div class="ct-owl--description">
+                <div class="ct-owl--description--inner">
+                    <div class="ct-owl--descriptionItem">
+                        <div class="container">
+                            <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--slider animated" data-fx="fadeInRight" data-time="300">
+                                <a href="product-single.html">
+                                    <div class="ct-main-content">
+                                        <div class="ct-main-text">
+                                            <div class="ct-product--tilte">
+                                                7489 Little Grounds, Hounds Ear
+                                            </div>
+                                            <div class="ct-product--price">
+                                                <span class="ct-price--Old">$ 450,000</span>
+                                                <span>$ 350,000</span>
+                                            </div>
+                                            <div class="ct-product--description">
+                                                Beautiful apartment in a great, very calm and safe place.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ct-product--meta">
+                                        <div class="ct-icons">
+                                <span>
+                                    <i class="fa fa-bed"></i> 3
+                                </span>
+                                <span>
+                                    <i class="fa fa-cutlery"></i> 2
+                                </span>
+                                        </div>
+                                        <div class="ct-text">
+                                            <span> Area: <span>105 m2</span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ct-owl--background">
+                <img src="assets/images/demo-content/property-slider-2.jpg" alt="">
+            </div>
+            <div class="ct-owl--description">
+                <div class="ct-owl--description--inner">
+                    <div class="ct-owl--descriptionItem">
+                        <div class="container">
+                            <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--slider animated" data-fx="fadeInRight">
+                                <a href="product-single.html">
+                                    <div class="ct-main-content">
+                                        <div class="ct-main-text">
+                                            <div class="ct-product--tilte">
+                                                8955 Colonial Lookout, Swampscott
+                                            </div>
+                                            <div class="ct-product--price">
+                                                <span class="ct-price--Old">$ 450,000</span>
+                                                <span>$ 350,000</span>
+                                            </div>
+                                            <div class="ct-product--description">
+                                                Beautiful apartment in a great, very calm and safe place.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ct-product--meta">
+                                        <div class="ct-icons">
+                                <span>
+                                    <i class="fa fa-bed"></i> 3
+                                </span>
+                                <span>
+                                    <i class="fa fa-cutlery"></i> 2
+                                </span>
+                                        </div>
+                                        <div class="ct-text">
+                                            <span> Area: <span>105 m2</span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ct-owl--background">
+                <img src="assets/images/demo-content/property-slider-3.jpg" alt="">
+            </div>
+            <div class="ct-owl--description">
+                <div class="ct-owl--description--inner">
+                    <div class="ct-owl--descriptionItem">
+                        <div class="container ">
+                            <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--slider animated" data-fx="fadeInRight">
+                                <a href="product-single.html">
+                                    <div class="ct-main-content">
+                                        <div class="ct-main-text">
+                                            <div class="ct-product--tilte">
+                                                5545 Bright Spring Mews, Rocky Ripple
+                                            </div>
+                                            <div class="ct-product--price">
+                                                <span class="ct-price--Old">$ 450,000</span>
+                                                <span>$ 350,000</span>
+                                            </div>
+                                            <div class="ct-product--description">
+                                                Beautiful apartment in a great, very calm and safe place.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ct-product--meta">
+                                        <div class="ct-icons">
+                                <span>
+                                    <i class="fa fa-bed"></i> 3
+                                </span>
+                                <span>
+                                    <i class="fa fa-cutlery"></i> 2
+                                </span>
+                                        </div>
+                                        <div class="ct-text">
+                                            <span> Area: <span>105 m2</span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- end -->
+{% endif %}       
+
+<section>
+    <div class="container">
+    <form class="ct-formSearch--extended ct-u-marginBottom50" action="{{ path('searchlist') }}" role="form">
+        <div class="form-group ">
+            <div class="ct-form--label--type1">
+                <div class="ct-u-displayTableVertical">
+                    <div class="ct-u-displayTableCell">
+                        <div class="ct-input-group-btn">
+                            <button class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="ct-u-displayTableCell text-center">
+                        <span class="text-uppercase">Search for property</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ct-u-displayTableVertical ct-u-marginBottom20">
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item">
+                        <label>Property id</label>
+                        <input type="text" class="form-control input-lg" placeholder="Any">
+                    </div>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item">
+                        <label>Location</label>
+                        <select class="ct-js-select ct-select-lg">
+                            <option value="any">Any</option>
+                            <option value="1">New York</option>
+                            <option value="2">New Jersey</option>
+                            <option value="3">Newark</option>
+                            <option value="4">Philadelphia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item">
+                        <label>Sub-Location</label>
+                        <select class="ct-js-select ct-select-lg">
+                            <option value="any">Any</option>
+                            <option value="1">New York</option>
+                            <option value="2">Jersey</option>
+                            <option value="3">Newark</option>
+                            <option value="4">Philadelphia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item">
+                        <label>Property Status</label>
+                        <select class="ct-js-select ct-select-lg">
+                            <option value="any">Any</option>
+                            <option value="1">Sale</option>
+                            <option value="2">New</option>
+                            <option value="3">Loan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item">
+                        <label>Property type </label>
+                        <select class="ct-js-select ct-select-lg">
+                            <option value="any">Any</option>
+                            <option value="1">Houses</option>
+                            <option value="2">Industrial</option>
+                            <option value="3">Retail</option>
+                            <option value="4">Apartments</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="ct-u-displayTableVertical ct-slider--row ct-sliderAmount">
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item">
+                        <label>Bedrooms</label>
+                        <select class="ct-js-select ct-select-lg">
+                            <option value="any">Any</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item">
+                        <label>Bathrooms</label>
+                        <select class="ct-js-select ct-select-lg">
+                            <option value="any">Any</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item">
+                        <label>Price ($)</label>
+                        <input type="text" value="1000000" required class="form-control input-lg ct-js-slider-min" placeholder="">
+                    </div>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <input type="text" class="slider ct-js-sliderAmount" value="" data-slider-tooltip="hide" data-slider-handle="square" data-slider-min="5000" data-slider-max="5000000" data-slider-step="5000" data-slider-value="[1000000,2000000]">
+                    <label>Min</label>
+                    <label class="pull-right">Max</label>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item">
+                        <input type="text" value="2000000" required class="form-control input-lg ct-js-slider-max" placeholder="">
+                    </div>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <input type="text" class="slider ct-js-sliderTicks" value="" data-slider-handle="square" data-slider-min="0" data-slider-max="200" data-slider-step="20" data-slider-value="[60,120]"/>
+                    <label class="text-center center-block">Area (m2)</label>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <button type="submit" class="btn btn-warning text-capitalize pull-right">search now</button>
+                </div>
+            </div>
+        </div>
+    </form>
+        <div class="ct-section--products">
+            <div class="row">
+                <div class="col-md-8 col-lg-9">
+                    <div class="ct-heading ct-u-marginBottom30">
+                        <h3 class="text-uppercase">featured listings</h3>
+                        <a href="search-list.html" class="pull-right"><i class="fa fa-angle-right"></i>View More</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                                <a href="product-single.html">
+                                    <div class="ct-main-content">
+                                        <div class="ct-imageBox">
+                                            <img src="{{ asset('bundles/eduflats/images/demo-content/property-7.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                                        </div>
+                                        <div class="ct-main-text">
+                                            <div class="ct-product--tilte">
+                                                2254 Easy Oak Drive, Caronport
+                                            </div>
+                                            <div class="ct-product--price">
+                                                <span>$ 450,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ct-product--meta">
+                                        <div class="ct-icons">
+                                            <span>
+                                                <i class="fa fa-bed"></i> 3
+                                            </span>
+                                            <span>
+                                                <i class="fa fa-cutlery"></i> 2
+                                            </span>
+                                        </div>
+                                        <div class="ct-text">
+                                            <span> Area: <span>105 m2</span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-md"></div>
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                                <a href="product-single.html">
+                                    <div class="ct-main-content">
+                                        <div class="ct-imageBox">
+                                            <img src="{{ asset('bundles/eduflats/images/demo-content/property-8.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                                        </div>
+                                        <div class="ct-main-text">
+                                            <div class="ct-product--tilte">
+                                                1979 Thunder Line, Stoopville
+                                            </div>
+                                            <div class="ct-product--price">
+                                                <span>$ 450,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ct-product--meta">
+                                        <div class="ct-icons">
+                                            <span>
+                                                <i class="fa fa-bed"></i> 3
+                                            </span>
+                                            <span>
+                                                <i class="fa fa-cutlery"></i> 2
+                                            </span>
+                                        </div>
+                                        <div class="ct-text">
+                                            <span> Area: <span>105 m2</span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                                <a href="product-single.html">
+                                    <div class="ct-main-content">
+                                        <div class="ct-imageBox">
+                                            <img src="{{ asset('bundles/eduflats/images/demo-content/property-9.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                                        </div>
+                                        <div class="ct-main-text">
+                                            <div class="ct-product--tilte">
+                                                1724 Clear Hills Rise, Farewells
+                                            </div>
+                                            <div class="ct-product--price">
+                                                <span>$ 450,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ct-product--meta">
+                                        <div class="ct-icons">
+                                            <span>
+                                                <i class="fa fa-bed"></i> 3
+                                            </span>
+                                            <span>
+                                                <i class="fa fa-cutlery"></i> 2
+                                            </span>
+                                        </div>
+                                        <div class="ct-text">
+                                            <span> Area: <span>105 m2</span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-md"></div>
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                                <a href="product-single.html">
+                                    <div class="ct-main-content">
+                                        <div class="ct-imageBox">
+                                            <img src="{{ asset('bundles/eduflats/images/demo-content/property-10.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                                        </div>
+                                        <div class="ct-main-text">
+                                            <div class="ct-product--tilte">
+                                                1856 Misty Concession, Colonsay
+                                            </div>
+                                            <div class="ct-product--price">
+                                                <span>$ 450,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ct-product--meta">
+                                        <div class="ct-icons">
+                                            <span>
+                                                <i class="fa fa-bed"></i> 3
+                                            </span>
+                                            <span>
+                                                <i class="fa fa-cutlery"></i> 2
+                                            </span>
+                                        </div>
+                                        <div class="ct-text">
+                                            <span> Area: <span>105 m2</span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                                <a href="product-single.html">
+                                    <div class="ct-main-content">
+                                        <div class="ct-imageBox">
+                                            <img src="{{ asset('bundles/eduflats/images/demo-content/property-11.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                                        </div>
+                                        <div class="ct-main-text">
+                                            <div class="ct-product--tilte">
+                                                3046 Merry Landing, High Lonesome Wells
+                                            </div>
+                                            <div class="ct-product--price">
+                                                <span>$ 450,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ct-product--meta">
+                                        <div class="ct-icons">
+                                            <span>
+                                                <i class="fa fa-bed"></i> 3
+                                            </span>
+                                            <span>
+                                                <i class="fa fa-cutlery"></i> 2
+                                            </span>
+                                        </div>
+                                        <div class="ct-text">
+                                            <span> Area: <span>105 m2</span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-md"></div>
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                                <a href="product-single.html">
+                                    <div class="ct-main-content">
+                                        <div class="ct-imageBox">
+                                            <img src="{{ asset('bundles/eduflats/images/demo-content/property-12.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                                        </div>
+                                        <div class="ct-main-text">
+                                            <div class="ct-product--tilte">
+                                                5454 Fallen Deer Wood, Flat Nose
+                                            </div>
+                                            <div class="ct-product--price">
+                                                <span>$ 450,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ct-product--meta">
+                                        <div class="ct-icons">
+                                            <span>
+                                                <i class="fa fa-bed"></i> 3
+                                            </span>
+                                            <span>
+                                                <i class="fa fa-cutlery"></i> 2
+                                            </span>
+                                        </div>
+                                        <div class="ct-text">
+                                            <span> Area: <span>105 m2</span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="ct-js-sidebar">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-12">
+                                <div class="widget ct-widget--recentlyReduced">
+                                    <div class="widget-inner">
+                                        <h4 class="text-uppercase">Blog Posts</h4>
+                                        <div class="ct-itemProducts--small ct-itemProducts--small-type1">
+                                            <a href="product-single.html">
+                                                <div class="ct-main-content">
+                                                    <div class="ct-imageBox">
+                                                        <img src="{{ asset('bundles/eduflats/images/demo-content/recently-reduced-thumbnail-1.jpg') }}" alt="">
+                                                    </div>
+                                                    <div class="ct-main-text">
+                                                        <div class="ct-product--tilte">
+                                                            4079 Broad Falls, Turkeytown
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="ct-itemProducts--small ct-itemProducts--small-type1">
+                                            <a href="product-single.html">
+                                                <div class="ct-main-content">
+                                                    <div class="ct-imageBox">
+                                                        <img src="{{ asset('bundles/eduflats/images/demo-content/recently-reduced-thumbnail-1.jpg') }}" alt="">
+                                                    </div>
+                                                    <div class="ct-main-text">
+                                                        <div class="ct-product--tilte">
+                                                            4079 Broad Falls, Turkeytown
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="ct-itemProducts--small ct-itemProducts--small-type1">
+                                            <a href="product-single.html">
+                                                <div class="ct-main-content">
+                                                    <div class="ct-imageBox">
+                                                        <img src="{{ asset('bundles/eduflats/images/demo-content/recently-reduced-thumbnail-1.jpg') }}" alt="">
+                                                    </div>
+                                                    <div class="ct-main-text">
+                                                        <div class="ct-product--tilte">
+                                                            4079 Broad Falls, Turkeytown
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="ct-itemProducts--small ct-itemProducts--small-type1">
+                                            <a href="product-single.html">
+                                                <div class="ct-main-content">
+                                                    <div class="ct-imageBox">
+                                                        <img src="{{ asset('bundles/eduflats/images/demo-content/recently-reduced-thumbnail-1.jpg') }}" alt="">
+                                                    </div>
+                                                    <div class="ct-main-text">
+                                                        <div class="ct-product--tilte">
+                                                            4079 Broad Falls, Turkeytown
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="ct-itemProducts--small ct-itemProducts--small-type1">
+                                            <a href="product-single.html">
+                                                <div class="ct-main-content">
+                                                    <div class="ct-imageBox">
+                                                        <img src="{{ asset('bundles/eduflats/images/demo-content/recently-reduced-thumbnail-2.jpg') }}" alt="">
+                                                    </div>
+                                                    <div class="ct-main-text">
+                                                        <div class="ct-product--tilte">
+                                                            5469 Clear Rise, Little Otter
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="ct-itemProducts--small ct-itemProducts--small-type1">
+                                            <a href="product-single.html">
+                                                <div class="ct-main-content">
+                                                    <div class="ct-imageBox">
+                                                        <img src="{{ asset('bundles/eduflats/images/demo-content/recently-reduced-thumbnail-3.jpg') }}" alt="">
+                                                    </div>
+                                                    <div class="ct-main-text">
+                                                        <div class="ct-product--tilte">
+                                                            4770 Cotton Berry Point, Carrot River
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <a class="btn btn-primary btn-transparent--border ct-u-text--motive" href="properties.html">View More Reduced Properties</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ct-u-paddingBoth30 ct-js-section ct-section--inline" data-bg-color="#60a7d4">
+    <div class="container">
+        <div class="ct-u-displayTableVertical">
+            <div class="ct-u-displayTableCell">
+                <div class="ct-u-displayTableCell">
+                    <img src="{{ asset('bundles/eduflats/images/demo-content/logo-cta.png') }}" alt="">
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <h4 class="text-uppercase">PURCHASE ESTATO WORDPRESS THEME NOW!</h4>
+                </div>
+            </div>
+            <div class="ct-u-displayTableCell">
+                <div class="ct-u-displayTableCell pull-right">
+                    <a class="btn btn-default btn-transparent--border ct-u-text--white btn-hoverWhite" href="blog-single.html">Read More</a>
+                    <a class="btn btn-dark btn-hoverWhite" href="">Purchase Estato</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ct-u-paddingBoth60">
+    <div class="container">
+        <div class="ct-heading ct-u-marginBottom30">
+            <h3 class="text-uppercase">latest listings</h3>
+            <a href="search-list.html" class="pull-right"><i class="fa fa-angle-right"></i>View More</a>
+        </div>
+        <div class="ct-js-owl ct-owl-controls--type2" data-single="false" data-items="4" data-pagination="false">
+            <div class="item">
+                <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                    <label class="control-label sale">
+                        Sale
+                    </label>
+                    <a href="product-single.html">
+                        <div class="ct-main-content">
+                            <div class="ct-imageBox">
+                                <img src="{{ asset('bundles/eduflats/images/demo-content/property-11.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                            </div>
+                            <div class="ct-main-text">
+                                <div class="ct-product--tilte">
+                                    8553 Fallen Creek Bend, North Carolina
+                                </div>
+                                <div class="ct-product--price">
+                                    <span>$ 450,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ct-product--meta">
+                            <div class="ct-icons">
+                                <span>
+                                    <i class="fa fa-bed"></i> 3
+                                </span>
+                                <span>
+                                    <i class="fa fa-cutlery"></i> 2
+                                </span>
+                            </div>
+                            <div class="ct-text">
+                                <span> Area: <span>105 m2</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                    <a href="product-single.html">
+                        <div class="ct-main-content">
+                            <div class="ct-imageBox">
+                                <img src="{{ asset('bundles/eduflats/images/demo-content/property-12.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                            </div>
+                            <div class="ct-main-text">
+                                <div class="ct-product--tilte">
+                                    9544 Umber View, Inspiration
+                                </div>
+                                <div class="ct-product--price">
+                                    <span>$ 450,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ct-product--meta">
+                            <div class="ct-icons">
+                                <span>
+                                    <i class="fa fa-bed"></i> 3
+                                </span>
+                                <span>
+                                    <i class="fa fa-cutlery"></i> 2
+                                </span>
+                            </div>
+                            <div class="ct-text">
+                                <span> Area: <span>105 m2</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                    <a href="product-single.html">
+                        <div class="ct-main-content">
+                            <div class="ct-imageBox">
+                                <img src="{{ asset('bundles/eduflats/images/demo-content/property-1.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                            </div>
+                            <div class="ct-main-text">
+                                <div class="ct-product--tilte">
+                                    4079 Broad Falls, Turkeytown
+                                </div>
+                                <div class="ct-product--price">
+                                    <span>$ 450,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ct-product--meta">
+                            <div class="ct-icons">
+                                <span>
+                                    <i class="fa fa-bed"></i> 3
+                                </span>
+                                <span>
+                                    <i class="fa fa-cutlery"></i> 2
+                                </span>
+                            </div>
+                            <div class="ct-text">
+                                <span> Area: <span>105 m2</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                    <a href="product-single.html">
+                        <div class="ct-main-content">
+                            <div class="ct-imageBox">
+                                <img src="{{ asset('bundles/eduflats/images/demo-content/property-2.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                            </div>
+                            <div class="ct-main-text">
+                                <div class="ct-product--tilte">
+                                    046 Merry Landing, High Lonesome Wells
+                                </div>
+                                <div class="ct-product--price">
+                                    <span>$ 450,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ct-product--meta">
+                            <div class="ct-icons">
+                                <span>
+                                    <i class="fa fa-bed"></i> 3
+                                </span>
+                                <span>
+                                    <i class="fa fa-cutlery"></i> 2
+                                </span>
+                            </div>
+                            <div class="ct-text">
+                                <span> Area: <span>105 m2</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ct-itemProducts ct-u-marginBottom30 ct-hover ct-itemProducts--boxed">
+                    <a href="product-single.html">
+                        <div class="ct-main-content">
+                            <div class="ct-imageBox">
+                                <img src="{{ asset('bundles/eduflats/images/demo-content/property-3.jpg') }}" alt=""><i class="fa fa-eye"></i>
+                            </div>
+                            <div class="ct-main-text">
+                                <div class="ct-product--tilte">
+                                    8606 Quaking Grove Highway, Blackfalds
+                                </div>
+                                <div class="ct-product--price">
+                                    <span>$ 450,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ct-product--meta">
+                            <div class="ct-icons">
+                                <span>
+                                    <i class="fa fa-bed"></i> 3
+                                </span>
+                                <span>
+                                    <i class="fa fa-cutlery"></i> 2
+                                </span>
+                            </div>
+                            <div class="ct-text">
+                                <span> Area: <span>105 m2</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
