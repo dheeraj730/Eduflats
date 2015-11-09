@@ -5,7 +5,16 @@ homepage:
         _controller: WebsiteBundle:Home:home
     requirements:
         domain: eduflats.com|www.eduflats.com
-  
+        
+homepage_restrict:
+    path:     /{slug}
+    host:     "{domain}"
+    defaults:
+        _controller: WebsiteBundle:Home:notfound
+    requirements:
+        domain: eduflats.com|www.eduflats.com
+        slug: ^(?!.*(admin|login)$).*
+
 subdomain_homepage:
     path:     /
     defaults: { _controller: EduflatsBundle:Search:search }

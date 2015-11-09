@@ -15,5 +15,13 @@ class HomeController extends Controller
     {
         return array(); 
     }
+    
+    /**
+     * @Template()
+     */
+    public function notfoundAction()
+    {
+        return array(); 
+    }
 
 }
