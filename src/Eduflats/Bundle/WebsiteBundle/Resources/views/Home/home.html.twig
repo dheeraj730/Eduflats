@@ -86,11 +86,11 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 <ul class="nav navbar-nav navbar-right">
-<li><a class="page-scroll" href="#about-section">About Us</a></li>
-<li><a class="page-scroll" href="#team-section">Team</a></li>
-<li><a class="page-scroll" href="#services-section">Services</a></li>
-<li><a class="page-scroll" href="#prices-section">Prices</a></li>
-<li><a class="page-scroll" href="#contact-section">Contact</a></li>
+<li><a class="page-scroll" href="#about-section">{{ "menu.one" | trans }}</a></li>
+<li><a class="page-scroll" href="#team-section">{{ "menu.two" | trans }}</a></li>
+<li><a class="page-scroll" href="#services-section">{{ "menu.three" | trans }}</a></li>
+<li><a class="page-scroll" href="#prices-section">{{ "menu.four" | trans }}</a></li>
+<li><a class="page-scroll" href="#contact-section">{{ "menu.five" | trans }}</a></li>
 </ul>
 </div><!-- /.navbar-collapse -->
 </div><!-- /.container -->
@@ -148,7 +148,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <div class="page-header-wrapper">
 <div class="container">
 <div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-<h1>About <span class="text-main">Us</span></h1>
+<h1>{{ "aboutus" | trans | raw }}</h1>
 <div class="divider divider-icon divider-md">//</div>
 <p class="lead text-gray">
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -168,7 +168,7 @@ quis nostrud exercitation.
 <a href="#" class="info-box-1 square-icon text-center wow zoomIn" data-wow-delay="0">
 <span class="info-box-icon"><i class="fa fa-rocket"></i></span>
 <div class="info-box-info">
-<h4>Clean Design</h4>
+<h4>{{ "module.one" | trans }}</h4>
 <div class="divider divider-sm"></div>
 <p>Lorem ipsum dolor sit amet set, consectetur utes anet adipisicing elit, sed do eiusmod tempor incidist.</p>
 </div>
@@ -179,7 +179,7 @@ quis nostrud exercitation.
 <a href="#" class="info-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.2s">
 <span class="info-box-icon"><i class="fa fa-html5"></i></span>
 <div class="info-box-info">
-<h4>HTML5 &amp; CSS3</h4>
+<h4>{{ "module.two" | trans | raw }} </h4>
 <div class="divider divider-sm"></div>
 <p>Lorem ipsum dolor sit amet set, consectetur utes anet adipisicing elit, sed do eiusmod tempor incidist.</p>
 </div>
@@ -190,7 +190,7 @@ quis nostrud exercitation.
 <a href="#" class="info-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.4s">
 <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
 <div class="info-box-info">
-<h4>Easy Customıze</h4>
+<h4>{{ "module.three" | trans }}</h4>
 <div class="divider divider-sm"></div>
 <p>Lorem ipsum dolor sit amet set, consectetur utes anet adipisicing elit, sed do eiusmod tempor incidist.</p>
 </div>
@@ -201,7 +201,7 @@ quis nostrud exercitation.
 <a href="#" class="info-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.6s">
 <span class="info-box-icon"><i class="fa fa-mobile"></i></span>
 <div class="info-box-info">
-<h4>Fully Responsive</h4>
+<h4>{{ "module.four" | trans }}</h4>
 <div class="divider divider-sm"></div>
 <p>Lorem ipsum dolor sit amet set, consectetur utes anet adipisicing elit, sed do eiusmod tempor incidist.</p>
 </div>
@@ -220,13 +220,12 @@ quis nostrud exercitation.
 <div class="row">
 <div class="col-md-8 wow bounceInLeft" data-wow-delay="0.2s">
 <!-- Typed-element is configurable through the file "theme.js" -->
-<h2>{This is <span class="typed-element text-main"></span> Awesomeness}</h2>
+<h2>{{ "textchange" | trans | raw }}</h2>
 <p class="lead"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sederat do eiusmod tempor incididunt ut labore et dolore.</em></p>
 </div>
 <div class="col-md-4 text-right wow bounceInRight" data-wow-delay="0.2s">
 <div class="get-started">
 <a href="https://creativemarket.com/Themetorium" target="_blank" class="btn btn-danger btn-lg">Buy This Theme!</a>
-<div class="learn-more">or <a href="#">learn more.</a></div>
 </div>
 </div>
 </div> <!-- /.row -->
@@ -239,7 +238,7 @@ quis nostrud exercitation.
 <div class="container">
 <div class="row">
 <div class="col-sm-2">
-<h4>Trusted By</h4>
+<h4>{{ "clients" | trans }}</h4>
 </div>
 <div class="col-sm-10">
 <div id="owl-trusted-by" class="owl-carousel">
@@ -264,7 +263,7 @@ quis nostrud exercitation.
 <div class="container">
 <div class="testimonial-inner center-block text-center text-white">
 <div class="heading">
-<h2>What Clients Say</h2>
+<h2>{{ "testimonial" | trans }}</h2>
 <i class="fa fa-comments fa-5x"></i>
 </div>
 
@@ -308,7 +307,7 @@ proident, sunt in culpa qui officia deserunt mollit".</p>
 <div class="page-header-wrapper">
 <div class="container">
 <div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-<h1>Meet the <span class="text-main">Team</span></h1>
+<h1>{{ "team" |trans | raw }}</h1>
 <div class="divider divider-icon divider-md">//</div>
 <p class="lead text-gray">
 Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -609,9 +608,9 @@ quis nostrud.
 
 <!-- Nav tabs -->
 <ul class="nav nav-pills" role="tablist">
-<li role="presentation" class="active"><a href="#tab-design" aria-controls="tab-design" role="tab" data-toggle="tab"><i class="fa fa-paint-brush"></i> Designing</a></li>
-<li role="presentation"><a href="#tab-developing" aria-controls="tab-developing" role="tab" data-toggle="tab"><i class="fa fa-code"></i> Developing</a></li>
-<li role="presentation"><a href="#tab-branding" aria-controls="tab-branding" role="tab" data-toggle="tab"><i class="fa fa-sliders"></i> Optimising</a></li>
+<li role="presentation" class="active"><a href="#tab-design" aria-controls="tab-design" role="tab" data-toggle="tab"><i class="fa fa-paint-brush"></i>{{ "design" | trans }}</a></li>
+<li role="presentation"><a href="#tab-developing" aria-controls="tab-developing" role="tab" data-toggle="tab"><i class="fa fa-code"></i>{{ "developing" | trans }}</a></li>
+<li role="presentation"><a href="#tab-branding" aria-controls="tab-branding" role="tab" data-toggle="tab"><i class="fa fa-sliders"></i>{{ "optimising" | trans }}</a></li>
 </ul>
 
 <!-- Tab panes -->

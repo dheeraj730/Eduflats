@@ -14,11 +14,20 @@ class NavigationController extends Controller {
     public function loginAction(){
         return array();
     }
+    
     /**
-     * @Route("/Agents", name="agents")
+     * @Route("/agents", name="agents")
      * @Template()
      */
     public function agentsAction(){
+        return array();
+    }
+    
+    /**
+     * @Route("/agents-listings", name="navigation_agentlisting")
+     * @Template()
+     */
+    public function agentlistingAction(){
         return array();
     }
     

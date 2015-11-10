@@ -1,27 +1,22 @@
 <?php
 namespace Eduflats\Bundle\WebsiteBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class HomeController extends Controller
-{
-    /**
-     * @Route("/", name="website_Home_home")
-     * @Template()
-     */
-    public function homeAction()
-    {
-        return array(); 
-    }
+class HomeController extends Controller {
     
     /**
+     * @Route("/", name="website_home_home")
      * @Template()
      */
-    public function notfoundAction()
-    {
-        return array(); 
+    public function homeAction(Request $request) {
+        $request->getSession()->set('_locale', 'fr');
+        $request->setLocale('fr');
+        
+        return []; 
     }
-
+    
 }

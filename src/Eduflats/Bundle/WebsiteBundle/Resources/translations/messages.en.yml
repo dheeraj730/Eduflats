@@ -1,0 +1,23 @@
+"menu.one": "about us"
+"menu.two": "team"
+"menu.three": "services"
+"menu.four": "prices"
+"menu.five": "contact"
+
+"aboutus": "About <span class='text-main'>Us</span>"
+
+"module.one": "Clean Design"
+"module.two": "HTML5 &amp; CSS3"
+"module.three": "Easy Customıze"
+"module.four": "Fully Responsive"
+
+"textchange": "{This is <span class='typed-element text-main'></span> Awesomeness}"
+
+"clients": "Trusted By"
+
+"testimonial": "What Clients Say"
+
+"team": "Meet the <span class='text-main'>Team</span>"
+"design": "Designing"
+"developing": "Developing"
+"optimising": "Optimising"

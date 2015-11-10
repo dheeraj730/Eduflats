@@ -6604,7 +6604,7 @@ button {
   margin-top: 60px;
 }
 .ct-u-marginBottom60 {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 .ct-u-marginBoth70 {
   margin-top: 70px;
@@ -10829,6 +10829,8 @@ header {
   border-radius: 2px;
 }
 .ct-personBox {
+  margin-top: 15px;
+  margin-bottom:15px;
   border-radius: 4px;
   display: block;
   -webkit-box-shadow: 0 0 3px 0 rgba(4, 4, 4, 0.3);

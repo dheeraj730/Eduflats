@@ -10,10 +10,11 @@ homepage_restrict:
     path:     /{slug}
     host:     "{domain}"
     defaults:
-        _controller: WebsiteBundle:Home:notfound
+        _controller: WebsiteBundle:Notfound:notfound
     requirements:
         domain: eduflats.com|www.eduflats.com
         slug: ^(?!.*(admin|login)$).*
+        # major flaw in regex (remove .*)
 
 subdomain_homepage:
     path:     /
