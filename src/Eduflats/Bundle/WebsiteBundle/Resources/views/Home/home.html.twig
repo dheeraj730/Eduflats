@@ -653,7 +653,7 @@ per conubia nostra. <a href="#">Read more..</a></p>
 <div class="skill-bar wow bounceInRight" data-wow-delay="0.4s">
 
 <div class="heading">
-<h3>Our <span class="text-main">Skills</span></h3>
+<h3>{{ "skills" | trans | raw }}</h3>
 </div>
 
 <h5>Illustrator</h5>
@@ -713,7 +713,7 @@ per conubia nostra. <a href="#">Read more..</a></p>
 <div class="page-header-wrapper">
 <div class="container">
 <div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-<h1>What <span class="text-main">We Do</span></h1>
+<h1>{{ "services" | trans | raw }}</h1>
 <div class="divider divider-md divider-icon divider-white">//</div>
 <p class="lead">
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -832,7 +832,7 @@ tempor incididunt ut labore et dolore magna aliqua.</p>
 <div class="page-header-wrapper">
 <div class="container">
 <div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-<h1>Our <span class="text-main">Prices</span></h1>
+<h1>{{ "prices" | trans | raw }}</h1>
 <div class="divider divider-md divider-icon">//</div>
 <p class="lead text-gray">
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -931,7 +931,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
 <div class="page-header-wrapper">
 <div class="container">
 <div class="page-header text-center wow bounceInDown" data-wow-delay="0.3s">
-<h1>Contact <span class="text-main">Us</span></h1>
+<h1>{{ "contacts" | trans | raw }}</h1>
 <div class="divider divider-md divider-icon divider-white">//</div>
 <p class="lead">
 Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -962,14 +962,14 @@ proident, sunt in culpa qui officia deserunt mollit.
 <div class="form-group">
 <textarea class="form-control input-lg" rows="5" placeholder="Message" required></textarea>
 </div>
-<button type="submit" class="btn btn-blank btn-lg wow bounceInRight" data-wow-delay="0.8s">Send Message</button>
+<button type="submit" class="btn btn-blank btn-lg wow bounceInRight" data-wow-delay="0.8s">{{ "sendmessage" | trans }}</button>
 </form>
 </div>	
 </div>
 
 <div class="col-md-6">
 <div class="contact-info">
-<h3 class="contact-info-heading">Contact Info</h3>
+<h3 class="contact-info-heading">{{ "contactinfo" | trans }}</h3>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitati.</p>
@@ -1005,7 +1005,7 @@ quis nostrud exercitati.</p>
 <div class="row">
 <div class="col-md-6">
 <div class="copyright">
-Copyright © All Rights Reserved
+    {{ "footer" | trans }}
 </div>
 </div>
 </div>

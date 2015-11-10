@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="skills">
+                <source>skills</source>
+                <target>Our <![CDATA[<span class="text-main">Skills</span>]]></target>
+            </trans-unit>
+            <trans-unit id="services">
+                <source>services</source>
+                <target>what <![CDATA[<span class="text-main">we do</span>]]></target>
+            </trans-unit>
+            <trans-unit id="prices">
+                <source>prices</source>
+                <target>Our <![CDATA[<span class="text-main">Prices</span>]]></target>
+            </trans-unit>
+            <trans-unit id="contacts">
+                <source>contacts</source>
+                <target>Contact <![CDATA[<span class="text-main">Us</span>]]></target>
+            </trans-unit>
+            <trans-unit id="contactinfo">
+                <source>contactinfo</source>
+                <target>Contact Info</target>
+            </trans-unit>
+            <trans-unit id="sendmessage">
+                <source>sendmessage</source>
+                <target>Send Message</target>
+            </trans-unit>
+            <trans-unit id="footer">
+                <source>footer</source>
+                <target>Copyright 2015 © All Rights Reserved</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
