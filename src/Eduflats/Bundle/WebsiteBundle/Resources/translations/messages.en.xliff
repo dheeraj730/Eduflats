@@ -2,30 +2,122 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
+            <trans-unit id="menuone">
+                <source>menu.one</source>
+                <target>about us</target>
+            </trans-unit>
+            
+            <trans-unit id="menutwo">
+                <source>menu.two</source>
+                <target>team</target>
+            </trans-unit>
+            
+            
+            <trans-unit id="menuthree">
+                <source>menu.three</source>
+                <target>services</target>
+            </trans-unit>
+            
+            <trans-unit id="menufour">
+                <source>menu.four</source>
+                <target>prices</target>
+            </trans-unit>
+                       
+            <trans-unit id="menufive">
+                <source>menu.five</source>
+                <target>contact</target>
+            </trans-unit>
+                       
+            <trans-unit id="aboutus">
+                <source>aboutus</source>
+                <target>About <![CDATA[<span class='text-main'>Us</span>]]></target>
+            </trans-unit>
+            
+            <trans-unit id="moduleone">
+                <source>module.one</source>
+                <target>Clean Design</target>
+            </trans-unit>
+            
+            <trans-unit id="moduletwo">
+                <source>module.two</source>
+                <target>HTML5 &amp; CSS3</target>
+            </trans-unit>
+            
+            <trans-unit id="modulethree">
+                <source>module.three</source>
+                <target>Easy Customıze</target>
+            </trans-unit>
+            
+            <trans-unit id="modulefour">
+                <source>module.four</source>
+                <target>Fully Responsive</target>
+            </trans-unit>
+            
+            <trans-unit id="textchange">
+                <source>textchange</source>
+                <target>{This is <![CDATA[<span class='typed-element text-main'></span> Awesomeness}]]></target>
+            </trans-unit>
+            
+            <trans-unit id="clients">
+                <source>clients</source>
+                <target>Trusted By</target>
+            </trans-unit>
+            
+            <trans-unit id="testimonial">
+                <source>testimonial</source>
+                <target>What Clients Say</target>
+            </trans-unit>
+            
+            <trans-unit id="team">
+                <source>team</source>
+                <target>Meet the <![CDATA[<span class='text-main'>Team</span>]]></target>
+            </trans-unit>
+            
+            <trans-unit id="design">
+                <source>design</source>
+                <target>Designing</target>
+            </trans-unit>
+            
+            <trans-unit id="developing">
+                <source>developing</source>
+                <target>Developing</target>
+            </trans-unit>
+            
+            <trans-unit id="optimising">
+                <source>optimising</source>
+                <target>Optimising</target>
+            </trans-unit>
+            
             <trans-unit id="skills">
                 <source>skills</source>
                 <target>Our <![CDATA[<span class="text-main">Skills</span>]]></target>
             </trans-unit>
+            
             <trans-unit id="services">
                 <source>services</source>
                 <target>what <![CDATA[<span class="text-main">we do</span>]]></target>
             </trans-unit>
+            
             <trans-unit id="prices">
                 <source>prices</source>
                 <target>Our <![CDATA[<span class="text-main">Prices</span>]]></target>
             </trans-unit>
+            
             <trans-unit id="contacts">
                 <source>contacts</source>
                 <target>Contact <![CDATA[<span class="text-main">Us</span>]]></target>
             </trans-unit>
+            
             <trans-unit id="contactinfo">
                 <source>contactinfo</source>
                 <target>Contact Info</target>
             </trans-unit>
+            
             <trans-unit id="sendmessage">
                 <source>sendmessage</source>
                 <target>Send Message</target>
             </trans-unit>
+            
             <trans-unit id="footer">
                 <source>footer</source>
                 <target>Copyright 2015 © All Rights Reserved</target>
