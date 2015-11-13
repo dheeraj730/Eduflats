@@ -13,9 +13,6 @@ class HomeController extends Controller {
      * @Template()
      */
     public function homeAction(Request $request) {
-        $request->getSession()->set('_locale', 'fr');
-        $request->setLocale('fr');
-        
         return []; 
     }
     
