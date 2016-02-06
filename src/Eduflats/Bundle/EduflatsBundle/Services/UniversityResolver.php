@@ -25,13 +25,17 @@ class UniversityResolver {
         // -- if exists remove www. from $host
         $parts = explode('.', $host);
         
-        if (count($parts) === 3) {
+        if (count($parts) === 2) {
+            $parts[0] = 'blore';
             $university = $this->universityRepository->findOneBy(array('tSubdomainName' => $parts[0]));
+       
             if (null !== $university) {
                 return $university;
             }
         }
         throw new NotFoundHttpException('We do not currently have a website configured at this address. Please visit our website for more information or contact our support team');
+  
     }
+    
 
 }

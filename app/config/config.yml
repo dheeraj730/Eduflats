@@ -73,11 +73,9 @@ doctrine:
 
 
 fos_user:
-    db_driver: orm 
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
     user_class: Eduflats\Bundle\EduflatsBundle\Entity\Client
-    firewall_name: secured_area
-    service:
-        user_manager: EduflatsUserManager
     
 # Swiftmailer Configuration
 swiftmailer:

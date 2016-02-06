@@ -13,11 +13,10 @@ services:
     Helper_Functions:
         class: Eduflats\Bundle\EduflatsBundle\Services\HelperFunctions
         arguments: [ "@doctrine.orm.entity_manager", "@security.context", "@security.encoder_factory" ]
-        
-    EduflatsUserManager:
-        class: Eduflats\Bundle\EduflatsBundle\Entity\UserManager
-        arguments: ["@security.encoder_factory", "@fos_user.util.username_canonicalizer", "@fos_user.util.email_canonicalizer", "@fos_user.entity_manager", Eduflats\Bundle\EduflatsBundle\Entity\Client]
     
+    fos_user.doctrine_registry:
+        alias: doctrine  
+        
     eduflats.university_resolver:
         class: Eduflats\Bundle\EduflatsBundle\Services\UniversityResolver
         arguments: ["@request_stack",'%domain%','@university_repository']        
