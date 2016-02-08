@@ -2,6 +2,7 @@ parameters:
   domain: 
     - www.eduflats.com
     - eduflats.com
+    - eduflats
 
 services:
     kernel.listener.request:

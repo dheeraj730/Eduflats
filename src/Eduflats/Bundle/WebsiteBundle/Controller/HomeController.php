@@ -16,4 +16,12 @@ class HomeController extends Controller {
         return []; 
     }
     
+    /**
+     * @Route("/registrtaion", name="registrtaion")
+     * @Template()
+     */
+    public function registrtaionAction(){
+        return array();
+    }
+    
 }

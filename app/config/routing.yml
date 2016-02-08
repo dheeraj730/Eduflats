@@ -4,7 +4,7 @@ homepage:
     defaults:
         _controller: WebsiteBundle:Home:home
     requirements:
-        domain: eduflats.com|www.eduflats.com
+        domain: eduflats.com|www.eduflats.com|eduflats
         _locale: fr_FR|
         
 homepage_restrict:
@@ -14,6 +14,7 @@ homepage_restrict:
         _controller: WebsiteBundle:Notfound:notfound
     requirements:
         domain: eduflats.com|www.eduflats.com
+        slug: ^(?!.*(registrtaion)$).*
 
 subdomain_homepage:
     path:     /

@@ -21,5 +21,4 @@ class RequestListener {
         }
         $event->getRequest()->attributes->set('university_id', $universityId);
     }
-    
 }

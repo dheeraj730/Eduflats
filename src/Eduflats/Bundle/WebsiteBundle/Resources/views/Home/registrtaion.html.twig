@@ -1,10 +1,40 @@
-{% extends "EduflatsBundle:Home:home.html.twig"%}
-
-{% block body %}
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="description" content="Student Accommodation">
+    <meta name="author" content="CreateIT">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{% block title %}EduFlats{% endblock %}</title>
+    <link rel="icon" href="{{ asset('bundles/eduflats/images/demo-content/estato-favicon.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/eduflats/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/eduflats/css/style.css') }}">
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/eduflats/bootstrap/js/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('bundles/eduflats/bootstrap/js/respond.min.js') }}"></script>
+    <![endif]-->
+    <script src="{{ asset('bundles/eduflats/js/modernizr.custom.js') }}"></script>
+    <style>
+        
+        .ct-iconContainer--circle {
+            background-color: #333;
+        }
+        .ct-iconBox--2col .ct-iconContainer--circle:before{
+            border: 3px solid #333;
+        }
+    </style>
+</head>
+<body class="ct-headroom--fixedTopBar cssAnimate">
 <div class="ct-site--map">
     <div class="container">
-        <a href="index-2.html">Home</a>
-        <a href="registration.html">New User</a>
+        <a href="/">Home</a>
+        <a href="/registrtaion">New User</a>
     </div>
 </div>
 <header class="ct-mediaSection" data-stellar-background-ratio="0.3" data-height="630" data-type="parallax" data-bg-image="{{ asset('bundles/eduflats/images/demo-content/registration-parallax.jpg') }}" data-bg-image-mobile="{{ asset('bundles/eduflats/images/demo-content/registration-parallax.jpg') }}">
@@ -14,8 +44,7 @@
                 <div class="col-md-6">
                     <div class="ct-headerText--normal">
                         <h2 class="text-uppercase ct-fw-600 ct-u-marginBottom70">
-                            What will you
-                            <span class="ct-u-text--motive">earn</span>
+                            What will you earn
                             by registering?
                         </h2>
                     </div>
@@ -48,22 +77,9 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    {# replace it with symfony widget #}
                     <form role="form" class="ct-formRegister pull-right">
                         <div class="form-group">
-                            <div class="ct-form--label--type2">
-                                <div class="ct-u-displayTableVertical">
-                                    <div class="ct-u-displayTableCell">
-                                        <div class="ct-input-group-btn">
-                                            <button class="btn btn-primary">
-                                                <i class="fa fa-user"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="ct-u-displayTableCell text-center">
-                                        <span class="text-uppercase">Become a member</span>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="ct-form--item ct-u-marginBottom20">
                                 <label>Your Email</label>
                                 <input type="text" required class="form-control input-lg" placeholder="">
@@ -87,7 +103,7 @@
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" value="">
-                                        I read and agree to<a href="terms.html"> terms & conditions</a>
+                                        I read and agree to<a href="terms.html" style="color:gray"> terms & conditions</a>
                                     </label>
                                 </div>
                             </div>
@@ -101,26 +117,7 @@
         </div>
     </div>
 </header>
-<section class="ct-u-paddingBoth30 ct-js-section ct-section--inline" data-bg-color="#60a7d4">
-    <div class="container">
-        <div class="ct-u-displayTableVertical">
-            <div class="ct-u-displayTableCell">
-                <div class="ct-u-displayTableCell">
-                    <img src="{{ asset('bundles/eduflats/images/demo-content/logo-cta.png') }}" alt="">
-                </div>
-                <div class="ct-u-displayTableCell">
-                    <h4 class="text-uppercase">PURCHASE ESTATO WORDPRESS THEME NOW!</h4>
-                </div>
-            </div>
-            <div class="ct-u-displayTableCell">
-                <div class="ct-u-displayTableCell pull-right">
-                    <a class="btn btn-default btn-transparent--border ct-u-text--white btn-hoverWhite" href="blog-single.html">Read More</a>
-                    <a class="btn btn-dark btn-hoverWhite" href="http://themeforest.net/item/orlando-creative-infographics-html-template/9566814?ref=createit-pl">Purchase Estato</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <section class="ct-u-paddingBottom60 text-center">
     <div class="container">
         <div class="ct-heading ct-u-marginBoth60">
@@ -136,4 +133,31 @@
         </div>
     </div>
 </section>
-{% endblock %}
+        
+<footer>
+    <div class="ct-postFooter ct-u-paddingBoth20">
+        
+        <div class="container">
+            <div class="row">
+                <div class="pull-right">
+                    <span class="ct-copyright">&copy; 2015 <a href="http://www.tracebyte.com/">Tracebyte</a> All rights reserved. </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+<!-- JavaScripts -->
+
+<script src="{{ asset('bundles/eduflats/js/jquery.min.js') }}"></script>
+<script src="{{ asset('bundles/eduflats/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('bundles/eduflats/js/dependencies.js') }}"></script>
+<script src="{{ asset('bundles/eduflats/js/select2/select2.min.js') }}"></script>
+<script src="{{ asset('bundles/eduflats/js/slider-bootstrap/bootstrap-slider.js') }}"></script>
+<script src="{{ asset('bundles/eduflats/js/ct-mediaSection/jquery.stellar.min.js') }}"></script>
+<script src="{{ asset('bundles/eduflats/js/owl/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('bundles/eduflats/js/main.js') }}"></script>
+
+</div>
+</body>
+</html>

@@ -90,7 +90,7 @@
             
             <trans-unit id="skills">
                 <source>skills</source>
-                <target>Our <![CDATA[<span class="text-main">Skills</span>]]></target>
+                <target>Technologies <![CDATA[<span class="text-main">utilized</span>]]></target>
             </trans-unit>
             
             <trans-unit id="services">

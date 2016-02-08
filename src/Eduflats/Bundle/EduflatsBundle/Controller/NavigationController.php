@@ -89,12 +89,4 @@ class NavigationController extends Controller {
         return array();
     }
     
-    /**
-     * @Route("/registrtaion", name="registrtaion")
-     * @Template()
-     */
-    public function registrtaionAction(){
-        return array();
-    }
-    
 }
