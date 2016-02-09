@@ -63,6 +63,14 @@ class NavigationController extends Controller {
         return array();
     }
     
+    /**
+     * @Route("/post-property", name="postproperty")
+     * @Template()
+     */
+    public function postpropertyAction(){
+        return array();
+    }
+    
     //ignore -  only for reference
     
     /**
