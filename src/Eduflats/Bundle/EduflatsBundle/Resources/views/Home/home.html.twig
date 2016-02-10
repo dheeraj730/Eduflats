@@ -31,7 +31,7 @@
             </a>
         </li>
         <li>
-            <a>
+            <a href="{{ path('postproperty') }}">
                 Post Properties
             </a>
         </li>
@@ -48,11 +48,6 @@
         <li>
             <a href="{{ path('faq') }}">
                 Faq
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('registrtaion') }}">
-                Register
             </a>
         </li>
         <li>
@@ -214,12 +209,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        Spanish
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        German
+                                        French
                                     </a>
                                 </li>
                             </ul>
@@ -254,11 +244,6 @@
 	                        <a href=""><i class="fa fa-home"></i> Wishlist</a>
 	                    </div>
 	            <!-- end -->
-                    {% endif %}
-                    {% if not app.user %}
-                    <div class="ct-panel--item ct-email">
-                        <a href="{{ path('registrtaion') }}"><i class="fa fa-plus-square"></i> Register</a>
-                    </div>
                     {% endif %}
                     {% if app.user %}
                     <!-- if authenticated fully -->
@@ -327,7 +312,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{ path('postproperty') }}">
                         Post Property
                     </a>
                 </li>
