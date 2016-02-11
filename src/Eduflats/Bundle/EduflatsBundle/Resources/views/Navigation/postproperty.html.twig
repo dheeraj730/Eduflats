@@ -1,10 +1,21 @@
 {% extends "EduflatsBundle:Home:home.html.twig"%}
 
 {% block title %}property detail{% endblock %}
-{% block body %}
-
+{% block body %}   
+    
+    <style>
+        input[type="checkbox"]{
+            width: inherit;
+        }
+        input[type="checkbox"] + label{
+            margin-left: 10px;
+            max-width: 31%;
+            width: 31%;
+        }
+    </style>
+    
+    
 <div id="ct-js-wrapper" class="ct-pageWrapper" style="transition: all 0.3s ease;">
-
 <div class="ct-site--map">
     <div class="container">
         <a href="">Home</a>
@@ -16,6 +27,7 @@
         <div class="ct-headerText--normal text-uppercase ct-u-marginBottom40">
             <h2>Property Details <span class="ct-text--highlightGray"> Price &amp; Amenities</span></h2>
         </div>
+        {{ form(form) }}
         <div class="row">
             <div class="col-md-8 col-lg-12">
                 <form role="form" class="ct-formSubmission">
