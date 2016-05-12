@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="{{ asset('bundles/website/vendor/font-awesome/css/font-awesome.min.css') }}"> <!-- Font Icons -->
 <link rel="stylesheet" href="{{ asset('bundles/website/vendor/owl-carousel/css/owl.carousel.css') }}">
 <link rel="stylesheet" href="{{ asset('bundles/website/vendor/owl-carousel/css/owl.theme.css') }}">
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
 <!-- Theme CSS -->
 <link rel="stylesheet" href="{{ asset('bundles/website/css/theme.css') }}">
@@ -80,6 +81,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <span class="icon-bar"></span>
 </button>
 <a class="navbar-brand page-scroll" href="index.html">VIGGO</a>
+<a class="navbar-text page-scroll" href="index.html">EduFlats</a>
 </div>
 
 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -90,6 +92,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <li><a class="page-scroll" href="#services-section">{{ "menu.three" | trans }}</a></li>
 <li><a class="page-scroll" href="#prices-section">{{ "menu.four" | trans }}</a></li>
 <li><a class="page-scroll" href="#contact-section">{{ "menu.five" | trans }}</a></li>
+<li><a class="page-scroll" href="{{ path('registrtaion') }}">Free Trial</a></li>
 </ul>
 </div><!-- /.navbar-collapse -->
 </div><!-- /.container -->
@@ -149,7 +152,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <h1>{{ "aboutus" | trans | raw }}</h1>
 <div class="divider divider-icon divider-md">//</div>
 <p class="lead text-gray">
-Making student accommodation easier to manage</br>
+Making student accommodation easiest to manage</br>
 Eduflats will help students find a home quickly and easily. You can put providers in charge of their own listings. Admin tools allow you to manage the system to make sure everything runs smoothly.
 </p>
 </div>
@@ -945,6 +948,17 @@ quis nostrud exercitati.</p>
 </div>	<!-- /.contact -->
 <div class="more-space-xxl"></div>
 </section>
+<!-- End contact section -->
+
+
+<!-- Begin free trial section -->
+{#<section id="contact-section" class="page text-white parallax" data-stellar-background-ratio="0.5">
+<div class="cover"></div>
+<div class="panel-footer text-center">
+<a class="btn btn-lg btn-dark" href="{{ path('registrtaion') }}">Free Trial!</a>
+</div>
+</section>#}
+<!-- End free trial section -->
 
 <a href="#" class="scrolltotop"><i class="fa fa-long-arrow-up"></i></a>
 
